@@ -1,0 +1,83 @@
+{
+  "kind": "forecast",
+  "cutoff_sequence": "0053",
+  "target_sequence": "0063",
+  "answer_schema": {
+    "type": "object",
+    "required": [
+      "items"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "type": "array",
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "value"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "enum": [
+                "lot01-rphplc-25c-36m",
+                "lot005-rphplc-25c-24m",
+                "lot005-potency-25c-24m"
+              ]
+            },
+            "value": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "lot01-rphplc-25c-36m",
+      "unit": "%",
+      "value": 56,
+      "last_observed": 62,
+      "full_atol": 1,
+      "half_atol": 2,
+      "source": {
+        "sequence": "0063",
+        "page": 9
+      }
+    },
+    {
+      "id": "lot005-rphplc-25c-24m",
+      "unit": "%",
+      "value": 69,
+      "last_observed": 66,
+      "full_atol": 1,
+      "half_atol": 2,
+      "source": {
+        "sequence": "0063",
+        "page": 16
+      }
+    },
+    {
+      "id": "lot005-potency-25c-24m",
+      "unit": "u/mg",
+      "value": 19,
+      "last_observed": 12,
+      "full_atol": 1,
+      "half_atol": 2,
+      "source": {
+        "sequence": "0063",
+        "page": 16
+      }
+    }
+  ],
+  "verification": {
+    "status": "human_verified",
+    "who": "Ahmad Saber",
+    "how": "Ahmad Saber confirmed on 2026-11-14 that the gold values match the held-back 0063 report (pages 9 and 16). Claude separately read those values and the last_observed values from the rendered pages (0063 pages 9 and 16; 0053 pages 10 and 17). Absence from the workspace was checked by Claude, not independently by a person: the 0053 table for lot RX501601.01 at 25 C ends at 24 months, the 24-month column for lot RX501601.005 at 25 C is empty on the rendered page, and the staged text was searched for the target cells. A fourth verified target (lot RX501601.01 potency at 36 months, 12 u/mg against a last value of 11) was removed because repeating the last value earned full credit on it, which the sanity gate forbids.",
+    "absent_from_workspace": true
+  }
+}
