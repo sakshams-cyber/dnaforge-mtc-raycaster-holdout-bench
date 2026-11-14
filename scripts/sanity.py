@@ -56,6 +56,10 @@ def sanity(task):
     gold=json.loads((task/'solution/answer.json').read_text())
     cases=[('missing',None,False),('empty',{},False),('malformed_json','{',False),
            *probes(gold),('gold',gold,False)]
+    if gold_meta.get('kind')=='forecast' and all('last_observed' in t for t in gold_meta['items']):
+        # Repeating the last filed value must not earn full marks, or nothing is being forecast.
+        cases.insert(-1,('carry_forward',{'items':[{'id':t['id'],'value':t['last_observed']}
+                                                   for t in gold_meta['items']]},False))
     rows=[]
     with tempfile.TemporaryDirectory() as tmp:
         tmp=Path(tmp);workspace=tmp/'workspace'
@@ -85,12 +89,13 @@ def sanity(task):
                 valid=valid and 'grader_error' not in data.get('details',{})
                 if name=='gold': passed=valid and score==1
                 elif name in {'missing','empty','malformed_json'}: passed=valid and score==0
+                elif name=='carry_forward': passed=valid and score<1
                 elif name=='all_resolved':
                     ceiling=sum(i.get('status')=='resolved' for i in gold['items'])/len(gold['items'])
                     passed=valid and score<=ceiling
                 else: passed=valid and score<.2
                 rows.append({'task':task.name,'probe':name,'score':score,'pass':passed,
-                             'diagnostic':name=='all_resolved','details':data.get('details',{})})
+                             'diagnostic':name in {'all_resolved','carry_forward'},'details':data.get('details',{})})
             except (OSError,ValueError,subprocess.TimeoutExpired):
                 rows.append({'task':task.name,'probe':name,'score':None,'pass':False,'error':'verifier failed'})
     return rows

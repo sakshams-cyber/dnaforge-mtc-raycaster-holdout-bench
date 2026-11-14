@@ -1,0 +1,17 @@
+{
+  "cutoff_sequence": "0003",
+  "files": [
+    {
+      "source": "0001/stability-report.txt",
+      "destination": "0001/stability-report.txt"
+    },
+    {
+      "source": "0002/stability-report.txt",
+      "destination": "0002/stability-report.txt"
+    },
+    {
+      "source": "0003/stability-report.txt",
+      "destination": "0003/stability-report.txt"
+    }
+  ]
+}

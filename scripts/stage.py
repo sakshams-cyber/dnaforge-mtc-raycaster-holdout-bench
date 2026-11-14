@@ -6,6 +6,7 @@ Manifest is JSON: {"files": [{"source": "pack/path.pdf", "destination":
 import argparse
 import hashlib
 import json
+import re
 import shutil
 import tempfile
 from pathlib import Path
@@ -24,12 +25,31 @@ def inside(root, name):
     return target
 
 
+def check_cutoff(manifest):
+    """Forecast manifests name a cutoff submission; refuse any later source.
+
+    The sequence is the first four-digit folder in the source path (eCTD layout),
+    so a manifest cannot stage the held-back filing, or anything filed after the
+    cutoff, by mistake. Sources without a sequence folder are refused too.
+    """
+    cutoff = manifest.get('cutoff_sequence')
+    if cutoff is None:
+        return
+    if not re.fullmatch(r'\d{4}', str(cutoff)):
+        raise ValueError('cutoff_sequence must be a four-digit sequence')
+    for entry in manifest['files']:
+        sequence = next((part for part in Path(entry['source']).parts if re.fullmatch(r'\d{4}', part)), None)
+        if sequence is None or sequence > cutoff:
+            raise ValueError(f'Source is not at or before cutoff {cutoff}: {entry["source"]}')
+
+
 def stage(task, pack_root, destination=None):
     task, pack_root = Path(task), Path(pack_root).resolve()
     manifest = json.loads((task/'workspace.manifest').read_text())
     entries = manifest['files']
     if not isinstance(entries, list) or not entries:
         raise ValueError('Manifest must list at least one file')
+    check_cutoff(manifest)
     dest = Path(destination) if destination else task/'environment/workspace'
     dest.parent.mkdir(parents=True, exist_ok=True)
     planned, seen = [], set()

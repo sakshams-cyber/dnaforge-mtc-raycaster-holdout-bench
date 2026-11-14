@@ -26,10 +26,10 @@ from pathlib import Path
 
 try:
     from .eval_provenance import tree_hash, digest
-    from .stage import inside
+    from .stage import inside, check_cutoff
 except ImportError:
     from eval_provenance import tree_hash, digest
-    from stage import inside
+    from stage import inside, check_cutoff
 
 
 def resolve_source(pack_root, name):
@@ -151,9 +151,13 @@ def plant(workspace, plan):
 
 def stage_text(task, pack_root, plan_path=None, clean=False):
     task, pack_root = Path(task), Path(pack_root).expanduser().resolve()
-    entries = json.loads((task/'workspace.manifest').read_text())['files']
+    manifest = json.loads((task/'workspace.manifest').read_text())
+    entries = manifest['files']
     if not isinstance(entries, list) or not entries:
         raise ValueError('Manifest must list at least one file')
+    # Forecast tasks stage unaltered text from at or before the cutoff; nothing is planted.
+    check_cutoff(manifest)
+    clean = clean or 'cutoff_sequence' in manifest
     dest = task/'environment/workspace'
     dest.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='stage-', dir=dest.parent) as tmp:
