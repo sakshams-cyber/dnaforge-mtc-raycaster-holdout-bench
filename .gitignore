@@ -18,9 +18,9 @@ out/
 .venv-harbor/
 jobs/
 tasks/*/environment/workspace/
-tasks/*/solution/answer.json
-examples/*/environment/workspace/
-examples/*/solution/answer.json
+examples/*/environment/workspace/*
+!examples/plumbing-smoke/environment/workspace/response.txt
+!examples/numeric-smoke/environment/workspace/raw.csv
 
 tasks/*/environment/workspace.receipt.json
 examples/*/environment/workspace.receipt.json
@@ -31,7 +31,3 @@ boltz-experiments/
 boltz-smoke/
 AGENTS_PAPERCLIP.md
 docs/PLAYBOOK.pdf
-
-# Keep generated run exports local until reviewed for filing excerpts.
-runs/*
-!runs/README.md
