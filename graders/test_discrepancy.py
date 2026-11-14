@@ -101,3 +101,12 @@ def test_label_and_ratio_targets(run):
         assert run(changed(corrected_value=value), gold)[0] == 1
     for value in ('80', '8 mg', 'eight'):
         assert run(changed(corrected_value=value), gold)[0] == 0
+
+
+def test_contains_target(run):
+    gold = copy.deepcopy(GOLD)
+    gold['items'][0]['expected'] = {'type': 'contains', 'any': ['most', '21 of 24'], 'none': ['almost']}
+    for value in ('most ferrets', 'Most', '21 of 24 animals'):
+        assert run(changed(corrected_value=value), gold)[0] == 1
+    for value in ('all ferrets', 'almost all', '50 mg'):
+        assert run(changed(corrected_value=value), gold)[0] == 0

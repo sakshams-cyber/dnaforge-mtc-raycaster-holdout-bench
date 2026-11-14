@@ -1,0 +1,17 @@
+schema_version = "1.4"
+artifacts = ["/app/output/answer.json", "/app/ENVIRONMENT_PACKAGES.txt"]
+[task]
+name = "holdout/discrepancy-hunt-06"
+description = "Reviewer check: an exposure claim in the brochure must match the bioanalytical data"
+[metadata]
+pack = "divalent-sirna-ind-167326"
+difficulty_target = "10-30 min"
+[agent]
+timeout_sec = 1800
+[verifier]
+timeout_sec = 300
+[environment]
+build_timeout_sec = 900
+cpus = 2
+memory_mb = 4096
+workdir = "/app"

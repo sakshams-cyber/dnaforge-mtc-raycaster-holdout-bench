@@ -1,0 +1,141 @@
+{
+  "kind": "discrepancy",
+  "answer_schema": {
+    "type": "object",
+    "required": [
+      "items"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "type": "array",
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "path",
+            "page",
+            "quote",
+            "corrected_value",
+            "source_path",
+            "source_page",
+            "source_quote"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 20
+            },
+            "corrected_value": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "source_quote": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        }
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "plant-1",
+      "error_class": "recompute_with_bloq_convention",
+      "path": "study-reports/A-703-02-report.txt",
+      "page_min": 25,
+      "page_max": 25,
+      "anchor": "5625.45",
+      "expected": {
+        "type": "quantity",
+        "value": "11250.9",
+        "unit": "ng/mL",
+        "rtol": "0.001"
+      },
+      "sources": [
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 799,
+          "page_max": 801,
+          "anchor": "22,500.6"
+        },
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 25,
+          "page_max": 25,
+          "anchor": "BLOQ"
+        }
+      ]
+    }
+  ],
+  "known_baseline": [
+    {
+      "path": "summaries/general-investigational-plan.txt",
+      "page_min": 3,
+      "page_max": 3,
+      "anchor": "recovery timepoint",
+      "note": "Unaltered filing: plan reports gliosis in 1/4 recovery animals at a 30-day timepoint; A-703-02 reports none, at a 28-day recovery."
+    },
+    {
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 4,
+      "page_max": 4,
+      "anchor": "169 mg",
+      "note": "Unaltered filing: 35-52 ug is said to scale to 59-169 mg, but at the stated factor of 3,250 (p. 11) 35 ug is about 114 mg; 59 mg corresponds to 18 ug. Needs pharmacologist review."
+    },
+    {
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 13,
+      "page_max": 13,
+      "anchor": "chromosomal aberration",
+      "note": "Unaltered filing: the same paragraph names the study as an in vitro micronucleus test in CHO-K1 cells and then as a chromosomal aberration assay in Chinese hamster lung fibroblasts."
+    },
+    {
+      "path": "study-reports/A-703-02-report.txt",
+      "page_min": 21,
+      "page_max": 21,
+      "anchor": "6.7 ng/mL",
+      "note": "Unaltered filing: formulation concentration written as 6.7 ng/mL; mg/mL everywhere else."
+    }
+  ],
+  "verification": {
+    "status": "pending_human_verification",
+    "who": "",
+    "how": "",
+    "how_to_verify": "A-703-02 report p. 800 lists Day 2 CSF results for Group 3 females 351-354: BQL, 22,500.6, 1.2 and BQL ng/mL. Table 10 on p. 25 excludes BLOQ animals (footnote, n = 2), so the mean is (22,500.6 + 1.2) / 2 = 11,250.9. The planted 5,625.45 is what you get by wrongly dividing by all four animals. Confirm the unaltered p. 25 says 11250.9. Then set status to human_verified and fill who/how.",
+    "answerable_from_workspace": true,
+    "evidence": [
+      {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 25
+      },
+      {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 800
+      }
+    ]
+  }
+}

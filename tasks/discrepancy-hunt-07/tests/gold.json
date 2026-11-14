@@ -1,0 +1,156 @@
+{
+  "kind": "discrepancy",
+  "answer_schema": {
+    "type": "object",
+    "required": [
+      "items"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "type": "array",
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "path",
+            "page",
+            "quote",
+            "corrected_value",
+            "source_path",
+            "source_page",
+            "source_quote"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 20
+            },
+            "corrected_value": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "source_quote": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        }
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "plant-1",
+      "error_class": "suppressed_finding",
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 13,
+      "page_max": 13,
+      "anchor": "No test article-related microscopic findings were observed in rats or dogs",
+      "expected": {
+        "type": "contains",
+        "any": [
+          "gliosis"
+        ],
+        "none": [
+          "no gliosis",
+          "without gliosis",
+          "absence of gliosis"
+        ]
+      },
+      "sources": [
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 4,
+          "page_max": 4,
+          "anchor": "gliosis"
+        },
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 26,
+          "page_max": 29,
+          "anchor": "gliosis"
+        },
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 862,
+          "page_max": 1027,
+          "anchor": "gliosis"
+        }
+      ]
+    }
+  ],
+  "known_baseline": [
+    {
+      "path": "summaries/general-investigational-plan.txt",
+      "page_min": 3,
+      "page_max": 3,
+      "anchor": "recovery timepoint",
+      "note": "Unaltered filing: plan reports gliosis in 1/4 recovery animals at a 30-day timepoint; A-703-02 reports none, at a 28-day recovery."
+    },
+    {
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 4,
+      "page_max": 4,
+      "anchor": "169 mg",
+      "note": "Unaltered filing: 35-52 ug is said to scale to 59-169 mg, but at the stated factor of 3,250 (p. 11) 35 ug is about 114 mg; 59 mg corresponds to 18 ug. Needs pharmacologist review."
+    },
+    {
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 13,
+      "page_max": 13,
+      "anchor": "chromosomal aberration",
+      "note": "Unaltered filing: the same paragraph names the study as an in vitro micronucleus test in CHO-K1 cells and then as a chromosomal aberration assay in Chinese hamster lung fibroblasts."
+    },
+    {
+      "path": "study-reports/A-703-02-report.txt",
+      "page_min": 21,
+      "page_max": 21,
+      "anchor": "6.7 ng/mL",
+      "note": "Unaltered filing: formulation concentration written as 6.7 ng/mL; mg/mL everywhere else."
+    }
+  ],
+  "verification": {
+    "status": "pending_human_verification",
+    "who": "",
+    "how": "",
+    "how_to_verify": "A-703-02 report pp. 4, 27 and 29 describe test article-related minimal gliosis in one 60 mg and four 200 mg core dogs (non-adverse). The unaltered brochure p. 13 reports it; the planted copy replaces that passage with a statement that there were no microscopic findings. Then set status to human_verified and fill who/how.",
+    "answerable_from_workspace": true,
+    "evidence": [
+      {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 4
+      },
+      {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 27
+      },
+      {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 13
+      }
+    ]
+  }
+}

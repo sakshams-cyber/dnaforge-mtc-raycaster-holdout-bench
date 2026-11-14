@@ -15,11 +15,13 @@ occur exactly once on that page, whitespace-normalised to a single line. No
 scientific choices are made here; humans select and verify each mutation.
 """
 import argparse
+import hashlib
 import json
 import re
 import shutil
 import subprocess
 import tempfile
+import textwrap
 from pathlib import Path
 
 try:
@@ -42,20 +44,33 @@ def resolve_source(pack_root, name):
     return matches[0]
 
 
+CACHE = Path(__file__).resolve().parents[1]/'.cache'/'stage_text'
+
+
 def pdf_pages(path, last=None):
     """Page texts up to `last` (all when None), via pdftotext when installed, else pdfplumber.
 
-    Only the requested pages are extracted: study reports run to ~1,000 pages and
-    layout extraction of the appendices takes minutes.
+    Only the requested pages are extracted, and each extraction is cached under
+    .cache/ (git-ignored): a 1,000-page study report takes minutes under pdfplumber.
     """
-    if shutil.which('pdftotext'):
+    tool = 'pdftotext' if shutil.which('pdftotext') else 'pdfplumber'
+    stat = Path(path).stat()
+    key = hashlib.sha256(f'{Path(path).resolve()}|{stat.st_mtime_ns}|{stat.st_size}|{last}|{tool}'.encode()).hexdigest()
+    cached = CACHE/f'{key}.json'
+    if cached.exists():
+        return json.loads(cached.read_text())
+    if tool == 'pdftotext':
         limit = ['-l', str(last)] if last else []
         result = subprocess.run(['pdftotext', '-layout', *limit, str(path), '-'],
-                                capture_output=True, text=True, check=True, timeout=600)
-        return result.stdout.rstrip('\f').split('\f')
-    import pdfplumber
-    with pdfplumber.open(path) as pdf:
-        return [page.extract_text(layout=True) or '' for page in pdf.pages[:last]]
+                                capture_output=True, text=True, check=True, timeout=900)
+        pages = result.stdout.rstrip('\f').split('\f')
+    else:
+        import pdfplumber
+        with pdfplumber.open(path) as pdf:
+            pages = [page.extract_text(layout=True) or '' for page in pdf.pages[:last]]
+    CACHE.mkdir(parents=True, exist_ok=True)
+    cached.write_text(json.dumps(pages))
+    return pages
 
 
 def render(pages, first):
@@ -68,6 +83,48 @@ def split_pages(text):
     return parts  # [prefix, marker1, body1, marker2, body2, ...]
 
 
+def _substitute(text, match, before, after):
+    """Swap the planted words in place so the edit leaves no formatting trace.
+
+    Same word count: replace word by word and keep the original spacing; in a table
+    row a shorter word is padded to the old width so columns stay aligned. Different word
+    count (prose only): insert the new text, then re-wrap from the edited line to
+    the end of that paragraph at the original line width. Page markers and every
+    other line are left untouched.
+    """
+    old_words, new_words = before.split(), after.split()
+    if len(old_words) == len(new_words):
+        pieces = re.split(r'(\s+)', match.group(0))
+        around = [text[max(0, match.start()-2):match.start()], text[match.end():match.end()+2]]
+        tabular = any(len(gap) > 1 and gap.isspace() and '\n' not in gap
+                      for gap in around + [piece for piece in pieces if piece.isspace()])
+        words = iter(new.rjust(len(old)) if tabular else new for old, new in zip(old_words, new_words))
+        rebuilt = ''.join(piece if piece.isspace() or not piece else next(words) for piece in pieces)
+        return text[:match.start()] + rebuilt + text[match.end():]
+    lines = text.split('\n')
+    starts, offset = [], 0
+    for line in lines:
+        starts.append(offset)
+        offset += len(line) + 1
+    first = max(i for i, at in enumerate(starts) if at <= match.start())
+    last = max(i for i, at in enumerate(starts) if at <= match.end() - 1)
+    width = max(len(line.rstrip()) for line in lines[first:last+1])
+    # Carry the re-wrap to the end of the paragraph: a full-width line means it continues.
+    # pdfplumber pads paragraphs with space-only lines; pdftotext separates them with empty ones.
+    while last + 1 < len(lines) and last - first < 40 and len(lines[last].rstrip()) >= 0.75 * width:
+        step = 1
+        if lines[last+1] and not lines[last+1].strip() and last + 2 < len(lines):
+            step = 2
+        if not lines[last+step].strip():
+            break
+        last += step
+    block = text[starts[first]:match.start()] + after + text[match.end():starts[last] + len(lines[last])]
+    indent = re.match(r'[ \t]*', lines[first]).group(0)
+    wrapped = textwrap.fill(' '.join(block.split()), width=width, initial_indent=indent,
+                            subsequent_indent=indent, break_long_words=False, break_on_hyphens=False)
+    return text[:starts[first]] + wrapped + text[starts[last] + len(lines[last]):]
+
+
 def plant(workspace, plan):
     count = 0
     for item in plan['mutations']:
@@ -78,14 +135,15 @@ def plant(workspace, plan):
             raise ValueError(f'{item["file"]}: page {item["page"]} not staged')
         index = parts.index(marker) + 1
         # Match across the extractor's line wraps without rewriting untouched text.
-        pattern = r'\s+'.join(re.escape(word) for word in item['before'].split())
+        # Lookarounds stop "20.0" from matching inside "120.0" or "20.05".
+        pattern = (r'(?<![\w.,])' + r'\s+'.join(re.escape(word) for word in item['before'].split())
+                   + r'(?!\w|[.,]\d)')
         found = list(re.finditer(pattern, parts[index]))
         if len(found) != 1:
             raise ValueError(f'{item["file"]} p{item["page"]}: "before" text occurs {len(found)} times, need 1')
         if ' '.join(item['after'].split()) == ' '.join(item['before'].split()):
             raise ValueError('Mutation does not change the text')
-        match = found[0]
-        parts[index] = parts[index][:match.start()] + item['after'] + parts[index][match.end():]
+        parts[index] = _substitute(parts[index], found[0], item['before'], item['after'])
         path.write_text(''.join(parts), encoding='utf-8')
         count += 1
     return count

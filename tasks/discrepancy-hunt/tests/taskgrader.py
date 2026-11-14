@@ -124,6 +124,10 @@ def _correction_matches(given, expected):
     if expected['type'] == 'label':
         squash = lambda v: re.sub(r'[^a-z0-9]', '', norm_text(v))
         return squash(text) in {squash(v) for v in expected['accept']}
+    if expected['type'] == 'contains':
+        # Free-text correction: must name one accepted term and none of the excluded ones.
+        return (any(norm_text(v) in text for v in expected['any'])
+                and not any(norm_text(v) in text for v in expected.get('none', [])))
     if expected['type'] != 'quantity':
         raise ValueError('Unsupported expected type')
     match = re.fullmatch(r'[~≈]?\s*(?:about |approximately )?([+-]?[\d,]*\.?\d+)\s*([^\d\s].*)?', text)
