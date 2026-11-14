@@ -200,10 +200,11 @@ def grade_v2(answer, workspace, gold, kind):
                           'primary_failure': primary_failure(checks)}
     extra = len(set(ids) - expected.keys())
     expanded = [{'id': f"{row['id']}.{name}", 'item_id': row['item_id'], 'check': name,
+                 'desc': f"{row.get('desc', 'Verify the item')}: {name}",
                  'passed': breakdown[row['item_id']]['criteria_checks'][name]}
                 for row in criteria for name in names]
     met = sum(row['passed'] for row in expanded)
-    score = 0 if errors else max(0, met / len(expanded) - (0.05 * extra if kind == 'objection' else 0))
+    score = 0 if errors else max(0, met / len(expanded) - 0.05 * extra)
     details = {'items': breakdown, 'kind': kind, 'criteria_met': met, 'criteria_total': len(expanded),
                'pass': score == 1, 'criteria': expanded, 'extra_ids': extra}
     if errors:

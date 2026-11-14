@@ -11,7 +11,7 @@ TODO: add the team's problem statement.
 
 Three short planted discrepancy tasks, a full-filing audit, and an unedited
 control. The deterministic graders check corrections and source evidence.
-Hold scope remains a separate draft pending reviewer-verified activities.
+Hold scope tests eight reviewer-verified activity decisions.
 
 ## Run or view the demo
 

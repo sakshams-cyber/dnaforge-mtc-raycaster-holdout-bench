@@ -15,3 +15,4 @@ Per-item symptoms, not causal explanations. Read trajectories before assigning h
 | holdout/discrepancy-hunt-03 / oracle / none / v1 / 1d155cab5b97 | correct | 1 |
 | holdout/discrepancy-hunt-04-full-audit / oracle / none / v2 / 35c9aa5adf56 | correct | 4 |
 | holdout/discrepancy-hunt-05-clean-control / oracle / none / v2 / e35ace97e55e | correct | 1 |
+| holdout/hold-scope / oracle / none / v1 / 612dfd1b2a55 | correct | 8 |

@@ -43,6 +43,8 @@ def probes(gold):
     if key == 'activities':
         yield 'everything_not_permitted', {key: [{'id': i['id'], 'status': 'not_permitted'}
                                                 for i in gold[key]]}, False
+        yield 'everything_permitted', {key: [{'id': i['id'], 'status': 'permitted'}
+                                            for i in gold[key]]}, False
     elif any(i.get('status') in {'present','partially_present','absent'} for i in gold.get(key, [])):
         yield 'everything_absent', {key: [{**i, 'status': 'absent', 'cite': None} for i in gold[key]]}, False
     for name in ('nonexistent_path','keyword_stuffing','all_resolved','overlisting','duplicate_id','wrong_page',
@@ -158,7 +160,7 @@ def sanity(task):
                     passed=valid and score<=ceiling
                 elif name in {'everything_absent', 'everything_unresolved'}:
                     passed=valid and score<.4
-                elif name=='everything_not_permitted':
+                elif name in {'everything_not_permitted', 'everything_permitted'}:
                     passed=valid and score<=.3
                 elif name=='correct_plus_false_positive':
                     expected=len(gold['items'])/(len(gold['items'])+1)

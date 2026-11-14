@@ -4,12 +4,13 @@
 | --- | --- | --- |
 | v1 (01–03) | Locate and correct one planted finding per task | Exact correction or declared numeric tolerance, two grounded citations |
 | v2 full audit | Review nine complete documents for three planted findings and one real inconsistency | Per-item credit and a penalty for unsupported or duplicate findings |
+| Hold scope | Decide eight activities under a partial clinical hold | Exact permission decision and grounded citation |
 | v2 clean control | Audit the same documents without changes | Credit for the approved original issue; additional findings lower the score |
 
 **Reference checks.** Reviewers supplied the v1 keys and confirmed the v2
 item list and recovery-count correction. Citation offsets reconstruct evidence
 from local text. Sanity gave blank and plausibly wrong answers 0 and the
-reference answers 1. Both v2 Harbor oracles scored 1.0.
+reference answers 1. Both v2 Harbor oracles and the hold-scope oracle scored 1.0.
 
 **Evidence.** Haiku 5.5 and Sonnet 5.5 each scored 1.0 on all three v1 cases
 (one attempt per model per case). The v2 agent trials did not yield scores:
