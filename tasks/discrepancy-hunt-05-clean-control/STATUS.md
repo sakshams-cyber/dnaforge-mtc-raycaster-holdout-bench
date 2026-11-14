@@ -1,8 +1,8 @@
-# Draft clean control
+# Clean control
 
 Same full documents and instructions as audit 04. Stage with `--clean`; the
-workspace is unaltered. Only the original baseline item is intended for gold.
-The reviewer's confirmation of its correction and citation is pending.
+workspace is unaltered. The reviewer approved the original recovery-count
+discrepancy as the only credited item. Local sanity passed.
 
 ```sh
 python scripts/stage_text.py --pack-root data/pack3 \

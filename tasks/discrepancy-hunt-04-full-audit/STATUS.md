@@ -1,9 +1,9 @@
-# Draft audit
+# Full audit
 
 The full-text manifest includes the complete reports and four additional IND
 documents. The answer schema allows up to six findings. The reviewer approved
-the four-item list. The original baseline correction and evidence are pending;
-they are required before writing the final key or starting real runs.
+three existing planted findings and one real recovery-count discrepancy.
+The key and oracle contain only values and locations. Local sanity passed.
 
 Local staging requires Poppler. The checked staging plan stores offsets and
 synthetic replacements only; it reconstructs all three existing edits.

@@ -343,7 +343,8 @@ def discrepancy(items, gold, workspace):
             'credit': 0, 'missing': True, 'primary_failure': 'missing',
             'error_class': target.get('error_class')}
     earned = sum(row['credit'] for row in rows.values())
-    false_positives = others + baseline_flags + duplicates + sum(
+    penalized_baseline = 0 if gold.get('ignore_known_baseline') else baseline_flags
+    false_positives = others + penalized_baseline + duplicates + sum(
         1 for row in rows.values() if not row.get('missing') and not row['credit'])
     # Include every extra finding in the denominator without allowing one
     # correct item to erase a phantom citation or a repeated finding.
