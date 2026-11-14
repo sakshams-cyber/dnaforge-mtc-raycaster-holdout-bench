@@ -130,13 +130,16 @@ def _file_pages(path, mtime, size):
             try:
                 result = subprocess.run(['pdftotext', '-layout', str(p), '-'],
                                         capture_output=True, text=True, check=True, timeout=60)
-                texts = result.stdout.rstrip('\f').split('\f')
+                texts = result.stdout.removesuffix('\f').split('\f')
             except (OSError, subprocess.SubprocessError):
                 pass
         return tuple(texts)
-    if p.suffix.lower() not in {'.txt', '.md', '.csv'}:
+    if p.suffix.lower() not in {'.txt', '.md', '.csv', '.tsv'}:
         raise ValueError('Use cell_value for spreadsheet files')
-    text = p.read_text(encoding='utf-8-sig')
+    try:
+        text = p.read_text(encoding='utf-8-sig')
+    except UnicodeDecodeError:
+        text = p.read_text(encoding='latin-1')
     matches = list(re.finditer(r'^=+\s*PAGE\s+(\d+)\s*=+\s*$', text, re.M))
     if matches:
         numbers = [int(m[1]) for m in matches]
