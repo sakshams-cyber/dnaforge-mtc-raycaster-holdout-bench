@@ -1,0 +1,20 @@
+{
+  "format": "trajectory-actions",
+  "trajectory_sha256": "f19115286c905845600126a3787806bff6aa22f7212edecc5d0f221f687d7a40",
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "user",
+      "timestamp": "2026-11-14T23:19:26.372Z",
+      "tool_names": [],
+      "tool_call_count": 0
+    },
+    {
+      "step_id": 2,
+      "source": "agent",
+      "timestamp": "2026-11-14T23:19:26.786Z",
+      "tool_names": [],
+      "tool_call_count": 0
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "task_id": "hold-scope",
+  "schema_version": 2,
+  "verification": {
+    "status": "human_verified",
+    "verified_by": "Saksham Srivastava",
+    "verified_at": "2026-11-14T15:30:49-08:00",
+    "method": "Reviewer supplied the activity decisions and read the listed evidence; offsets were machine-checked.",
+    "answerable_from_workspace": true,
+    "evidence": [
+      {
+        "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+        "page": 1
+      },
+      {
+        "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+        "page": 2
+      },
+      {
+        "path": "public/21-cfr-312.42.txt",
+        "page": 1
+      }
+    ]
+  },
+  "criteria": [
+    {
+      "id": "C01",
+      "item_id": "act-1",
+      "desc": "Verify the activity decision and its evidence"
+    },
+    {
+      "id": "C02",
+      "item_id": "act-2",
+      "desc": "Verify the activity decision and its evidence"
+    },
+    {
+      "id": "C03",
+      "item_id": "act-3",
+      "desc": "Verify the activity decision and its evidence"
+    },
+    {
+      "id": "C04",
+      "item_id": "act-4",
+      "desc": "Verify the activity decision and its evidence"
+    },
+    {
+      "id": "C05",
+      "item_id": "act-5",
+      "desc": "Verify the activity decision and its evidence"
+    },
+    {
+      "id": "C06",
+      "item_id": "act-6",
+      "desc": "Verify the activity decision and its evidence"
+    },
+    {
+      "id": "C07",
+      "item_id": "act-7",
+      "desc": "Verify the activity decision and its evidence"
+    },
+    {
+      "id": "C08",
+      "item_id": "act-8",
+      "desc": "Verify the activity decision and its evidence"
+    }
+  ],
+  "items": [
+    {
+      "item_id": "act-1",
+      "kind": "activity",
+      "expected": {
+        "activity": "Enroll new patients in the study the letter allows to proceed",
+        "status": "permitted"
+      },
+      "accept": {
+        "decisive_cites": [
+          {
+            "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+            "page": 1
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "act-2",
+      "kind": "activity",
+      "expected": {
+        "activity": "Dose patients in the study the letter allows to proceed",
+        "status": "permitted"
+      },
+      "accept": {
+        "decisive_cites": [
+          {
+            "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+            "page": 1
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "act-3",
+      "kind": "activity",
+      "expected": {
+        "activity": "Run the additional animal study FDA asked for",
+        "status": "permitted"
+      },
+      "accept": {
+        "decisive_cites": [
+          {
+            "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+            "page": 2
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "act-4",
+      "kind": "activity",
+      "expected": {
+        "activity": "Send FDA a complete response to the hold issues",
+        "status": "permitted"
+      },
+      "accept": {
+        "decisive_cites": [
+          {
+            "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+            "page": 2
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "act-5",
+      "kind": "activity",
+      "expected": {
+        "activity": "Enroll participants in the study that is on hold",
+        "status": "not_permitted"
+      },
+      "accept": {
+        "decisive_cites": [
+          {
+            "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+            "page": 2
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "act-6",
+      "kind": "activity",
+      "expected": {
+        "activity": "Dose any participant in the study that is on hold",
+        "status": "not_permitted"
+      },
+      "accept": {
+        "decisive_cites": [
+          {
+            "path": "public/21-cfr-312.42.txt",
+            "page": 1
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "act-7",
+      "kind": "activity",
+      "expected": {
+        "activity": "Start the held study right after sending the response, without waiting for FDA's reply",
+        "status": "not_permitted"
+      },
+      "accept": {
+        "decisive_cites": [
+          {
+            "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+            "page": 2
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "act-8",
+      "kind": "activity",
+      "expected": {
+        "activity": "Start the held study 30 days after sending the response if FDA has not answered",
+        "status": "not_permitted"
+      },
+      "accept": {
+        "decisive_cites": [
+          {
+            "path": "public/21-cfr-312.42.txt",
+            "page": 1
+          }
+        ]
+      }
+    }
+  ]
+}

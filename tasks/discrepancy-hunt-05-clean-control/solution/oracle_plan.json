@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "id": "real-recovery-count",
+      "path": "ind/1.20.General-Investigational-Plan.txt",
+      "page": 3,
+      "source_path": "ind/A-703-02-FinalReport.txt",
+      "source_page": 27,
+      "corrected_value": "0",
+      "quote_ref": {
+        "path": "ind/1.20.General-Investigational-Plan.txt",
+        "page": 3,
+        "start": 1946,
+        "end": 2019
+      },
+      "source_quote_ref": {
+        "path": "ind/A-703-02-FinalReport.txt",
+        "page": 27,
+        "start": 2064,
+        "end": 2127
+      }
+    }
+  ]
+}

@@ -1,10 +1,24 @@
 {
-  "mutations": [
+  "items": [
     {
-      "file": "summaries/investigator-brochure.txt",
+      "id": "f1",
+      "path": "summaries/investigator-brochure.txt",
       "page": 13,
-      "before": "the NOAEL in dogs was 200 mg",
-      "after": "the NOAEL in dogs was 20 mg"
+      "corrected_value": "200 mg",
+      "source_path": "study-reports/A-703-02-report.txt",
+      "source_page": 4,
+      "quote_ref": {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 13,
+        "start": 138,
+        "end": 165
+      },
+      "source_quote_ref": {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 4,
+        "start": 2169,
+        "end": 2199
+      }
     }
   ]
 }

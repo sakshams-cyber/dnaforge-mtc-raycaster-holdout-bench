@@ -8,64 +8,21 @@
   "model": "none",
   "version": "v1",
   "score": 1.0,
+  "elapsed_sec": 38.04656,
+  "infrastructure_error": false,
   "raw_result_sha256": "d6dcdc7a9c25bfba48af594e5ff51996bc8361ababc37b6b0c8da511f7b6dd5d",
-  "source_local": "jobs/2026-11-14__13-51-03/discrepancy-hunt-01__SX2kW4s/result.json",
-  "export_redacted": true,
+  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
   "answer_present": true,
   "trajectory_present": false,
-  "infrastructure_error": false,
-  "condition": {
-    "name": "unspecified",
-    "tool_mode": "unspecified",
-    "network_policy": "unspecified"
-  },
-  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
-  "agent_configuration": {
-    "name": "oracle",
-    "import_path": null,
-    "model_name": null,
-    "base_url": null,
-    "model_api_key_name": "[REDACTED]",
-    "model_api_format": null,
-    "skip_model_parsing": false,
-    "n_concurrent": null,
-    "concurrency_group": null,
-    "skills": [],
-    "override_timeout_sec": null,
-    "override_setup_timeout_sec": null,
-    "max_timeout_sec": null,
-    "resume_trajectory": false,
-    "load_trajectory": null,
-    "extra_allowed_hosts": [],
-    "kwargs": {},
-    "mcp_servers": []
-  },
-  "environment_configuration": {
-    "type": "docker",
-    "import_path": null,
-    "force_build": false,
-    "delete": true,
-    "stream": false,
-    "cpu_enforcement_policy": "auto",
-    "memory_enforcement_policy": "auto",
-    "override_cpus": null,
-    "override_memory_mb": null,
-    "override_storage_mb": null,
-    "override_gpus": null,
-    "override_tpu": null,
-    "mounts": null,
-    "extra_docker_compose": [],
-    "kwargs": {},
-    "extra_allowed_hosts": []
-  },
-  "usage": {
-    "n_input_tokens": null,
-    "n_cache_tokens": null,
-    "n_output_tokens": null,
-    "cost_usd": null
-  },
-  "elapsed_sec": 38.04656,
+  "usage": {},
   "diagnostics": {
     "correct": 1
-  }
+  },
+  "agent_configuration": {
+    "sha256": "28ee62ab1bd3673de723014cb9f474d260ec2db2c75b94c2335ee9d0ca58a234"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
 }

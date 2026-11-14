@@ -110,6 +110,7 @@ def collect(jobs, output, version, condition=None):
                     answer_present=(dest/'answer.json').exists(),
                     trajectory_present=(dest/'trajectory.json').exists(),
                     infrastructure_error=bool(result.get('exception_info')),
+                    exception_type=(result.get('exception_info') or {}).get('exception_type'),
                     condition=recorded_condition,condition_sha256=condition_hash,
                     agent_configuration=(result.get('config') or {}).get('agent',{}),
                     environment_configuration=(result.get('config') or {}).get('environment',{}),

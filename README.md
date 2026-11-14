@@ -1,68 +1,53 @@
-# Holdout-Bench: can AI agents do an FDA reviewer's job on a real siRNA IND?
+# Holdout-Bench: FDA review tasks on a real siRNA IND
 
-- **Team ID:** pending team entry
-- **Sponsor prizes entered:** Raycaster intended; opt-in submission pending
+- **Team ID:** TODO
+- **Sponsor track:** Raycaster
 
 ## Problem
 
-Regulatory reviewers must reconcile correspondence, recompute scientific results,
-and verify evidence across filings. We aim to test whether AI agents can do that
-work with answers a human can check against the source documents.
+TODO: add the team's problem statement.
 
 ## What we built
 
-Evaluation infrastructure and three selected task scaffolds: hold scope, whether
-the filed IND contained what the hold letter requested, and raw-data recomputation.
-Shared tools validate citations, units and exact spreadsheet locations, preserve
-source layout, fingerprint tasks, run adversarial sanity probes, and collect
-configuration-separated agent results with failure diagnostics.
-
-**Incomplete:** reviewer item lists, human-verified gold,
-and real agent runs. No real regulatory task is ready yet. The earlier review-app
-scaffold is retained as disclosed reference, outside the current deliverable.
+Three short planted discrepancy tasks, a full-filing audit, and an unedited
+control. The deterministic graders check corrections and source evidence.
+Hold scope tests eight reviewer-verified activity decisions. The separate
+[forecast tooling](docs/FORECAST_TIER.md) is available as a scaffold; it is
+not included in the reported runs.
 
 ## Run or view the demo
 
-Python 3.12 dependencies and Harbor are installed locally. From the repo root:
+With Python 3.12, Poppler, and the evaluation requirements installed, authorized
+participants can obtain Pack 3 and extract it to `data/pack3/`.
 
-```bash
-source .venv/bin/activate
-make eval-smoke
-./demo.sh examples/plumbing-smoke
+```sh
+python scripts/stage_text.py --pack-root data/pack3 --task tasks/discrepancy-hunt-04-full-audit
+./demo.sh tasks/discrepancy-hunt-04-full-audit
 ```
 
-The fictional tasks return 0 for invalid answers and 1 for the reference answer.
-Harbor's fictional container oracle scored 1.0 on local Docker (Colima).
-For authorized pack holders, staging and per-task sanity/oracle commands are in
-[environment instructions](docs/EVAL_SETUP.md). Real-data demos require the local
-workspace and verified gold; run evidence is not yet available.
+For the clean control add `--clean` when staging. The demo regenerates the
+reference reply from the local workspace and reports the verifier's results.
+`./demo.sh examples/plumbing-smoke` works with the included fictional files.
 
 ## Evidence and limitations
 
-55 tests pass across the legacy scaffold and new eval tools. Synthetic sanity
-probes cover missing/empty/wrong answers, nonexistent citations, quote stuffing,
-overlisting and wrong pages. These checks do not establish scientific validity.
-The [four-paper methods review](docs/RESEARCH_SYNTHESIS_AND_CHANGES.md) explains
-the implemented safeguards; [usage commands](docs/EVAL_ENHANCEMENTS_USAGE.md)
-cover local source tools, readiness checks and experiment snapshots.
-See [WRITEUP.md](WRITEUP.md), [task status](tasks/README.md), and [run status](runs/README.md).
-No model comparison, regulatory findings, or v1/v2 improvement is claimed yet.
-The planned evaluation is limited to one IND and a small sample; its network
-policy remains to be tested.
+See [run evidence](runs/SUMMARY.md) and the [task list](tasks/README.md).
+In v1, both tested Claude models scored 1.0 on each of the three bounded
+tasks (one scored attempt per model per task). The follow-up gives agents longer
+reports and fewer hints and penalizes unsupported findings. Different task
+designs mean the version scores are descriptive rather than paired. Both
+follow-up oracles scored 1.0 in local Harbor. Anthropic authentication blocked
+the scored v2 attempts; setup and authentication failures are listed separately.
 
 ## Data and permissions
 
-Restricted pack access is through the [Raycaster portal](https://www.raycaster.ai/hackathon).
-Each teammate accepts the access terms themselves. Pack files, staged workspaces,
-oracle excerpts and raw jobs stay ignored; manifests stage local copies with
-`scripts/stage.py`. The pack PDF search index is local under `data/text/`.
-
-The owner confirms model improvement is off; training/data sharing must remain off
-for pack work. Keep the GitHub repo private and grant access only to the team and
-reviewers. [DISCLOSURE.md](DISCLOSURE.md) distinguishes the pre-event scaffold from
-event-day work. Paperclip is optional for outside public sources only.
+Obtain the restricted filing from the [Raycaster portal](https://www.raycaster.ai/hackathon).
+Each user needs their own authorized download. This private repo contains
+manifests, checked offsets, synthetic edits, and reviewed trial metadata. It does
+not include the filing, copied text, staged workspaces, local oracle answers,
+or raw jobs. See [DISCLOSURE.md](DISCLOSURE.md) for scaffold provenance.
 
 ## Next step
 
-Complete and human-verify the hold-objection task, then run two agents twice to
-identify a concrete search or grounding failure before expanding the task set.
+Use matched clean and altered cases on a second filing to check whether the
+same error patterns repeat.

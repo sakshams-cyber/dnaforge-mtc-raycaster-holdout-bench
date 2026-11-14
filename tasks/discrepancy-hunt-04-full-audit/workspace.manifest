@@ -1,0 +1,49 @@
+{
+  "files": [
+    {
+      "source": "ind/1.14.4.investigator-brochure.pdf",
+      "destination": "ind/1.14.4.investigator-brochure.txt",
+      "sha256": "f27f81918e4b1220429ddbac25168ffda0b155ec5c89e74849a0ed96a4f18374"
+    },
+    {
+      "source": "ind/1.20.General-Investigational-Plan.pdf",
+      "destination": "ind/1.20.General-Investigational-Plan.txt",
+      "sha256": "70c10a3f4d30c7eb44990b41d3464da6f2aa9a23ce8445896bd9437c5fd4975f"
+    },
+    {
+      "source": "ind/A-703-01-FinalReport.pdf",
+      "destination": "ind/A-703-01-FinalReport.txt",
+      "sha256": "d3997beb3f45277ebde5e773004baa4c321d97963a0d65e5d0b7aeca80e8d65e"
+    },
+    {
+      "source": "ind/A-703-02-FinalReport.pdf",
+      "destination": "ind/A-703-02-FinalReport.txt",
+      "sha256": "b0892b5c6f9192c475859f85bf975bebe989ca2f72131f87165369c959158421"
+    },
+    {
+      "source": "ind/A-703-03-Summary-Report.pdf",
+      "destination": "ind/A-703-03-Summary-Report.txt",
+      "sha256": "a44af0cf51ff6b24684b63914d5a721028e65eaa941c75552dc935383505de8e"
+    },
+    {
+      "source": "ind/2.2.Introductory-Statement.pdf",
+      "destination": "ind/2.2.Introductory-Statement.txt",
+      "sha256": "669539d45f56494fc8783f4b8f8a6b14c21f39645530a7c6dd65c779dcba1ede"
+    },
+    {
+      "source": "ind/1.2.Cover-Letter.pdf",
+      "destination": "ind/1.2.Cover-Letter.txt",
+      "sha256": "04d1596ebcf26d19ca9a25d3e4c7dad8c6774ac809e59dde33d85d639ccdb88a"
+    },
+    {
+      "source": "ind/2.6.4.pharmacokinetics-written-summary.pdf",
+      "destination": "ind/2.6.4.pharmacokinetics-written-summary.txt",
+      "sha256": "189cdf722c02d5e648a528fa63fbbcd70ed5cb3733b7c1b020bc090ad210f212"
+    },
+    {
+      "source": "ind/2.6.2.pharmacology-written-summary.pdf",
+      "destination": "ind/2.6.2.pharmacology-written-summary.txt",
+      "sha256": "a2ee79e33ad516053adffa1ecd46ba204f5f72b8be89ebea261f842474133fb4"
+    }
+  ]
+}

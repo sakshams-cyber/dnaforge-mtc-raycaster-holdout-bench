@@ -1,6 +1,14 @@
 {
   "score": 1.0,
+  "reward": null,
+  "criteria_met": null,
+  "criteria_total": null,
+  "pass": null,
+  "criteria": [],
   "details": {
+    "reported": 1,
+    "known_baseline_flags": 0,
+    "other_flags": 0,
     "items": {
       "plant-1": {
         "checks": {
@@ -9,13 +17,9 @@
           "comparison": true
         },
         "credit": 1,
-        "primary_failure": "correct",
-        "error_class": "derived_figure_arithmetic"
+        "primary_failure": "correct"
       }
     },
-    "kind": "discrepancy",
-    "reported": 1,
-    "known_baseline_flags": 0,
-    "other_flags": 0
+    "kind": "discrepancy"
   }
 }

@@ -1,10 +1,10 @@
-> Detailed setup reference. Current requirements are in root AGENTS.md v2.1 and the judge-facing README. See [the current three-task slate](../tasks/README.md) for readiness and local commands.
+> Detailed setup reference. Current requirements are in root AGENTS.md v2.1 and the judge-facing README. All five task types are selected; exact source questions and verified gold remain pending.
 
 # Holdout — Raycaster evaluation environments
 
 Build 4–5 human-selected tasks on real filings, with deterministic checks,
 verified gold, actual agent runs, and failure analysis. The active requirements
-are in [AGENTS.md](../AGENTS.md) and [the task status](../tasks/README.md). The former review application remains available
+are in [AGENTS.md](AGENTS.md). The former review application remains available
 as reference; its UI is outside the current scoring scope.
 
 ## Environment
@@ -21,7 +21,9 @@ make eval-smoke
 ```
 
 The grader runtime is Python 3.12 with PDF and CSV/XLSX readers. Harbor 0.26.0
-is isolated in `.venv-harbor`. The fictional container oracle passed on local Docker through Colima. Real task oracles await human-verified gold.
+is isolated in `.venv-harbor`. Docker is not installed/on PATH at setup, so a
+container oracle has not passed. Install/start Docker Desktop, or configure an
+approved Harbor backend, before claiming end-to-end readiness.
 
 ## Synthetic infrastructure check (not a submission task)
 
@@ -57,8 +59,10 @@ and method; the shared library does not substitute for that work. The template
 has no gold and cannot pass sanity until the team supplies it. Record gold
 verification with `status: human_verified`, `who`, `how`, and source references.
 For mapping, the gold has `answer_schema` and `items` with `id`, `status`, and
-`citations` (`path`, `page_min`, `page_max`). `solution/answer.json` is the oracle
-in the instruction's answer format, including exact source quotes, kept ignored.
+`citations` (`path`, `page_min`, `page_max`). For real tasks, commit the verified
+key and an offset-only `solution/oracle_plan.json`. The materializer regenerates
+the actual oracle answer from staged documents. Keep any quote-bearing answer
+out of Git. The bundled example answers are fictional.
 
 The image copies only `environment/workspace`. Gold and tests are outside the
 agent image. Harbor delivers tests after the attempt. Use schema 1.4, verified

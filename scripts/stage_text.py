@@ -23,6 +23,7 @@ import subprocess
 import tempfile
 import textwrap
 from pathlib import Path
+import os
 
 try:
     from .eval_provenance import tree_hash, digest
@@ -44,7 +45,7 @@ def resolve_source(pack_root, name):
     return matches[0]
 
 
-CACHE = Path(__file__).resolve().parents[1]/'.cache'/'stage_text'
+CACHE = Path(__file__).resolve().parents[1]/'data'/'stage_text_cache'
 
 
 def pdf_pages(path, last=None):
@@ -53,17 +54,18 @@ def pdf_pages(path, last=None):
     Only the requested pages are extracted, and each extraction is cached under
     .cache/ (git-ignored): a 1,000-page study report takes minutes under pdfplumber.
     """
-    tool = 'pdftotext' if shutil.which('pdftotext') else 'pdfplumber'
+    poppler = os.environ.get('PDFTOTEXT_BIN') or shutil.which('pdftotext')
+    tool = poppler or 'pdfplumber'
     stat = Path(path).stat()
     key = hashlib.sha256(f'{Path(path).resolve()}|{stat.st_mtime_ns}|{stat.st_size}|{last}|{tool}'.encode()).hexdigest()
     cached = CACHE/f'{key}.json'
     if cached.exists():
         return json.loads(cached.read_text())
-    if tool == 'pdftotext':
+    if poppler:
         limit = ['-l', str(last)] if last else []
-        result = subprocess.run(['pdftotext', '-layout', *limit, str(path), '-'],
+        result = subprocess.run([poppler, '-layout', *limit, str(path), '-'],
                                 capture_output=True, text=True, check=True, timeout=900)
-        pages = result.stdout.rstrip('\f').split('\f')
+        pages = result.stdout.removesuffix('\f').split('\f')
     else:
         import pdfplumber
         with pdfplumber.open(path) as pdf:
@@ -134,6 +136,30 @@ def plant(workspace, plan):
         if parts.count(marker) != 1:
             raise ValueError(f'{item["file"]}: page {item["page"]} not staged')
         index = parts.index(marker) + 1
+        if 'token_range' in item:
+            # Offset plans carry the synthetic replacement, not the filing text.
+            lo, hi = item['token_range']
+            tokens = list(re.finditer(r'\S+', parts[index]))
+            if not 0 <= lo < hi <= len(tokens):
+                raise ValueError(f'{item["file"]} p{item["page"]}: invalid token range')
+            selected = [token.group() for token in tokens[lo:hi]]
+            right = item.get('trailing_trim', 0)
+            if type(right) is not int or not 0 <= right < len(selected[-1]):
+                raise ValueError('Invalid trailing token trim')
+            if right:
+                selected[-1] = selected[-1][:-right]
+            original = ' '.join(selected)
+            if hashlib.sha256(original.encode()).hexdigest() != item['original_sha256']:
+                raise ValueError(f'{item["file"]} p{item["page"]}: original tokens changed')
+            which, replacement = item['replace_token'], item['replacement']
+            if not 0 <= which < len(selected) or replacement.split() != [replacement] or replacement == selected[which]:
+                raise ValueError('Invalid or unchanged single-token replacement')
+            match = re.compile(r'\s+'.join(re.escape(t) for t in selected)).match(parts[index], tokens[lo].start())
+            selected[which] = replacement
+            parts[index] = _substitute(parts[index], match, original, ' '.join(selected))
+            path.write_text(''.join(parts), encoding='utf-8')
+            count += 1
+            continue
         # Match across the extractor's line wraps without rewriting untouched text.
         # Lookarounds stop "20.0" from matching inside "120.0" or "20.05".
         pattern = (r'(?<![\w.,])' + r'\s+'.join(re.escape(word) for word in item['before'].split())
@@ -155,7 +181,6 @@ def stage_text(task, pack_root, plan_path=None, clean=False):
     entries = manifest['files']
     if not isinstance(entries, list) or not entries:
         raise ValueError('Manifest must list at least one file')
-    # Forecast tasks stage unaltered text from at or before the cutoff; nothing is planted.
     check_cutoff(manifest)
     clean = clean or 'cutoff_sequence' in manifest
     dest = task/'environment/workspace'
@@ -165,6 +190,8 @@ def stage_text(task, pack_root, plan_path=None, clean=False):
         seen = set()
         for entry in entries:
             source = resolve_source(pack_root, entry['source'])
+            if entry.get('sha256') and digest(source) != entry['sha256']:
+                raise ValueError(f'Hash mismatch: {entry["source"]}')
             relative = Path(entry['destination']).as_posix()
             target = inside(staged, relative)
             if relative in seen or target.suffix != '.txt' or source.suffix.lower() != '.pdf':
@@ -180,7 +207,8 @@ def stage_text(task, pack_root, plan_path=None, clean=False):
             target.write_text(render(pages[first-1:last], first), encoding='utf-8')
         planted = 0
         if not clean:
-            plan_path = Path(plan_path) if plan_path else task/'solution/oracle_plan.json'
+            staging_plan = task/'solution/staging_plan.json'
+            plan_path = Path(plan_path) if plan_path else (staging_plan if staging_plan.is_file() else task/'solution/oracle_plan.json')
             planted = plant(staged, json.loads(plan_path.read_text()))
         if dest.is_symlink():
             raise ValueError('Workspace destination cannot be a symlink')
@@ -200,7 +228,10 @@ if __name__ == '__main__':
     ap.add_argument('--pack-root', type=Path, required=True)
     ap.add_argument('--task', type=Path, action='append', required=True)
     ap.add_argument('--clean', action='store_true', help='stage the unaltered control copy (no plant)')
+    ap.add_argument('--plan', type=Path, help='A local mutation plan; keep text-bearing plans out of Git')
     args = ap.parse_args()
+    if args.plan and (args.clean or len(args.task) != 1):
+        ap.error('--plan requires exactly one task and cannot be combined with --clean')
     for task in args.task:
-        files, planted = stage_text(task, args.pack_root, clean=args.clean)
+        files, planted = stage_text(task, args.pack_root, plan_path=args.plan, clean=args.clean)
         print(f'Staged {files} text files into {task}/environment/workspace; planted {planted} mutation(s)')

@@ -1,30 +1,32 @@
-# Holdout: Raycaster evaluation environments
+# Holdout-Bench: FDA review tasks on a real siRNA IND
 
-**DRAFT — no verified real tasks or agent results yet. Not submission-ready.**
+| Case | Task | Check |
+| --- | --- | --- |
+| v1 (01–03) | Locate and correct one planted finding per task | Exact correction or declared numeric tolerance, two grounded citations |
+| v2 full audit | Review nine complete documents for three planted findings and one real inconsistency | Per-item credit and a penalty for unsupported or duplicate findings |
+| Hold scope | Decide eight activities under a partial clinical hold | Exact permission decision and grounded citation |
+| v2 clean control | Audit the same documents without changes | Credit for the approved original issue; additional findings lower the score |
 
-**Tasks.** Pending human pack review, question selection and source verification.
+**Reference checks.** Reviewers supplied the v1 keys and confirmed the v2
+item list and recovery-count correction. Citation offsets reconstruct evidence
+from local text. Sanity gave blank and plausibly wrong answers 0 and the
+reference answers 1. Both v2 Harbor oracles and the hold-scope oracle scored 1.0.
 
-| ID | Filing question / files | Deterministic check | Gold verification |
-| --- | --- | --- | --- |
-| Pending | Pending | Pending | Pending |
+**Evidence.** Haiku 5.5 and Sonnet 5.5 each scored 1.0 on all three v1 cases
+(one attempt per model per case). The v2 agent trials did not yield scores:
+the original setup timed out in seven trials, and Anthropic rejected the
+credential on the eight attempts that reached authentication. See
+[runs/SUMMARY.md](runs/SUMMARY.md).
 
-**Check design.** Shared infrastructure supports strict answer schema validation,
-page-grounded verbatim citations, safe workspace paths, finite-number tolerance,
-CSV/XLSX locations, set F1 and per-item score details. Research-driven upgrades
-add unit-aware numeric grading, reported-versus-computed checks, task/workspace
-hashes, source tools and configuration-separated diagnostics; 55 tests pass. The synthetic mapping
-smoke returns 0 for empty/wrong/gaming probes and 1 for its fictional oracle.
-This is infrastructure validation, not real-task validity evidence.
+**Iteration.** v1 had a score ceiling and did not penalize unsupported extras.
+We removed target hints, added complete reports and distractors, and made
+false positives lower the score. The clean control checks whether agents
+invent discrepancies after exposure to the same overall audit task.
 
-**Results.** No scored agent runs yet. The fictional container oracle passed locally; real task oracles await verified gold. No performance or model comparison is claimed.
+**Research insight.** TODO: add the team's interpretation and a concrete
+trajectory example after reviewing the v1 runs.
 
-**Failure analysis and iteration.** Pending v1 trajectories. For each failure,
-record task, run path, cause, taxonomy tag, instruction/check change and v2 effect.
-
-**Research insight.** Pending actual failures; do not infer model weaknesses from
-synthetic plumbing tests or infrastructure errors.
-
-**Limitations.** Human task/gold review, real runs, backend/network policy and
-final task completion remain pending. Submission is due Nov 14 at 5:00 PM PST. Disclose every planted T3 discrepancy, report
-small N and separate real from planted/unplanted results. Logs stay local until
-reviewed for data terms; exported trajectories are redacted and lossy.
+**Limitations.** One filing, few attempts, and different v1 and v2 task sets.
+The control grades against one approved issue and can penalize genuine
+findings that were not in its key. There is no scored v2 evidence of a
+performance difference.
