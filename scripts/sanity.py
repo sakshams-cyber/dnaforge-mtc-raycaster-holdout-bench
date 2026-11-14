@@ -35,6 +35,8 @@ def probes(gold):
                 elif item['cite'] is None:
                     item['cite'] = {'path': 'not-in-workspace.pdf', 'page': 1,
                                     'quote': 'Fictional evidence of sufficient length.'}
+            if 'corrected_value' in item:
+                item['corrected_value'] = 'unsupported correction'
             for field in ('recomputed','recomputed_value','value','position','mismatches'):
                 if type(item.get(field)) in (int,float): item[field]=item[field]*1.2+1
     yield changed('plausible_wrong',wrong)
@@ -44,7 +46,7 @@ def probes(gold):
     elif any(i.get('status') in {'present','partially_present','absent'} for i in gold.get(key, [])):
         yield 'everything_absent', {key: [{**i, 'status': 'absent', 'cite': None} for i in gold[key]]}, False
     for name in ('nonexistent_path','keyword_stuffing','all_resolved','overlisting','duplicate_id','wrong_page',
-                 'wrong_cell','wrong_unit','copied_reported'):
+                 'wrong_cell','wrong_unit','copied_reported','wrong_source'):
         def modify(value, name=name):
             for item in value.get(key,[]):
                 if name in {'nonexistent_path', 'keyword_stuffing', 'wrong_page'}:
@@ -61,6 +63,7 @@ def probes(gold):
                     if 'source_key' in item: item['source_key']='nonexistent-file.csv::!A2'
                     for ref in item.get('inputs',[]): ref['path']='nonexistent-file.csv'
                 if name=='keyword_stuffing' and 'quote' in item: item['quote']='resolved NOAEL FDA response '*8
+                if name=='wrong_source' and 'source_quote' in item: item['source_quote']=item['quote']
                 if name=='all_resolved' and item.get('status') in {'resolved', 'partially_resolved', 'unresolved'}:
                     item['status']='resolved'
                 if name=='wrong_page' and 'page' in item: item['page']=999999
@@ -108,6 +111,9 @@ def sanity(task):
     key = 'activities' if 'activities' in gold else 'items'
     cases=[('missing',None,False),('empty',{},False),('empty_items',{key:[]},False),('malformed_json','{',False),
            *probes(gold),('gold',gold,False)]
+    if gold_meta.get('penalize_false_positives'):
+        extra = dict(gold['items'][0], path='nonexistent-extra-finding.pdf')
+        cases.insert(-1, ('correct_plus_false_positive', {'items': [*gold['items'], extra]}, False))
     rows=[]
     with tempfile.TemporaryDirectory() as tmp:
         tmp=Path(tmp);workspace=tmp/'workspace'
@@ -144,6 +150,9 @@ def sanity(task):
                     passed=valid and score<.4
                 elif name=='everything_not_permitted':
                     passed=valid and score<=.3
+                elif name=='correct_plus_false_positive':
+                    expected=len(gold['items'])/(len(gold['items'])+1)
+                    passed=valid and math.isclose(score, expected) and data['details'].get('false_positives')==1
                 elif gold_meta.get('schema_version') == 2 and name in {'nonexistent_path','wrong_page','keyword_stuffing'}:
                     # Partial-credit rules preserve independent checks; the attacked
                     # citation must still earn zero, as must status for invalid locations.

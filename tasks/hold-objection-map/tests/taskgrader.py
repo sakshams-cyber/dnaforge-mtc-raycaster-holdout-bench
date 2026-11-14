@@ -1,11 +1,12 @@
 """Reusable deterministic graders; task methods and gold remain human-authored."""
 from pathlib import Path
+import re
 
 try:
-    from .gradelib import (evidence_check, file_pages, load_answer, location_key, norm_path,
+    from .gradelib import (evidence_check, file_pages, load_answer, location_key, norm_path, norm_text,
                           primary_failure, quantity_close, quote_in_file, validate, parse_number)
 except ImportError:  # Standalone copy under /tests
-    from gradelib import (evidence_check, file_pages, load_answer, location_key, norm_path,
+    from gradelib import (evidence_check, file_pages, load_answer, location_key, norm_path, norm_text,
                          primary_failure, quantity_close, quote_in_file, validate, parse_number)
 
 
@@ -29,6 +30,8 @@ def grade(answer_path, workspace, gold_path, task_kind=None):
     expected = {item['id']: item for item in gold['items']}
     if len(expected) != len(gold['items']):
         return 0, {'grader_error': 'duplicate_gold_ids'}
+    if gold.get('kind') == 'discrepancy':
+        return discrepancy(answer['items'], gold, workspace)
     items = answer['items']
     ids = [item['id'] for item in items]
     if len(items) > 2*len(expected) or len(ids) != len(set(ids)):
@@ -247,3 +250,104 @@ def numeric_item(item, target, workspace):
               'calculation': correct_calculation and not copied,
               'comparison': type(item['matches_reported']) is bool and item['matches_reported'] == target['matches_reported']}
     return {'checks': checks, 'input_locations_match': inputs_match, 'copied_not_computed': copied}
+
+
+_DIMENSIONLESS = {'', 'x', '×', 'times', 'time', 'fold', '-fold'}
+
+
+def _in_refs(path, page, quote, refs, workspace):
+    """Verbatim quote on an allowed page that contains that reference's anchor."""
+    if path is None or not quote_in_file(quote, Path(workspace)/path, page):
+        return False
+    text = norm_text(quote)
+    for ref in refs:
+        if path != ref['path'] or not ref['page_min'] <= page <= ref['page_max']:
+            continue
+        if 'anchor_ref' in ref:
+            offsets = ref['anchor_ref']
+            if offsets['page'] != page:
+                continue
+            source = norm_text(file_pages(Path(workspace) / path)[page - 1])
+            start, end = offsets['start'], offsets['end']
+            if not 0 <= start < end <= len(source):
+                raise ValueError('Invalid gold anchor offsets')
+            anchor = source[start:end]
+        else:
+            anchor = norm_text(ref.get('anchor', ''))
+        if anchor in text:
+            return True
+    return False
+
+
+def _correction_matches(given, expected):
+    """Compare the corrected value only; no credit for prose that merely mentions it."""
+    text = norm_text(given)
+    if expected['type'] == 'label':
+        squash = lambda v: re.sub(r'[^a-z0-9]', '', norm_text(v))
+        return squash(text) in {squash(v) for v in expected['accept']}
+    if expected['type'] == 'contains':
+        # Free-text correction: must name one accepted term and none of the excluded ones.
+        return (any(norm_text(v) in text for v in expected['any'])
+                and not any(norm_text(v) in text for v in expected.get('none', [])))
+    if expected['type'] != 'quantity':
+        raise ValueError('Unsupported expected type')
+    match = re.fullmatch(r'[~≈]?\s*(?:about |approximately )?([+-]?[\d,]*\.?\d+)\s*([^\d\s].*)?', text)
+    if not match:
+        return False
+    unit = (match[2] or '').strip()
+    target_unit = norm_text(expected['unit'])
+    if target_unit == 'x':
+        unit = 'x' if unit in _DIMENSIONLESS or unit.rstrip('.') in _DIMENSIONLESS else unit
+    return quantity_close(match[1], unit, expected['value'], target_unit,
+                          expected.get('rtol', 0), expected.get('atol', 0))
+
+
+def discrepancy(items, gold, workspace):
+    """Planted-discrepancy check: each gold item is one human-planted statement.
+
+    Credit needs all three: the verbatim quote localizes the planted statement,
+    the corrected value equals the pre-plant value, and the cited source passage
+    is verbatim from a human-listed location. Reporting one planted statement
+    twice scores 0. Statements listed under known_baseline are discrepancies
+    already present in the unaltered filing; they are reported in details and
+    never credited.
+    """
+    targets = gold['items']
+    baseline = gold.get('known_baseline', [])
+    hits = {target['id']: [] for target in targets}
+    rows, others, baseline_flags, duplicates = {}, 0, 0, 0
+    for item in items:
+        path = norm_path(item['path'], workspace)
+        located = [t for t in targets if _in_refs(path, item['page'], item['quote'], [t], workspace)]
+        if not located:
+            if _in_refs(path, item['page'], item['quote'], baseline, workspace):
+                baseline_flags += 1
+            else:
+                others += 1
+            continue
+        target = located[0]
+        source = norm_path(item['source_path'], workspace)
+        checks = {'extraction': True,
+                  'grounding': _in_refs(source, item['source_page'], item['source_quote'],
+                                        target['sources'], workspace),
+                  'comparison': _correction_matches(item['corrected_value'], target['expected'])}
+        hits[target['id']].append({'checks': checks, 'credit': int(all(checks.values())),
+                                   'primary_failure': primary_failure(checks),
+                                   'error_class': target.get('error_class')})
+    for target in targets:
+        found = hits[target['id']]
+        if len(found) > 1 and not gold.get('penalize_false_positives'):
+            return 0, {'primary_failure': 'format', 'error': 'duplicate_findings', 'kind': 'discrepancy'}
+        duplicates += max(0, len(found) - 1)
+        rows[target['id']] = max(found, key=lambda row: row['credit']) if found else {
+            'credit': 0, 'missing': True, 'primary_failure': 'missing',
+            'error_class': target.get('error_class')}
+    earned = sum(row['credit'] for row in rows.values())
+    false_positives = others + baseline_flags + duplicates + sum(
+        1 for row in rows.values() if not row.get('missing') and not row['credit'])
+    # Include every extra finding in the denominator without allowing one
+    # correct item to erase a phantom citation or a repeated finding.
+    score = earned / (len(targets) + false_positives) if gold.get('penalize_false_positives') else earned / len(targets)
+    return score, {'items': rows, 'kind': 'discrepancy', 'reported': len(items),
+                   'known_baseline_flags': baseline_flags, 'other_flags': others,
+                   'false_positives': false_positives}
