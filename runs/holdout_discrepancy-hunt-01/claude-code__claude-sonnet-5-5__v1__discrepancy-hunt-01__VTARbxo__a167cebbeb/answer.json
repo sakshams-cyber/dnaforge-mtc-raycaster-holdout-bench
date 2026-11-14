@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "id": "f1",
+      "path": "summaries/investigator-brochure.txt",
+      "page": 13,
+      "quote": "The NOAEL in rats was 3.0 mg and the NOAEL in dogs was 20 mg,",
+      "corrected_value": "200 mg",
+      "source_path": "study-reports/A-703-02-report.txt",
+      "source_page": 4,
+      "source_quote": "divalent siRNA 2439-exNA groups were limited to gliosis. Therefore, 200 mg PrP lowering"
+    },
+    {
+      "id": "f2",
+      "path": "summaries/general-investigational-plan.txt",
+      "page": 3,
+      "quote": "only 1/4 animals at the 30-day recovery timepoint",
+      "corrected_value": "0 animals (no gliosis in recovery animals)",
+      "source_path": "study-reports/A-703-02-report.txt",
+      "source_page": 4,
+      "source_quote": "There was no gliosis noted in the recovery animals."
+    }
+  ]
+}

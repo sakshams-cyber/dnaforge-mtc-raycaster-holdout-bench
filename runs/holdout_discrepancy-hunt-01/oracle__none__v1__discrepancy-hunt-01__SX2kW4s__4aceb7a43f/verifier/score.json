@@ -1,0 +1,21 @@
+{
+  "score": 1.0,
+  "details": {
+    "items": {
+      "plant-1": {
+        "checks": {
+          "extraction": true,
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1,
+        "primary_failure": "correct",
+        "error_class": "cross_document_value"
+      }
+    },
+    "kind": "discrepancy",
+    "reported": 1,
+    "known_baseline_flags": 0,
+    "other_flags": 0
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "task_name": "holdout/discrepancy-hunt-02",
+  "trial_name": "discrepancy-hunt-02__JGUAach",
+  "task_checksum": "1e9b5f5515b1dbc78bec731401e193c34b04102004d5f39886eba199f68d5d3a",
+  "started_at": "2026-11-14T22:15:16.870077Z",
+  "finished_at": "2026-11-14T22:17:26.408506Z",
+  "agent": "claude-code",
+  "model": "claude-haiku-5-5",
+  "version": "v1",
+  "score": 1.0,
+  "raw_result_sha256": "cf8657f5e704305ce1f311b435741407cd7b82b958902b4b188a2da5a963d5cb",
+  "source_local": "jobs/2026-11-14__14-15-14/discrepancy-hunt-02__JGUAach/result.json",
+  "export_redacted": true,
+  "answer_present": true,
+  "trajectory_present": true,
+  "infrastructure_error": false,
+  "condition": {
+    "name": "unspecified",
+    "tool_mode": "unspecified",
+    "network_policy": "unspecified"
+  },
+  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
+  "agent_configuration": {
+    "name": "claude-code",
+    "import_path": null,
+    "model_name": "anthropic/claude-haiku-5-5",
+    "base_url": null,
+    "model_api_key_name": "[REDACTED]",
+    "model_api_format": null,
+    "skip_model_parsing": false,
+    "n_concurrent": null,
+    "concurrency_group": null,
+    "skills": [],
+    "override_timeout_sec": null,
+    "override_setup_timeout_sec": null,
+    "max_timeout_sec": null,
+    "resume_trajectory": false,
+    "load_trajectory": null,
+    "extra_allowed_hosts": [],
+    "kwargs": {},
+    "mcp_servers": []
+  },
+  "environment_configuration": {
+    "type": "docker",
+    "import_path": null,
+    "force_build": false,
+    "delete": true,
+    "stream": false,
+    "cpu_enforcement_policy": "auto",
+    "memory_enforcement_policy": "auto",
+    "override_cpus": null,
+    "override_memory_mb": null,
+    "override_storage_mb": null,
+    "override_gpus": null,
+    "override_tpu": null,
+    "mounts": null,
+    "extra_docker_compose": [],
+    "kwargs": {},
+    "extra_allowed_hosts": []
+  },
+  "usage": {
+    "n_input_tokens": 539195,
+    "n_cache_tokens": 494215,
+    "n_output_tokens": 14866,
+    "cost_usd": 0.017997099999999995
+  },
+  "elapsed_sec": 129.538429,
+  "diagnostics": {
+    "correct": 1
+  }
+}

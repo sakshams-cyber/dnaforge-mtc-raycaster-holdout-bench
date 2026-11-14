@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "id": "f1",
+      "path": "summaries/investigator-brochure.txt",
+      "page": 13,
+      "quote": "the NOAEL in dogs was 20 mg",
+      "corrected_value": "200 mg",
+      "source_path": "study-reports/A-703-02-report.txt",
+      "source_page": 4,
+      "source_quote": "Therefore, 200 mg PrP lowering"
+    },
+    {
+      "id": "f2",
+      "path": "summaries/investigator-brochure.txt",
+      "page": 4,
+      "quote": "expected to correspond to 59 \u2013 169 mg in humans.",
+      "corrected_value": "114 \u2013 169 mg",
+      "source_path": "summaries/investigator-brochure.txt",
+      "source_page": 11,
+      "source_quote": "of 3,250 from mouse to human), 18 \u00b5g may correspond to 59 mg in a human."
+    },
+    {
+      "id": "f3",
+      "path": "summaries/general-investigational-plan.txt",
+      "page": 3,
+      "quote": "only 1/4 animals at the 30-day recovery timepoint",
+      "corrected_value": "0 of 4 recovery animals (no gliosis in recovery)",
+      "source_path": "study-reports/A-703-02-report.txt",
+      "source_page": 4,
+      "source_quote": "There was no gliosis noted in the recovery animals."
+    }
+  ]
+}
