@@ -1,7 +1,7 @@
-"""Task verifier entrypoint. Scientific gold and schema are supplied by humans."""
+# Forecast task verifier entrypoint. Gold values are read by humans from the held-back filing.
 import sys
 from gradelib import write_score
-from taskgrader import grade
+from forecastgrader import grade
 
 if __name__ == '__main__':
     try:

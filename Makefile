@@ -86,7 +86,7 @@ eval-numeric-smoke:
 .PHONY: eval-forecast-smoke
 
 eval-forecast-smoke:
-	$(PY) scripts/new_forecast_task.py --spec fixtures/eval_forecast_smoke/spec.json --dest examples/forecast-smoke
+	$(PY) scripts/new_forecast_task.py --spec fixtures/eval_forecast_smoke/spec.json --dest examples/forecast-smoke --force
 	$(PY) scripts/stage.py --pack-root fixtures/eval_forecast_smoke/pack --task examples/forecast-smoke
 	$(PY) scripts/sync_gradelib.py examples/forecast-smoke
 	$(PY) scripts/sanity.py examples/forecast-smoke --output out/forecast-sanity.json

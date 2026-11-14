@@ -56,8 +56,9 @@ def sanity(task):
     gold=json.loads((task/'solution/answer.json').read_text())
     cases=[('missing',None,False),('empty',{},False),('malformed_json','{',False),
            *probes(gold),('gold',gold,False)]
-    if gold_meta.get('kind')=='forecast' and all('last_observed' in t for t in gold_meta['items']):
-        # Repeating the last filed value must not earn full marks, or nothing is being forecast.
+    if gold_meta.get('kind')=='forecast':
+        # Repeating the last filed value must earn at most half marks overall and full
+        # credit on no target, or the task measures copying, not forecasting.
         cases.insert(-1,('carry_forward',{'items':[{'id':t['id'],'value':t['last_observed']}
                                                    for t in gold_meta['items']]},False))
     rows=[]
@@ -89,7 +90,8 @@ def sanity(task):
                 valid=valid and 'grader_error' not in data.get('details',{})
                 if name=='gold': passed=valid and score==1
                 elif name in {'missing','empty','malformed_json'}: passed=valid and score==0
-                elif name=='carry_forward': passed=valid and score<1
+                elif name=='carry_forward':
+                    passed=valid and score<=.5 and all(row.get('credit')!=1 for row in data['details']['items'].values())
                 elif name=='all_resolved':
                     ceiling=sum(i.get('status')=='resolved' for i in gold['items'])/len(gold['items'])
                     passed=valid and score<=ceiling

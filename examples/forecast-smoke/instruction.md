@@ -12,8 +12,8 @@ values below. Predict each one from the data you have.
 | `impurities-18m` | Total impurities of lot F-001 at 18 months, long-term condition | % | ±0.03 % | ±0.06 % |
 | `water-18m` | Water content of lot F-001 at 18 months, long-term condition | % | ±0.1 % | ±0.2 % |
 
-There is no file that contains these values, and no network access is needed or
-allowed. Each prediction earns full credit inside the "full" range around the
+No file in the workspace contains these values. Do not use the network or any
+source outside the workspace. Each prediction earns full credit inside the "full" range around the
 value later reported, half credit inside the "half" range, and nothing outside it.
 Give your best estimate for every target; a missing target scores zero.
 

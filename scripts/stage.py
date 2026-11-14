@@ -25,20 +25,30 @@ def inside(root, name):
     return target
 
 
+def source_sequence(source):
+    """Submission a source belongs to: `<seq>/...` or `eCTD/<seq>/...`, nothing looser."""
+    parts = Path(source).parts
+    if parts and parts[0].lower() == 'ectd':
+        parts = parts[1:]
+    return parts[0] if len(parts) > 1 and re.fullmatch(r'[0-9]{4}', parts[0]) else None
+
+
 def check_cutoff(manifest):
     """Forecast manifests name a cutoff submission; refuse any later source.
 
-    The sequence is the first four-digit folder in the source path (eCTD layout),
-    so a manifest cannot stage the held-back filing, or anything filed after the
-    cutoff, by mistake. Sources without a sequence folder are refused too.
+    The pack root must be the folder that holds `eCTD/` (or the sequence folders
+    themselves), so the sequence is read from a fixed position and a year-like
+    or nested folder cannot stand in for it. Sources outside a sequence folder
+    are refused. This checks where a file was filed, not what it says: a human
+    still confirms the gold values are absent from the staged text.
     """
     cutoff = manifest.get('cutoff_sequence')
     if cutoff is None:
         return
-    if not re.fullmatch(r'\d{4}', str(cutoff)):
-        raise ValueError('cutoff_sequence must be a four-digit sequence')
+    if not isinstance(cutoff, str) or not re.fullmatch(r'[0-9]{4}', cutoff):
+        raise ValueError('cutoff_sequence must be a four-digit string such as "0039"')
     for entry in manifest['files']:
-        sequence = next((part for part in Path(entry['source']).parts if re.fullmatch(r'\d{4}', part)), None)
+        sequence = source_sequence(entry['source'])
         if sequence is None or sequence > cutoff:
             raise ValueError(f'Source is not at or before cutoff {cutoff}: {entry["source"]}')
 

@@ -15,11 +15,12 @@ or half credit by tolerance.
 
 | Piece | Where |
 | --- | --- |
-| `forecast` grader kind: 1 inside the full band, 0.5 inside the half band, else 0 | `graders/taskgrader.py` |
+| Forecast grader: 1 inside the full band, 0.5 inside the half band, else 0. Its own module, copied only into forecast tasks, so tasks 01 to 07 keep the exact bytes their runs used | `graders/forecastgrader.py` |
 | Carry-forward baseline (repeat the last filed value) scored in every `score.json` | same |
 | Cutoff guard: staging refuses any source filed after `cutoff_sequence` | `scripts/stage.py`, used by `stage_text.py` |
 | Generator: one human-written spec to manifest, instruction, schema, gold, oracle | `scripts/new_forecast_task.py` |
-| Sanity probe: carry-forward must score below 1, or the task forecasts nothing | `scripts/sanity.py` |
+| Sanity probe: carry-forward must score at most 0.5 and earn full credit on no target | `scripts/sanity.py` |
+| Preflight: forecast tasks need a human attestation that the values are absent from the workspace, plus each value's page in the held-back filing | `scripts/preflight_eval.py` |
 | Fictional runnable example | `examples/forecast-smoke`, `make eval-forecast-smoke` |
 
 ## Building a real task (ALTU-237 stability series)
@@ -47,18 +48,19 @@ or half credit by tolerance.
      "source": {"sequence": "0053", "page": 0}}
   ],
   "verification": {"status": "human_verified", "who": "<name>",
-                   "how": "<what was checked against the held-back PDF>"}
+                   "how": "<what was checked against the held-back PDF>",
+                   "absent_from_workspace": true}
 }
 ```
 
-4. Generate, stage, check:
+4. Generate, stage, check. `--pack-root` must be the folder that contains `eCTD/`;
+   sources are written as `eCTD/<sequence>/...`. Add `--force` to regenerate.
 
 ```bash
 python scripts/new_forecast_task.py --spec <spec.json>
 python scripts/stage_text.py --pack-root <pack>/altu-237-ind-100169 --task tasks/forecast-01
-python scripts/sync_gradelib.py tasks/forecast-01
-python scripts/sync_environment.py tasks/forecast-01
 python scripts/sanity.py tasks/forecast-01
+python scripts/preflight_eval.py tasks/forecast-01
 ```
 
 ## Choosing targets and tolerances
@@ -75,7 +77,21 @@ python scripts/sanity.py tasks/forecast-01
 - Report each model's score next to `carry_forward_baseline_score`. A model at or
   below the baseline has not forecast anything.
 
+## Open items
+
+- **Network is not enforced.** The instruction tells the agent not to use it, but
+  the task config does not block it, and the agent needs network access to reach
+  its model. The filings are private, so there is nothing to look up, but check
+  trajectories for web tool calls and say so in the writeup.
+- **Staging checks where a file was filed, not what it says.** A human confirms
+  each gold value is absent from the staged text (`absent_from_workspace`).
+- **Run summaries do not show the baseline yet.** It is in each `score.json`
+  (`carry_forward_baseline_score`); `collect_runs.py` does not tabulate it.
+
 ## Limits to state in the writeup
+
+- The easy tier (01 to 03) is on the siRNA IND and the forecast tier on ALTU-237,
+  with one run per model so far. The tiers differ in pack as well as in task type.
 
 - Later reports can restate or correct earlier values; the gold is whatever the
   held-back document says.

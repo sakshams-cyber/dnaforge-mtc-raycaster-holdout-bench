@@ -1,12 +1,17 @@
 """Copy the verifier library into task tests; fail CI on stale copies."""
 import argparse
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def sync(task, check=False):
-    for name in ('gradelib.py', 'taskgrader.py'):
+    names = ['gradelib.py', 'taskgrader.py']
+    gold = Path(task)/'tests'/'gold.json'
+    if gold.exists() and json.loads(gold.read_text()).get('kind') == 'forecast':
+        names.append('forecastgrader.py')
+    for name in names:
         source = (ROOT/'graders'/name).read_bytes()
         dest = Path(task)/'tests'/name
         if check:

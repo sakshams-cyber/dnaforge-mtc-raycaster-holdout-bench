@@ -32,8 +32,6 @@ def grade(answer_path, workspace, gold_path):
         return 0, {'grader_error': 'duplicate_gold_ids'}
     if gold.get('kind') == 'discrepancy':
         return discrepancy(answer['items'], gold, workspace)
-    if gold.get('kind') == 'forecast':
-        return forecast(answer['items'], gold)
     items = answer['items']
     ids = [item['id'] for item in items]
     if len(items) > 2*len(expected) or len(ids) != len(set(ids)):
@@ -185,52 +183,3 @@ def discrepancy(items, gold, workspace):
     score = sum(row['credit'] for row in rows.values())/len(targets)
     return score, {'items': rows, 'kind': 'discrepancy', 'reported': len(items),
                    'known_baseline_flags': baseline_flags, 'other_flags': others}
-
-
-def _band(value, target, name):
-    return quantity_close(value, target['unit'], target['value'], target['unit'],
-                          target.get(f'{name}_rtol', 0), target.get(f'{name}_atol', 0))
-
-
-def forecast(items, gold):
-    """Held-back value forecast: each gold item is a number from a later filing.
-
-    The workspace holds only documents filed up to the cutoff; the gold value is
-    the one reported in the held-back later document. Credit per target is 1
-    inside the human-set full band, 0.5 inside the wider half band, else 0.
-    Answers are numbers in the unit the instruction states. Where the gold records
-    the last value visible in the workspace, details also score the
-    carry-forward baseline (repeat that value), which no result should be
-    reported without.
-    """
-    targets = gold['items']
-    for target in targets:
-        bands = [parse_number(target.get(key, 0)) for key in ('full_rtol', 'full_atol', 'half_rtol', 'half_atol')]
-        if min(bands) < 0 or bands[2] < bands[0] or bands[3] < bands[1] or bands[2:] == bands[:2]:
-            raise ValueError('Half band must be wider than full band')
-    ids = [item['id'] for item in items]
-    if len(ids) != len(set(ids)):
-        return 0, {'primary_failure': 'format', 'error': 'duplicate_ids', 'kind': 'forecast'}
-    given = {item['id']: item['value'] for item in items}
-    rows, baseline = {}, []
-    for target in targets:
-        key = target['id']
-        if 'last_observed' in target:
-            last = target['last_observed']
-            baseline.append(1 if _band(last, target, 'full') else .5 if _band(last, target, 'half') else 0)
-        if key not in given:
-            rows[key] = {'credit': 0, 'missing': True, 'primary_failure': 'missing'}
-            continue
-        value = given[key]
-        band = 'full' if _band(value, target, 'full') else 'half' if _band(value, target, 'half') else 'miss'
-        credit = {'full': 1, 'half': .5, 'miss': 0}[band]
-        rows[key] = {'credit': credit, 'band': band,
-                     'direction': 'exact' if parse_number(value) == parse_number(target['value'])
-                     else 'high' if parse_number(value) > parse_number(target['value']) else 'low',
-                     'primary_failure': 'correct' if credit == 1 else 'comparison'}
-        if 'last_observed' in target:
-            rows[key]['equals_last_observed'] = parse_number(value) == parse_number(target['last_observed'])
-    details = {'items': rows, 'kind': 'forecast', 'extra_ids': len(set(ids)-set(rows))}
-    if len(baseline) == len(targets):
-        details['carry_forward_baseline_score'] = sum(baseline)/len(targets)
-    return sum(row['credit'] for row in rows.values())/len(targets), details

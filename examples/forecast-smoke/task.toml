@@ -5,7 +5,7 @@ name = "holdout/forecast-smoke"
 description = "Forecast values in submission 0004 from filings up to 0003"
 [metadata]
 pack = "synthetic fixture"
-difficulty_target = "10-30 min"
+difficulty_target = "forecast"
 [agent]
 timeout_sec = 1800
 [verifier]
