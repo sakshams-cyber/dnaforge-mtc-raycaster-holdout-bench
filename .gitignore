@@ -18,9 +18,9 @@ out/
 .venv-harbor/
 jobs/
 tasks/*/environment/workspace/
-tasks/*/solution/answer.json
-examples/*/environment/workspace/
-examples/*/solution/answer.json
+examples/*/environment/workspace/*
+!examples/plumbing-smoke/environment/workspace/response.txt
+!examples/numeric-smoke/environment/workspace/raw.csv
 
 tasks/*/environment/workspace.receipt.json
 examples/*/environment/workspace.receipt.json
@@ -28,5 +28,3 @@ examples/*/environment/workspace.receipt.json
 boltz-experiments/
 
 # Keep generated run exports local until reviewed for pack confidentiality.
-runs/*
-!runs/README.md

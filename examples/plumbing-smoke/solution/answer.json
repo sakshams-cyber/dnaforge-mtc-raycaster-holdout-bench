@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "synthetic-1",
+      "status": "unresolved",
+      "path": "response.txt",
+      "page": 1,
+      "quote": "The fictional request remains unresolved pending additional data."
+    }
+  ]
+}

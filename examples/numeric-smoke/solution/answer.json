@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "id": "synthetic-mean",
+      "reported": 12,
+      "recomputed": 10,
+      "unit": "mg",
+      "method": "mean",
+      "inputs": [
+        {
+          "path": "raw.csv",
+          "sheet": "csv",
+          "row": 2,
+          "col": "B",
+          "value": "9"
+        },
+        {
+          "path": "raw.csv",
+          "sheet": "csv",
+          "row": 3,
+          "col": "B",
+          "value": "11"
+        }
+      ],
+      "matches_reported": false
+    }
+  ]
+}
