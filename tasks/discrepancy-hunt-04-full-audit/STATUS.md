@@ -1,15 +1,14 @@
 # Draft audit
 
 The full-text manifest includes the complete reports and four additional IND
-documents. The answer schema allows up to six findings. Reviewer confirmation
-of the four proposed entries and baseline evidence is pending. No gold or
-oracle answer has been created for this task.
+documents. The answer schema allows up to six findings. The reviewer approved
+the four-item list. The original baseline correction and evidence are pending;
+they are required before writing the final key or starting real runs.
 
-Local staging requires Poppler for consistent page text and the ignored
-mutation plan derived from the three existing tasks:
+Local staging requires Poppler. The checked staging plan stores offsets and
+synthetic replacements only; it reconstructs all three existing edits.
 
 ```sh
 python scripts/stage_text.py --pack-root data/pack3 \
-  --task tasks/discrepancy-hunt-04-full-audit \
-  --plan data/gold_notes/audit-04-local-plant.json
+  --task tasks/discrepancy-hunt-04-full-audit
 ```

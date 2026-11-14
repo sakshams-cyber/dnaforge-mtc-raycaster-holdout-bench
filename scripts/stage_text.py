@@ -136,6 +136,30 @@ def plant(workspace, plan):
         if parts.count(marker) != 1:
             raise ValueError(f'{item["file"]}: page {item["page"]} not staged')
         index = parts.index(marker) + 1
+        if 'token_range' in item:
+            # Offset plans carry the synthetic replacement, not the filing text.
+            lo, hi = item['token_range']
+            tokens = list(re.finditer(r'\S+', parts[index]))
+            if not 0 <= lo < hi <= len(tokens):
+                raise ValueError(f'{item["file"]} p{item["page"]}: invalid token range')
+            selected = [token.group() for token in tokens[lo:hi]]
+            right = item.get('trailing_trim', 0)
+            if type(right) is not int or not 0 <= right < len(selected[-1]):
+                raise ValueError('Invalid trailing token trim')
+            if right:
+                selected[-1] = selected[-1][:-right]
+            original = ' '.join(selected)
+            if hashlib.sha256(original.encode()).hexdigest() != item['original_sha256']:
+                raise ValueError(f'{item["file"]} p{item["page"]}: original tokens changed')
+            which, replacement = item['replace_token'], item['replacement']
+            if not 0 <= which < len(selected) or replacement.split() != [replacement] or replacement == selected[which]:
+                raise ValueError('Invalid or unchanged single-token replacement')
+            match = re.compile(r'\s+'.join(re.escape(t) for t in selected)).match(parts[index], tokens[lo].start())
+            selected[which] = replacement
+            parts[index] = _substitute(parts[index], match, original, ' '.join(selected))
+            path.write_text(''.join(parts), encoding='utf-8')
+            count += 1
+            continue
         # Match across the extractor's line wraps without rewriting untouched text.
         # Lookarounds stop "20.0" from matching inside "120.0" or "20.05".
         pattern = (r'(?<![\w.,])' + r'\s+'.join(re.escape(word) for word in item['before'].split())
@@ -180,7 +204,8 @@ def stage_text(task, pack_root, plan_path=None, clean=False):
             target.write_text(render(pages[first-1:last], first), encoding='utf-8')
         planted = 0
         if not clean:
-            plan_path = Path(plan_path) if plan_path else task/'solution/oracle_plan.json'
+            staging_plan = task/'solution/staging_plan.json'
+            plan_path = Path(plan_path) if plan_path else (staging_plan if staging_plan.is_file() else task/'solution/oracle_plan.json')
             planted = plant(staged, json.loads(plan_path.read_text()))
         if dest.is_symlink():
             raise ValueError('Workspace destination cannot be a symlink')
