@@ -12,8 +12,8 @@ TODO: add the team's problem statement.
 Three short planted discrepancy tasks, a full-filing audit, and an unedited
 control. The deterministic graders check corrections and source evidence.
 Hold scope tests eight reviewer-verified activity decisions. The separate
-[forecast tooling](docs/FORECAST_TIER.md) is available as a scaffold; it is
-not included in the reported runs.
+[forecast task](tasks/forecast-01) has a reviewer-provided key and requires the
+ALTU-237 pack. It is outside these runs; see [forecast setup](docs/FORECAST_TIER.md).
 
 ## Run or view the demo
 
@@ -32,15 +32,26 @@ reference reply from the local workspace and reports the verifier's results.
 ## Evidence and limitations
 
 See [run evidence](runs/SUMMARY.md) and the [task list](tasks/README.md).
-In v1, both tested Claude models scored 1.0 on each of the three bounded
-tasks (one scored attempt per model per task). The follow-up gives agents longer
-reports and fewer hints and penalizes unsupported findings. Different task
-designs mean the version scores are descriptive rather than paired. Both
-follow-up oracles scored 1.0 in local Harbor. Anthropic authentication blocked
-the first v2 attempts; setup and authentication failures are listed separately.
-Sonnet scored 0.875 (14/16 criteria) on both hold-scope attempts. A single
-reviewer-approved citation addition raised both [saved-answer replays](runs/T5_REGRADE.md)
-to 0.9375 (15/16).
+Both Claude models scored 1.0 on each of the three bounded v1 tasks
+(one attempt per model per task). The full audit and control results are means
+over two scored attempts per model per task.
+
+| Task | Haiku 5.5 | Sonnet 5.5 |
+| --- | ---: | ---: |
+| Full audit | 0.357 | 0.134 |
+| Clean control | 0.000 | 0.000 |
+
+All eight v2 answers found the recovery-count issue, but the grader missed
+seven because their quotes did not contain its full literal anchor. The
+eighth combined count and duration and failed a count-only comparison.
+The clean control and full audit therefore measure the citation and answer
+contract as well as search. See [trial diagnostics](runs/FAILURES_DRAFT.md).
+Version means are descriptive because the task sets differ.
+
+Sonnet scored 0.875 on both hold-scope attempts. An approved alternate
+citation raised both [saved-answer replays](runs/T5_REGRADE.md) to 0.9375.
+Earlier setup and credential failures are logged separately. The two audit
+oracles and the revised hold-scope oracle scored 1.0 in local Harbor.
 
 ## Data and permissions
 

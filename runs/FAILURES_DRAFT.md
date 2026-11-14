@@ -9,3 +9,20 @@ Tags await reviewer confirmation.
 
 No inspected command in either T5 run referenced hidden tests, solutions or gold.
 See [the replay report](T5_REGRADE.md) and [summary](SUMMARY.md).
+
+## v2 audit and clean control
+
+The original recovery-count issue was retrieved in every answer. Seven findings missed the full literal target anchor; one matched the anchor but combined count and duration in a field graded as a count-only correction. Neither case establishes a search failure. Review the suggested tags below before assigning responsibility.
+
+| Trial | Reward | Credited items | Observed issue | Last answer write | Suggested tag |
+| --- | ---: | ---: | --- | ---: | --- |
+| [haiku / discrepancy-hunt-04-full-audit](holdout_discrepancy-hunt-04-full-audit/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-04-full-audit__FKz5rnT__568495a7be/verifier/score.json) | 0.286 | 2/4 | Recovery-count claim anchor incomplete | 25 | Tentative `grounding`; check grader coverage |
+| [haiku / discrepancy-hunt-04-full-audit](holdout_discrepancy-hunt-04-full-audit/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-04-full-audit__qpKsc2f__ecac1b3016/verifier/score.json) | 0.429 | 3/4 | Recovery-count claim anchor incomplete | 30 | Tentative `grounding`; check grader coverage |
+| [sonnet / discrepancy-hunt-04-full-audit](holdout_discrepancy-hunt-04-full-audit/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-04-full-audit__PYgiCXr__3c162973ca/verifier/score.json) | 0.143 | 1/4 | Recovery-count claim anchor incomplete; plant-1 quote was verbatim on an allowed page but lacked the required evidence anchor | 18 | Tentative `grounding`; check grader coverage |
+| [sonnet / discrepancy-hunt-04-full-audit](holdout_discrepancy-hunt-04-full-audit/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-04-full-audit__VmzB9Fh__5a50b818c9/verifier/score.json) | 0.125 | 1/4 | Recovery-count claim anchor incomplete; plant-1 quote was verbatim on an allowed page but lacked the required evidence anchor | 15 | Tentative `grounding`; check grader coverage |
+| [haiku / discrepancy-hunt-05-clean-control](holdout_discrepancy-hunt-05-clean-control/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-05-clean-contro__k2d7dif__addbceea96/verifier/score.json) | 0.000 | 0/1 | Recovery-count claim anchor incomplete | 23 | Tentative `grounding`; check grader coverage |
+| [haiku / discrepancy-hunt-05-clean-control](holdout_discrepancy-hunt-05-clean-control/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-05-clean-contro__wUXQaeR__a5422fadaf/verifier/score.json) | 0.000 | 0/1 | Count and duration combined; count-only comparison failed | 24 | Tentative `format`; check grader coverage |
+| [sonnet / discrepancy-hunt-05-clean-control](holdout_discrepancy-hunt-05-clean-control/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-05-clean-contro__D3mDd5y__d97ec9ed4a/verifier/score.json) | 0.000 | 0/1 | Recovery-count claim anchor incomplete | 20 | Tentative `grounding`; check grader coverage |
+| [sonnet / discrepancy-hunt-05-clean-control](holdout_discrepancy-hunt-05-clean-control/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-05-clean-contro__FoHZpsi__796272dc75/verifier/score.json) | 0.000 | 0/1 | Recovery-count claim anchor incomplete | 25 | Tentative `grounding`; check grader coverage |
+
+No inspected command in the eight scored v2 traces referenced hidden tests, solutions or gold. Earlier setup and credential failures remain separately logged.

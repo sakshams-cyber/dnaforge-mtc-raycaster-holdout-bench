@@ -12,24 +12,27 @@ item list and recovery-count correction. Citation offsets reconstruct evidence
 from local text. Sanity gave blank and plausibly wrong answers 0 and the
 reference answers 1. Both v2 Harbor oracles and the hold-scope oracle scored 1.0.
 
-**Evidence.** Haiku 5.5 and Sonnet 5.5 each scored 1.0 on all three v1 cases
-(one attempt per model per case). The v2 agent trials did not yield scores:
-the original setup timed out in seven trials, and Anthropic rejected the
-credential on the eight attempts that reached authentication. See
-[runs/SUMMARY.md](runs/SUMMARY.md). Both hold-scope runs got all eight statuses right and missed two citation
-allowlists (14/16 criteria). The reviewer approved a CFR citation for act-7;
-[replaying the two existing answers](runs/T5_REGRADE.md) gave 15/16 each. This
-was a grader change, with no new model call.
+**Evidence.** Haiku 5.5 and Sonnet 5.5 each scored 1.0 on each of three bounded
+v1 cases (one attempt per model per case). On two attempts per model per task,
+full-audit means were 0.357 and 0.134; both clean-control means were 0.
+Both hold-scope runs got 14/16. A reviewer-approved alternate source raised
+both [saved-answer replays](runs/T5_REGRADE.md) to 15/16; no new model was called.
 
-**Iteration.** v1 had a score ceiling and did not penalize unsupported extras.
-We removed target hints, added complete reports and distractors, and made
-false positives lower the score. The clean control checks whether agents
-invent discrepancies after exposure to the same overall audit task.
+**What failed.** The apparent recovery-count miss was not a retrieval miss.
+All eight v2 answers located the issue. Seven quotations did not include the
+full required anchor. The eighth combined count and duration and failed the
+count-only comparison. Both full-audit Sonnet attempts also quoted an allowed
+page for one planted item without the narrow evidence anchor. See
+[trial-level diagnostics](runs/FAILURES_DRAFT.md).
+
+**Iteration.** The full audit removed target hints, included complete reports,
+and penalized unsupported findings. In hold scope, checking the rejected
+citations exposed a coverage gap in the key; the reviewer approved one
+specific alternative, while the original model scores remained recorded.
 
 **Research insight.** TODO: add the team's interpretation and a concrete
 trajectory example after reviewing the v1 runs.
 
 **Limitations.** One filing, few attempts, and different v1 and v2 task sets.
 The control grades against one approved issue and can penalize genuine
-findings that were not in its key. There is no scored v2 evidence of a
-performance difference.
+findings that were not in its key. These scores describe the submitted rubrics, not a general ranking of either model.

@@ -1,0 +1,74 @@
+{
+  "score": 0.42857142857142855,
+  "reward": 0.42857142857142855,
+  "criteria_met": 3,
+  "criteria_total": 4,
+  "pass": false,
+  "criteria": [
+    {
+      "id": "C01",
+      "item_id": "plant-1",
+      "check": null,
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "item_id": "plant-2",
+      "check": null,
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "item_id": "plant-3",
+      "check": null,
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "item_id": "real-recovery-count",
+      "check": null,
+      "passed": false
+    }
+  ],
+  "details": {
+    "reported": 6,
+    "known_baseline_flags": 0,
+    "other_flags": 3,
+    "false_positives": 3,
+    "items": {
+      "plant-1": {
+        "checks": {
+          "extraction": true,
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1,
+        "primary_failure": "correct"
+      },
+      "plant-2": {
+        "checks": {
+          "extraction": true,
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1,
+        "primary_failure": "correct"
+      },
+      "plant-3": {
+        "checks": {
+          "extraction": true,
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1,
+        "primary_failure": "correct"
+      },
+      "real-recovery-count": {
+        "credit": 0,
+        "missing": true,
+        "primary_failure": "missing"
+      }
+    },
+    "kind": "discrepancy"
+  }
+}

@@ -42,3 +42,5 @@
 - 2026-11-14 — Prepared a clean integration of Ahmad’s verified v1 tasks (branch a5ec76f). Converted references and mutations to offsets, preserved six scored model records and three oracle records, and kept raw branch excerpts out of the local main history. Both new oracles scored 1.0; v2 runs were unscored due to setup timeouts and a rejected Anthropic key.
 
 - 2026-11-14 — T5: two Sonnet attempts each got 14/16. Reviewer approved CFR p. 1 for act-7. Replayed saved answers only; both became 15/16, with only C07.citation changing. Revised Harbor oracle remained 1.0.
+
+- 2026-11-14 — Collected eight scored v2 attempts (two per model per task). Full audit: Haiku 0.357, Sonnet 0.134; clean control: both 0. A focused trace check found retrieval of the count issue in 8/8. Seven citations failed the full target anchor; one corrected-value field combined duration and count. Kept failure tags provisional and excluded earlier infrastructure failures from score means.

@@ -6,6 +6,7 @@
 | `discrepancy-hunt-04-full-audit` | v2 complete reports, four credited findings, and a precision penalty |
 | `discrepancy-hunt-05-clean-control` | v2 unaltered documents, one credited real discrepancy, and a precision penalty |
 | `hold-scope` | Eight reviewer-approved held-study activity decisions; Harbor oracle 1.0 |
+| `forecast-01` | Held-back stability values; requires the separate ALTU-237 pack |
 
 For a real discrepancy task, stage the local pack with
 `python scripts/stage_text.py --pack-root data/pack3 --task tasks/<id>`

@@ -14,14 +14,18 @@ Redacted exports; raw jobs remain local. Infrastructure failures are separate fr
 | holdout/discrepancy-hunt-03 | claude-code | claude-sonnet-5-5 | v1 | a40a013528cf | 1.000 | 1 | 0 | 1 |
 | holdout/discrepancy-hunt-03 | oracle | none | v1 | 1d155cab5b97 | 1.000 | 1 | 0 | 1 |
 | holdout/discrepancy-hunt-04-full-audit | claude-code | claude-haiku-5-5 | v2 | 1ab5fe7ca82b | — | 0 | 2 | 2 |
+| holdout/discrepancy-hunt-04-full-audit | claude-code | claude-haiku-5-5 | v2 | 3cb965fdb537 | 0.357 | 2 | 0 | 2 |
 | holdout/discrepancy-hunt-04-full-audit | claude-code | claude-haiku-5-5 | v2 | acecdb077cec | — | 0 | 2 | 2 |
 | holdout/discrepancy-hunt-04-full-audit | claude-code | claude-sonnet-5-5 | v2 | 4d578edfb54c | — | 0 | 2 | 2 |
+| holdout/discrepancy-hunt-04-full-audit | claude-code | claude-sonnet-5-5 | v2 | 887a5f61a907 | 0.134 | 2 | 0 | 2 |
 | holdout/discrepancy-hunt-04-full-audit | claude-code | claude-sonnet-5-5 | v2 | d4329ec50b78 | — | 0 | 1 | 1 |
 | holdout/discrepancy-hunt-04-full-audit | oracle | none | v2 | 35c9aa5adf56 | 1.000 | 1 | 0 | 1 |
 | holdout/discrepancy-hunt-05-clean-control | claude-code | claude-haiku-5-5 | v2 | 46b60abf5200 | — | 0 | 2 | 2 |
+| holdout/discrepancy-hunt-05-clean-control | claude-code | claude-haiku-5-5 | v2 | b023ed37fcf9 | 0.000 | 2 | 0 | 2 |
 | holdout/discrepancy-hunt-05-clean-control | claude-code | claude-haiku-5-5 | v2 | e593a0146d7d | — | 0 | 2 | 2 |
 | holdout/discrepancy-hunt-05-clean-control | claude-code | claude-sonnet-5-5 | v2 | 6b1fd175d024 | — | 0 | 2 | 2 |
 | holdout/discrepancy-hunt-05-clean-control | claude-code | claude-sonnet-5-5 | v2 | a57f7f47dd8e | — | 0 | 2 | 2 |
+| holdout/discrepancy-hunt-05-clean-control | claude-code | claude-sonnet-5-5 | v2 | d9f0c4289bee | 0.000 | 2 | 0 | 2 |
 | holdout/discrepancy-hunt-05-clean-control | oracle | none | v2 | e35ace97e55e | 1.000 | 1 | 0 | 1 |
 | holdout/hold-scope | claude-code | claude-sonnet-5-5 | v1 | f50f5fdf29a0 | 0.875 | 2 | 0 | 2 |
 | holdout/hold-scope | oracle | none | v1 | 612dfd1b2a55 | 1.000 | 1 | 0 | 1 |
@@ -33,6 +37,8 @@ Redacted exports; raw jobs remain local. Infrastructure failures are separate fr
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | v1 | claude-code | claude-haiku-5-5 | 3 | 3 | 1.000 | 1.000 | 0.000 |
 | v1 | claude-code | claude-sonnet-5-5 | 4 | 5 | 0.969 | 0.750 | 0.061 |
+| v2 | claude-code | claude-haiku-5-5 | 2 | 4 | 0.179 | 0.000 | 0.350 |
+| v2 | claude-code | claude-sonnet-5-5 | 2 | 4 | 0.067 | 0.000 | 0.131 |
 
 Each task has equal weight. The margin is an approximate 95% interval across task means.
 Versions use different task designs; their means are descriptive, not a paired comparison.

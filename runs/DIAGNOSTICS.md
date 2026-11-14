@@ -13,7 +13,15 @@ Per-item symptoms, not causal explanations. Read trajectories before assigning h
 | holdout/discrepancy-hunt-03 / claude-code / claude-haiku-5-5 / v1 / 92ca1dd4376c | correct | 1 |
 | holdout/discrepancy-hunt-03 / claude-code / claude-sonnet-5-5 / v1 / a40a013528cf | correct | 1 |
 | holdout/discrepancy-hunt-03 / oracle / none / v1 / 1d155cab5b97 | correct | 1 |
+| holdout/discrepancy-hunt-04-full-audit / claude-code / claude-haiku-5-5 / v2 / 3cb965fdb537 | correct | 5 |
+| holdout/discrepancy-hunt-04-full-audit / claude-code / claude-haiku-5-5 / v2 / 3cb965fdb537 | missing | 3 |
+| holdout/discrepancy-hunt-04-full-audit / claude-code / claude-sonnet-5-5 / v2 / 887a5f61a907 | correct | 2 |
+| holdout/discrepancy-hunt-04-full-audit / claude-code / claude-sonnet-5-5 / v2 / 887a5f61a907 | grounding | 2 |
+| holdout/discrepancy-hunt-04-full-audit / claude-code / claude-sonnet-5-5 / v2 / 887a5f61a907 | missing | 4 |
 | holdout/discrepancy-hunt-04-full-audit / oracle / none / v2 / 35c9aa5adf56 | correct | 4 |
+| holdout/discrepancy-hunt-05-clean-control / claude-code / claude-haiku-5-5 / v2 / b023ed37fcf9 | comparison | 1 |
+| holdout/discrepancy-hunt-05-clean-control / claude-code / claude-haiku-5-5 / v2 / b023ed37fcf9 | missing | 1 |
+| holdout/discrepancy-hunt-05-clean-control / claude-code / claude-sonnet-5-5 / v2 / d9f0c4289bee | missing | 2 |
 | holdout/discrepancy-hunt-05-clean-control / oracle / none / v2 / e35ace97e55e | correct | 1 |
 | holdout/hold-scope / claude-code / claude-sonnet-5-5 / v1 / f50f5fdf29a0 | correct | 12 |
 | holdout/hold-scope / claude-code / claude-sonnet-5-5 / v1 / f50f5fdf29a0 | grounding | 4 |
