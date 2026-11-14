@@ -1,0 +1,56 @@
+{
+  "task_id": "forecast-smoke",
+  "title": "Predict the next stability results for a fictional lot",
+  "pack": "synthetic fixture",
+  "context": "The workspace holds three successive stability reports for one lot of an invented compound, ZX-000. Each report repeats the earlier time points and adds the newest one. This is a fictional fixture that only exercises the grader.",
+  "cutoff_sequence": "0003",
+  "target_sequence": "0004",
+  "files": [
+    {
+      "source": "0001/stability-report.txt",
+      "destination": "0001/stability-report.txt"
+    },
+    {
+      "source": "0002/stability-report.txt",
+      "destination": "0002/stability-report.txt"
+    },
+    {
+      "source": "0003/stability-report.txt",
+      "destination": "0003/stability-report.txt"
+    }
+  ],
+  "targets": [
+    {
+      "id": "assay-18m",
+      "question": "Assay of lot F-001 at 18 months, long-term condition",
+      "unit": "% label claim",
+      "value": 97.4,
+      "last_observed": 98.3,
+      "full_atol": 0.3,
+      "half_atol": 0.6
+    },
+    {
+      "id": "impurities-18m",
+      "question": "Total impurities of lot F-001 at 18 months, long-term condition",
+      "unit": "%",
+      "value": 0.49,
+      "last_observed": 0.4,
+      "full_atol": 0.03,
+      "half_atol": 0.06
+    },
+    {
+      "id": "water-18m",
+      "question": "Water content of lot F-001 at 18 months, long-term condition",
+      "unit": "%",
+      "value": 2.6,
+      "last_observed": 2.3,
+      "full_atol": 0.1,
+      "half_atol": 0.2
+    }
+  ],
+  "verification": {
+    "status": "synthetic_fixture",
+    "who": "programmatic fixture",
+    "how": "values are the 18-month column of the invented submission 0004"
+  }
+}

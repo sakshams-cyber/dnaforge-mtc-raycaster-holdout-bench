@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "id": "f1",
+      "path": "summaries/investigator-brochure.txt",
+      "page": 12,
+      "quote": "PrP-siRNA was detected in the CSF for all dogs and all rats",
+      "corrected_value": "most dogs",
+      "source_path": "study-reports/A-703-02-report.txt",
+      "source_page": 25,
+      "source_quote": "does not include animals with BLOQ values"
+    }
+  ]
+}

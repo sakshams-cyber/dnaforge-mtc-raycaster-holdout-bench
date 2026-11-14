@@ -1,0 +1,10 @@
+{
+  "mutations": [
+    {
+      "file": "summaries/investigator-brochure.txt",
+      "page": 13,
+      "before": "the NOAEL in dogs was 200 mg",
+      "after": "the NOAEL in dogs was 20 mg"
+    }
+  ]
+}

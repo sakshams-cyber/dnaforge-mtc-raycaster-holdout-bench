@@ -1,0 +1,71 @@
+{
+  "task_name": "holdout/discrepancy-hunt-03",
+  "trial_name": "discrepancy-hunt-03__wgKccUE",
+  "task_checksum": "1fc375ac38f23bc60b7e6c38e7c537ebdf952cfd5ff9672e6a94af8d2aea3105",
+  "started_at": "2026-11-14T21:53:04.550436Z",
+  "finished_at": "2026-11-14T21:53:22.429597Z",
+  "agent": "oracle",
+  "model": "none",
+  "version": "v1",
+  "score": 1.0,
+  "raw_result_sha256": "3f6a2824ac53df1603e3bd2762b8769d595ea72f292a338a3877a3ad616c3da3",
+  "source_local": "jobs/2026-11-14__13-53-02/discrepancy-hunt-03__wgKccUE/result.json",
+  "export_redacted": true,
+  "answer_present": true,
+  "trajectory_present": false,
+  "infrastructure_error": false,
+  "condition": {
+    "name": "unspecified",
+    "tool_mode": "unspecified",
+    "network_policy": "unspecified"
+  },
+  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
+  "agent_configuration": {
+    "name": "oracle",
+    "import_path": null,
+    "model_name": null,
+    "base_url": null,
+    "model_api_key_name": "[REDACTED]",
+    "model_api_format": null,
+    "skip_model_parsing": false,
+    "n_concurrent": null,
+    "concurrency_group": null,
+    "skills": [],
+    "override_timeout_sec": null,
+    "override_setup_timeout_sec": null,
+    "max_timeout_sec": null,
+    "resume_trajectory": false,
+    "load_trajectory": null,
+    "extra_allowed_hosts": [],
+    "kwargs": {},
+    "mcp_servers": []
+  },
+  "environment_configuration": {
+    "type": "docker",
+    "import_path": null,
+    "force_build": false,
+    "delete": true,
+    "stream": false,
+    "cpu_enforcement_policy": "auto",
+    "memory_enforcement_policy": "auto",
+    "override_cpus": null,
+    "override_memory_mb": null,
+    "override_storage_mb": null,
+    "override_gpus": null,
+    "override_tpu": null,
+    "mounts": null,
+    "extra_docker_compose": [],
+    "kwargs": {},
+    "extra_allowed_hosts": []
+  },
+  "usage": {
+    "n_input_tokens": null,
+    "n_cache_tokens": null,
+    "n_output_tokens": null,
+    "cost_usd": null
+  },
+  "elapsed_sec": 17.879161,
+  "diagnostics": {
+    "correct": 1
+  }
+}

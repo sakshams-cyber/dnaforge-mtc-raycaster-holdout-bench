@@ -6,6 +6,7 @@ Manifest is JSON: {"files": [{"source": "pack/path.pdf", "destination":
 import argparse
 import hashlib
 import json
+import re
 import shutil
 import tempfile
 from pathlib import Path
@@ -25,12 +26,41 @@ def inside(root, name):
     return target
 
 
+def source_sequence(source):
+    """Submission a source belongs to: `<seq>/...` or `eCTD/<seq>/...`, nothing looser."""
+    parts = Path(source).parts
+    if parts and parts[0].lower() == 'ectd':
+        parts = parts[1:]
+    return parts[0] if len(parts) > 1 and re.fullmatch(r'[0-9]{4}', parts[0]) else None
+
+
+def check_cutoff(manifest):
+    """Forecast manifests name a cutoff submission; refuse any later source.
+
+    The pack root must be the folder that holds `eCTD/` (or the sequence folders
+    themselves), so the sequence is read from a fixed position and a year-like
+    or nested folder cannot stand in for it. Sources outside a sequence folder
+    are refused. This checks where a file was filed, not what it says: a human
+    still confirms the gold values are absent from the staged text.
+    """
+    cutoff = manifest.get('cutoff_sequence')
+    if cutoff is None:
+        return
+    if not isinstance(cutoff, str) or not re.fullmatch(r'[0-9]{4}', cutoff):
+        raise ValueError('cutoff_sequence must be a four-digit string such as "0039"')
+    for entry in manifest['files']:
+        sequence = source_sequence(entry['source'])
+        if sequence is None or sequence > cutoff:
+            raise ValueError(f'Source is not at or before cutoff {cutoff}: {entry["source"]}')
+
+
 def stage(task, pack_root, destination=None):
     task, pack_root = Path(task), Path(pack_root).resolve()
     manifest = json.loads((task/'workspace.manifest').read_text())
     entries = manifest['files']
     if not isinstance(entries, list) or not entries:
         raise ValueError('Manifest must list at least one file')
+    check_cutoff(manifest)
     dest = Path(destination) if destination else task/'environment/workspace'
     dest.parent.mkdir(parents=True, exist_ok=True)
     planned, seen = [], set()

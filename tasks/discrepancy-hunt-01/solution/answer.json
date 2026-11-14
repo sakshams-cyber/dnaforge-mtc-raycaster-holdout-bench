@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "id": "f1",
+      "path": "summaries/investigator-brochure.txt",
+      "page": 13,
+      "quote": "the NOAEL in dogs was 20 mg",
+      "corrected_value": "200 mg",
+      "source_path": "study-reports/A-703-02-report.txt",
+      "source_page": 4,
+      "source_quote": "Therefore, 200 mg PrP lowering"
+    }
+  ]
+}

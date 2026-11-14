@@ -33,7 +33,17 @@ def readiness(task, allow_synthetic=False):
         if status not in statuses or not all(isinstance(record.get(k), str) and record[k].strip() for k in identity):
             errors.append('missing human verification identity/method')
         evidence = record.get('evidence', [])
-        if status != 'synthetic_fixture':
+        if gold.get('kind') == 'forecast':
+            # A forecast is not answerable from the workspace by design. The human attests
+            # instead that each value was read from the held-back filing and is absent here.
+            if status != 'synthetic_fixture':
+                if record.get('absent_from_workspace') is not True:
+                    errors.append('human attestation that gold values are absent from the workspace is missing')
+                if not all(isinstance(t.get('source'), dict) and t['source'].get('page') for t in gold['items']):
+                    errors.append('each forecast target needs its source page in the held-back filing')
+            if not gold.get('cutoff_sequence') or not gold.get('target_sequence'):
+                errors.append('forecast gold needs cutoff_sequence and target_sequence')
+        elif status != 'synthetic_fixture':
             if not evidence or record.get('answerable_from_workspace') is not True:
                 errors.append('human answerability attestation/evidence missing')
         for ref in evidence:

@@ -1,0 +1,10 @@
+{
+  "mutations": [
+    {
+      "file": "summaries/investigator-brochure.txt",
+      "page": 12,
+      "before": "for most dogs and all rats",
+      "after": "for all dogs and all rats"
+    }
+  ]
+}

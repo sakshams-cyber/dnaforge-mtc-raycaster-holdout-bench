@@ -1,0 +1,10 @@
+{
+  "mutations": [
+    {
+      "file": "summaries/investigator-brochure.txt",
+      "page": 13,
+      "before": "The gliosis was classified as non-adverse",
+      "after": "The gliosis was classified as adverse"
+    }
+  ]
+}

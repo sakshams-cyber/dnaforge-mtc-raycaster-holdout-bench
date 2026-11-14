@@ -41,3 +41,11 @@ The T1-B blanket probe keeps the correct categories and changes every status
 to `absent`. Because an absent item earns both status and null-citation credit,
 the score stays below 0.4 only when fewer than 10% of the verified items are
 absent. Report a failing probe without changing any reviewer label.
+
+## Tiers
+
+- **Easy tier:** `discrepancy-hunt-01` to `-03`. Human-verified, with real runs. Unchanged.
+- **Parked:** `discrepancy-hunt-04` to `-07`. Gold awaits human verification; not scored.
+- **Hard tier (forecast):** predict values from a held-back later filing. The grader,
+  staging guard and generator run on a fictional example (`make eval-forecast-smoke`);
+  no real forecast task exists yet. See [docs/FORECAST_TIER.md](../docs/FORECAST_TIER.md).

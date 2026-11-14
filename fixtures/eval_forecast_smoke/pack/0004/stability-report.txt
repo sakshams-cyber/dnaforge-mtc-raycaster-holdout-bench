@@ -1,0 +1,13 @@
+===== PAGE 1 =====
+FICTIONAL FIXTURE. Not a real product or filing.
+Stability report for invented compound ZX-000, lot F-001, submission 0004.
+Storage condition: 25 C / 60% RH. Results through the latest pull are tabulated on page 2.
+
+===== PAGE 2 =====
+Table 1. Lot F-001, long-term condition
+
+Test                             0M       3M       6M       9M      12M      18M
+Assay (% label claim)         100.1     99.6     99.2     98.7     98.3     97.4
+Total impurities (%)           0.21     0.26     0.30     0.36      0.4     0.49
+Water content (%)               1.8      1.9      2.1      2.2      2.3      2.6
+

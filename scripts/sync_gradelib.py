@@ -1,5 +1,6 @@
 """Copy the verifier library into task tests; fail CI on stale copies."""
 import argparse
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -11,6 +12,9 @@ def sync(task, check=False):
     if (task/'solution/materialize.py').exists():
         pairs.extend([(ROOT/'scripts/materialize_oracle.py', task/'solution/materialize.py'),
                       (ROOT/'graders/gradelib.py', task/'solution/gradelib.py')])
+    gold = task/'tests'/'gold.json'
+    if gold.exists() and json.loads(gold.read_text()).get('kind') == 'forecast':
+        pairs.append((ROOT/'graders/forecastgrader.py', task/'tests/forecastgrader.py'))
     for src, dest in pairs:
         source = src.read_bytes()
         if check:

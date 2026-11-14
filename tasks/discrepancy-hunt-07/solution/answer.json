@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "id": "f1",
+      "path": "summaries/investigator-brochure.txt",
+      "page": 13,
+      "quote": "No test article-related microscopic findings were observed in rats or dogs.",
+      "corrected_value": "minimal gliosis in dogs at 60 and 200 mg",
+      "source_path": "study-reports/A-703-02-report.txt",
+      "source_page": 4,
+      "source_quote": "Microscopic test article related findings were limited to minimal focal to multifocal gliosis"
+    }
+  ]
+}
