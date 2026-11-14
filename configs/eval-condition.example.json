@@ -1,0 +1,10 @@
+{
+  "name": "v1-local-source-tools",
+  "model": "<approved-exact-model-id>",
+  "agent": "<actual-harbor-agent>",
+  "tool_mode": "local source_tool plus Harbor agent tools",
+  "network_policy": "UNVERIFIED: record the tested backend policy before running",
+  "reasoning": "<actual-setting>",
+  "attempts": 2,
+  "timeout_sec": 1800
+}

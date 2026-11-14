@@ -1,0 +1,11 @@
+# Core (the pipeline itself needs only the standard library plus a PDF reader)
+pdfplumber>=0.11
+pypdf>=4.0
+
+# Tests, fixtures and the benchmark chart
+pytest>=8.0
+reportlab>=4.0
+matplotlib>=3.8
+
+# Optional: deploy and fan out the benchmark
+modal>=1.0

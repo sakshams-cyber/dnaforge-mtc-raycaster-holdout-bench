@@ -1,0 +1,2 @@
+# Separate tool environment to avoid altering the analysis runtime.
+harbor==0.26.0

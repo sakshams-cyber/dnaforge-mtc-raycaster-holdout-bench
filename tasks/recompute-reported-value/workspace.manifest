@@ -1,0 +1,12 @@
+{
+  "files": [
+    {
+      "source": "source-data/elisa/026_summary.tsv",
+      "sha256": "b8926b8e223323face42739232532b72d9731d3f32a56a3bc1806c7cb0710e15"
+    },
+    {
+      "source": "source-data/elisa/026.tsv",
+      "sha256": "044d3643de75127820fb61671bc64ddfccbaec9113c44181b6c58370448c273b"
+    }
+  ]
+}

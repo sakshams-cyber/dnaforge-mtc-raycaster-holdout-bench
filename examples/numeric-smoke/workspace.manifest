@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "source": "raw.csv",
+      "destination": "raw.csv"
+    }
+  ]
+}

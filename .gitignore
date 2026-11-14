@@ -1,0 +1,37 @@
+__pycache__/
+*.pyc
+.env
+.cache/
+bench_out/
+.pytest_cache/
+demo_memo.md
+demo_report.json
+.DS_Store
+data/
+*.sqlite*
+
+.venv/
+reports/
+out/
+.mplconfig/
+
+.venv-harbor/
+jobs/
+tasks/*/environment/workspace/
+tasks/*/solution/answer.json
+examples/*/environment/workspace/
+examples/*/solution/answer.json
+
+tasks/*/environment/workspace.receipt.json
+examples/*/environment/workspace.receipt.json
+
+boltz-experiments/
+
+# Local sponsor setup and reference materials.
+boltz-smoke/
+AGENTS_PAPERCLIP.md
+docs/PLAYBOOK.pdf
+
+# Keep generated run exports local until reviewed for filing excerpts.
+runs/*
+!runs/README.md
