@@ -26,7 +26,7 @@ def tree_hash(root, exclude=()):
 def task_fingerprint(task):
     task = Path(task)
     definition = {}
-    for name in ('task.toml', 'instruction.md', 'workspace.manifest'):
+    for name in ('task.toml', 'instruction.md', 'answer.schema.json', 'workspace.manifest'):
         if (task/name).exists(): definition[name] = digest(task/name)
     for section in ('tests', 'solution', 'environment'):
         for path in sorted((task/section).rglob('*')):

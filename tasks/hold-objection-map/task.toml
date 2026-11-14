@@ -2,7 +2,7 @@ schema_version = "1.4"
 artifacts = ["/app/output/answer.json", "/app/ENVIRONMENT_PACKAGES.txt"]
 [task]
 name = "holdout/hold-objection-map"
-description = "Map FDA hold objections to sponsor responses; human-selected source documents and statuses pending."
+description = "Check whether the filed IND already contains what the partial hold letter asks for."
 [metadata]
 pack = "pending human selection"
 difficulty_target = "10-30 min"

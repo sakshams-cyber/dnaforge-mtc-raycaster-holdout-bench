@@ -15,6 +15,7 @@ try:
 except ImportError:
     from eval_provenance import tree_hash, digest
 
+ROOT = Path(__file__).resolve().parents[1]
 
 def inside(root, name):
     path = Path(name)
@@ -54,8 +55,14 @@ def stage(task, pack_root, destination=None):
     dest.parent.mkdir(parents=True, exist_ok=True)
     planned, seen = [], set()
     for entry in entries:
-        source = inside(pack_root, entry['source'])
-        relative = Path(entry.get('destination', entry['source'])).as_posix()
+        name = entry['source']
+        if name.startswith('public:'):
+            name = name.removeprefix('public:')
+            source = inside(ROOT/'public', name)
+            name = 'public/' + name
+        else:
+            source = inside(pack_root, name)
+        relative = Path(entry.get('destination', name)).as_posix()
         inside(dest.resolve(), relative)
         if relative in seen or not source.is_file():
             raise ValueError('Duplicate destination or missing source in manifest')
