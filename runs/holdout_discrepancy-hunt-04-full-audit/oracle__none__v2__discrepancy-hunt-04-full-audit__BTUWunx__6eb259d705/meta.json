@@ -1,0 +1,29 @@
+{
+  "task_name": "holdout/discrepancy-hunt-04-full-audit",
+  "trial_name": "discrepancy-hunt-04-full-audit__BTUWunx",
+  "task_checksum": "d4a7998b2dd5fb94e392519c61a4512b6d04466abe709f6e0d1031677c5379cd",
+  "started_at": "2026-11-14T23:09:10.425522Z",
+  "finished_at": "2026-11-14T23:09:28.705629Z",
+  "agent": "oracle",
+  "model": "none",
+  "version": "v2",
+  "score": 1.0,
+  "elapsed_sec": 18.280107,
+  "infrastructure_error": false,
+  "exception_type": null,
+  "raw_result_sha256": "6c45bf6daea3ee11086884718180b5d805aaface05f392c0165e2d50c62f91a8",
+  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
+  "answer_present": true,
+  "trajectory_present": false,
+  "usage": {},
+  "diagnostics": {
+    "correct": 4
+  },
+  "agent_configuration": {
+    "sha256": "28ee62ab1bd3673de723014cb9f474d260ec2db2c75b94c2335ee9d0ca58a234"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
+}

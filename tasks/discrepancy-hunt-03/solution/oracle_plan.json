@@ -1,10 +1,24 @@
 {
-  "mutations": [
+  "items": [
     {
-      "file": "summaries/investigator-brochure.txt",
+      "id": "f1",
+      "path": "summaries/investigator-brochure.txt",
       "page": 14,
-      "before": "doses ~8 times higher",
-      "after": "doses ~80 times higher"
+      "corrected_value": "8",
+      "source_path": "summaries/investigator-brochure.txt",
+      "source_page": 9,
+      "quote_ref": {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 14,
+        "start": 360,
+        "end": 419
+      },
+      "source_quote_ref": {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 9,
+        "start": 1092,
+        "end": 1138
+      }
     }
   ]
 }

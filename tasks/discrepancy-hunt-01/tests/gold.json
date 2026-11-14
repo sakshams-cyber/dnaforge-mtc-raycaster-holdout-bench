@@ -63,31 +63,44 @@
   },
   "items": [
     {
-      "id": "plant-1",
-      "error_class": "cross_document_value",
       "path": "summaries/investigator-brochure.txt",
       "page_min": 13,
       "page_max": 13,
-      "anchor": "NOAEL in dogs was 20 mg",
+      "anchor_ref": {
+        "page": 13,
+        "start": 142,
+        "end": 165
+      },
+      "id": "plant-1",
       "expected": {
         "type": "quantity",
         "value": "200",
         "unit": "mg"
       },
+      "error_class": "cross_document_value",
       "sources": [
         {
           "path": "study-reports/A-703-02-report.txt",
           "page_min": 4,
           "page_max": 4,
-          "anchor": "200 mg"
+          "anchor_ref": {
+            "page": 4,
+            "start": 675,
+            "end": 681
+          }
         },
         {
           "path": "study-reports/A-703-02-report.txt",
           "page_min": 29,
           "page_max": 29,
-          "anchor": "200 mg"
+          "anchor_ref": {
+            "page": 29,
+            "start": 277,
+            "end": 283
+          }
         }
-      ]
+      ],
+      "planted": true
     }
   ],
   "known_baseline": [
@@ -95,29 +108,41 @@
       "path": "summaries/general-investigational-plan.txt",
       "page_min": 3,
       "page_max": 3,
-      "anchor": "recovery timepoint",
-      "note": "Unaltered filing: plan reports gliosis in 1/4 recovery animals at a 30-day timepoint; A-703-02 reports none, at a 28-day recovery."
+      "anchor_ref": {
+        "page": 3,
+        "start": 1977,
+        "end": 1995
+      }
     },
     {
       "path": "summaries/investigator-brochure.txt",
       "page_min": 4,
       "page_max": 4,
-      "anchor": "169 mg",
-      "note": "Unaltered filing: 35-52 ug is said to scale to 59-169 mg, but at the stated factor of 3,250 (p. 11) 35 ug is about 114 mg; 59 mg corresponds to 18 ug. Needs pharmacologist review."
+      "anchor_ref": {
+        "page": 4,
+        "start": 2173,
+        "end": 2179
+      }
     },
     {
       "path": "summaries/investigator-brochure.txt",
       "page_min": 13,
       "page_max": 13,
-      "anchor": "chromosomal aberration",
-      "note": "Unaltered filing: the same paragraph names the study as an in vitro micronucleus test in CHO-K1 cells and then as a chromosomal aberration assay in Chinese hamster lung fibroblasts."
+      "anchor_ref": {
+        "page": 13,
+        "start": 1813,
+        "end": 1835
+      }
     },
     {
       "path": "study-reports/A-703-02-report.txt",
       "page_min": 21,
       "page_max": 21,
-      "anchor": "6.7 ng/mL",
-      "note": "Unaltered filing: formulation concentration written as 6.7 ng/mL; mg/mL everywhere else."
+      "anchor_ref": {
+        "page": 21,
+        "start": 578,
+        "end": 587
+      }
     }
   ],
   "verification": {

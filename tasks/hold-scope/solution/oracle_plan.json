@@ -1,0 +1,84 @@
+{
+  "activities": [
+    {
+      "id": "act-1",
+      "status": "permitted",
+      "cite": {
+        "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+        "page": 1,
+        "start": 818,
+        "end": 877
+      }
+    },
+    {
+      "id": "act-2",
+      "status": "permitted",
+      "cite": {
+        "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+        "page": 1,
+        "start": 1353,
+        "end": 1437
+      }
+    },
+    {
+      "id": "act-3",
+      "status": "permitted",
+      "cite": {
+        "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+        "page": 2,
+        "start": 268,
+        "end": 342
+      }
+    },
+    {
+      "id": "act-4",
+      "status": "permitted",
+      "cite": {
+        "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+        "page": 2,
+        "start": 998,
+        "end": 1057
+      }
+    },
+    {
+      "id": "act-5",
+      "status": "not_permitted",
+      "cite": {
+        "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+        "page": 2,
+        "start": 521,
+        "end": 611
+      }
+    },
+    {
+      "id": "act-6",
+      "status": "not_permitted",
+      "cite": {
+        "path": "public/21-cfr-312.42.txt",
+        "page": 1,
+        "start": 534,
+        "end": 634
+      }
+    },
+    {
+      "id": "act-7",
+      "status": "not_permitted",
+      "cite": {
+        "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+        "page": 2,
+        "start": 612,
+        "end": 686
+      }
+    },
+    {
+      "id": "act-8",
+      "status": "not_permitted",
+      "cite": {
+        "path": "public/21-cfr-312.42.txt",
+        "page": 1,
+        "start": 8228,
+        "end": 8287
+      }
+    }
+  ]
+}

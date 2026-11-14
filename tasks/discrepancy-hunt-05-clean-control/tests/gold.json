@@ -1,0 +1,147 @@
+{
+  "kind": "discrepancy",
+  "penalize_false_positives": true,
+  "ignore_known_baseline": false,
+  "known_baseline": [],
+  "answer_schema": {
+    "type": "object",
+    "required": [
+      "items"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "type": "array",
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "path",
+            "page",
+            "quote",
+            "corrected_value",
+            "source_path",
+            "source_page",
+            "source_quote"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 20
+            },
+            "corrected_value": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "source_quote": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        }
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "real-recovery-count",
+      "path": "ind/1.20.General-Investigational-Plan.txt",
+      "page_min": 3,
+      "page_max": 3,
+      "anchor_ref": {
+        "page": 3,
+        "start": 1946,
+        "end": 2019
+      },
+      "expected": {
+        "type": "label",
+        "accept": [
+          "0",
+          "zero",
+          "0 animals",
+          "zero animals",
+          "none",
+          "0/4",
+          "no gliosis",
+          "0 animals with gliosis",
+          "no recovery animals with gliosis",
+          "no gliosis in recovery animals",
+          "0 animals with gliosis at recovery"
+        ]
+      },
+      "sources": [
+        {
+          "path": "ind/A-703-02-FinalReport.txt",
+          "page_min": 4,
+          "page_max": 4,
+          "anchor_ref": {
+            "page": 4,
+            "start": 1777,
+            "end": 1827
+          }
+        },
+        {
+          "path": "ind/A-703-02-FinalReport.txt",
+          "page_min": 27,
+          "page_max": 27,
+          "anchor_ref": {
+            "page": 27,
+            "start": 2064,
+            "end": 2127
+          }
+        },
+        {
+          "path": "ind/A-703-02-FinalReport.txt",
+          "page_min": 29,
+          "page_max": 29,
+          "anchor_ref": {
+            "page": 29,
+            "start": 1377,
+            "end": 1423
+          }
+        }
+      ],
+      "planted": false,
+      "error_class": "cross_document_count"
+    }
+  ],
+  "verification": {
+    "status": "human_verified",
+    "who": "Saksham Srivastava",
+    "verified_at": "2026-11-14T15:04:26-08:00",
+    "how": "Reviewer confirmed the item list and count-only baseline correction; existing plants reuse the prior verified key. Quote offsets were machine-checked.",
+    "answerable_from_workspace": true,
+    "evidence": [
+      {
+        "path": "ind/1.20.General-Investigational-Plan.txt",
+        "page": 3
+      },
+      {
+        "path": "ind/A-703-02-FinalReport.txt",
+        "page": 27
+      }
+    ]
+  }
+}

@@ -1,6 +1,14 @@
 {
   "files": [
     {
+      "source": "partial-clinical-hold/5.3.5.1.2.pre-symptomatic-icf.pdf",
+      "sha256": "8420a91ebbcab0145c67136f15cd3d363c427d1ff64c655e488fb470e9c4ad9f"
+    },
+    {
+      "source": "partial-clinical-hold/5.3.5.1.2.presymptomatic-protocol.pdf",
+      "sha256": "d60a44d6375f7c7f9ebb0fe6a79db3f56f8314f128dd0d6fa2fe36e279c148bc"
+    },
+    {
       "source": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
       "sha256": "bb20eb1274029f51c3b6e0c83f1eadbdb24cd2e6c32da8e210c6cff04aeb8374"
     },

@@ -1,0 +1,84 @@
+{
+  "items": [
+    {
+      "id": "plant-1",
+      "path": "ind/1.14.4.investigator-brochure.txt",
+      "page": 13,
+      "source_path": "ind/A-703-02-FinalReport.txt",
+      "source_page": 4,
+      "corrected_value": "200 mg",
+      "quote_ref": {
+        "path": "ind/1.14.4.investigator-brochure.txt",
+        "page": 13,
+        "start": 138,
+        "end": 165
+      },
+      "source_quote_ref": {
+        "path": "ind/A-703-02-FinalReport.txt",
+        "page": 4,
+        "start": 2169,
+        "end": 2199
+      }
+    },
+    {
+      "id": "plant-2",
+      "path": "ind/1.14.4.investigator-brochure.txt",
+      "page": 13,
+      "source_path": "ind/A-703-02-FinalReport.txt",
+      "source_page": 27,
+      "corrected_value": "non-adverse",
+      "quote_ref": {
+        "path": "ind/1.14.4.investigator-brochure.txt",
+        "page": 13,
+        "start": 511,
+        "end": 548
+      },
+      "source_quote_ref": {
+        "path": "ind/A-703-02-FinalReport.txt",
+        "page": 27,
+        "start": 2178,
+        "end": 2243
+      }
+    },
+    {
+      "id": "plant-3",
+      "path": "ind/1.14.4.investigator-brochure.txt",
+      "page": 14,
+      "source_path": "ind/1.14.4.investigator-brochure.txt",
+      "source_page": 9,
+      "corrected_value": "8",
+      "quote_ref": {
+        "path": "ind/1.14.4.investigator-brochure.txt",
+        "page": 14,
+        "start": 360,
+        "end": 419
+      },
+      "source_quote_ref": {
+        "path": "ind/1.14.4.investigator-brochure.txt",
+        "page": 9,
+        "start": 1092,
+        "end": 1138
+      }
+    },
+    {
+      "id": "real-recovery-count",
+      "path": "ind/1.20.General-Investigational-Plan.txt",
+      "page": 3,
+      "source_path": "ind/A-703-02-FinalReport.txt",
+      "source_page": 27,
+      "corrected_value": "0",
+      "quote_ref": {
+        "path": "ind/1.20.General-Investigational-Plan.txt",
+        "page": 3,
+        "start": 1946,
+        "end": 2019
+      },
+      "source_quote_ref": {
+        "path": "ind/A-703-02-FinalReport.txt",
+        "page": 27,
+        "start": 2064,
+        "end": 2127
+      }
+    }
+  ]
+}

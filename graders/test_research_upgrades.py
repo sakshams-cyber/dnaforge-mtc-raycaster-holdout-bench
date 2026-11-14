@@ -79,7 +79,7 @@ def test_numeric_sanity_and_readiness():
     assert all(row['pass'] for row in sanity(task))
     assert readiness(task,allow_synthetic=True)['ready']
     assert not readiness(task)['ready']  # cannot accidentally submit a synthetic smoke
-    assert not readiness(ROOT/'tasks/hold-scope')['ready']
+    assert not readiness(ROOT/'templates/unused/recompute-reported-value')['ready']
 
 
 def test_stage_receipts_and_frozen_bytes(tmp_path):

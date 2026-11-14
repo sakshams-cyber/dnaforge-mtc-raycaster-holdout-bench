@@ -1,0 +1,17 @@
+{
+  "schema_version": 2,
+  "mutations": [
+    {
+      "file": "summaries/investigator-brochure.txt",
+      "page": 14,
+      "token_range": [
+        58,
+        62
+      ],
+      "original_sha256": "fdc9332503e3e58ce593eb5625b77a174f0348483705af6f9a21fc84078f5a2c",
+      "trailing_trim": 0,
+      "replace_token": 1,
+      "replacement": "~80"
+    }
+  ]
+}

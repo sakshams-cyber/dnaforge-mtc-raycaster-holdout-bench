@@ -34,9 +34,19 @@ def expand(value, workspace):
         if raw is None:
             raise ValueError('Input cell does not exist in the staged table')
         return {**value, 'path': path, 'value': str(raw)}
-    if 'quote' in value:
+    if {'quote', 'source_quote'} & value.keys():
         raise ValueError('Plans may contain quote offsets only')
-    return {key: expand(item, workspace) for key, item in value.items()}
+    result = {}
+    for key, item in value.items():
+        if key in {'quote_ref', 'source_quote_ref'}:
+            prefix = 'source_' if key.startswith('source_') else ''
+            ref = expand(item, workspace)
+            if ref['path'] != value.get(prefix+'path') or ref['page'] != value.get(prefix+'page'):
+                raise ValueError('Oracle quote offsets do not match the citation')
+            result[prefix+'quote'] = ref['quote']
+        else:
+            result[key] = expand(item, workspace)
+    return result
 
 
 def main():

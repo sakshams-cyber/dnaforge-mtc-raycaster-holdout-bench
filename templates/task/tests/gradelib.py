@@ -130,13 +130,16 @@ def _file_pages(path, mtime, size):
             try:
                 result = subprocess.run(['pdftotext', '-layout', str(p), '-'],
                                         capture_output=True, text=True, check=True, timeout=60)
-                texts = result.stdout.rstrip('\f').split('\f')
+                texts = result.stdout.removesuffix('\f').split('\f')
             except (OSError, subprocess.SubprocessError):
                 pass
         return tuple(texts)
-    if p.suffix.lower() not in {'.txt', '.md', '.csv'}:
+    if p.suffix.lower() not in {'.txt', '.md', '.csv', '.tsv'}:
         raise ValueError('Use cell_value for spreadsheet files')
-    text = p.read_text(encoding='utf-8-sig')
+    try:
+        text = p.read_text(encoding='utf-8-sig')
+    except UnicodeDecodeError:
+        text = p.read_text(encoding='latin-1')
     matches = list(re.finditer(r'^=+\s*PAGE\s+(\d+)\s*=+\s*$', text, re.M))
     if matches:
         numbers = [int(m[1]) for m in matches]
@@ -332,7 +335,7 @@ def write_score(score, details, output_dir=None):
     out = Path(output_dir or os.environ.get('HOLDOUT_SCORE_DIR', '/logs/verifier'))
     out.mkdir(parents=True, exist_ok=True)
     (out / 'reward.txt').write_text(f'{score:.12g}\n')
-    result = {'score': score, 'details': details}
+    result = {'score': score, 'reward': score, 'details': details}
     if 'criteria' in details:
         result.update({key: details[key] for key in ('criteria', 'criteria_met', 'criteria_total', 'pass')})
     (out / 'score.json').write_text(json.dumps(result, indent=2, allow_nan=False)+'\n')

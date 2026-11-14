@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "mutations": [
+    {
+      "file": "ind/1.14.4.investigator-brochure.txt",
+      "page": 13,
+      "token_range": [
+        24,
+        31
+      ],
+      "original_sha256": "b028791e75ae8ecd2f2c47072c2ec321bcbedf6d9aa41e99182f0a84740c9191",
+      "trailing_trim": 1,
+      "replace_token": 5,
+      "replacement": "20"
+    },
+    {
+      "file": "ind/1.14.4.investigator-brochure.txt",
+      "page": 13,
+      "token_range": [
+        92,
+        98
+      ],
+      "original_sha256": "ba32f57e2b3c04c1879f65eab3dc53d5d25b070be54c635adeefad62180ae345",
+      "trailing_trim": 0,
+      "replace_token": 5,
+      "replacement": "adverse"
+    },
+    {
+      "file": "ind/1.14.4.investigator-brochure.txt",
+      "page": 14,
+      "token_range": [
+        58,
+        62
+      ],
+      "original_sha256": "fdc9332503e3e58ce593eb5625b77a174f0348483705af6f9a21fc84078f5a2c",
+      "trailing_trim": 0,
+      "replace_token": 1,
+      "replacement": "~80"
+    }
+  ]
+}

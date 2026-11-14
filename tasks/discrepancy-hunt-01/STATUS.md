@@ -1,15 +1,5 @@
-# Human-verified, ready for agent runs
+# Verified v1 task
 
-Planted-discrepancy task on the divalent siRNA IND (167326). Instruction, manifest,
-plant plan, gold and oracle answer are written and the gold is human-verified
-(see `verification` in `tests/gold.json`). No agent runs yet.
+Imported the grader contract and key from branch commit a5ec76f; quote and plant text are reconstructed locally from offsets.
 
-Error class: `cross_document_value`.
-
-    python scripts/stage_text.py --pack-root <pack>/divalent-sirna-ind-167326 --task tasks/discrepancy-hunt-01
-    python scripts/sync_gradelib.py tasks/discrepancy-hunt-01
-    python scripts/sanity.py tasks/discrepancy-hunt-01
-
-`tests/gold.json`, `solution/oracle_plan.json` and `solution/answer.json` contain
-filing-derived text. They are force-added here because this repository is private;
-remove them from history before ever making it public.
+`python scripts/stage_text.py --pack-root data/pack3 --task tasks/discrepancy-hunt-01`

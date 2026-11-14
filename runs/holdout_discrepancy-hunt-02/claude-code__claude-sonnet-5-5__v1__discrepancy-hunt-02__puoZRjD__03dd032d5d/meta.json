@@ -8,64 +8,26 @@
   "model": "claude-sonnet-5-5",
   "version": "v1",
   "score": 1.0,
+  "elapsed_sec": 131.740702,
+  "infrastructure_error": false,
   "raw_result_sha256": "2d3d45ec44b8a1d9e1a303e32c551125edd271e7bfa8c316d78333677ca83254",
-  "source_local": "jobs/2026-11-14__14-04-32/discrepancy-hunt-02__puoZRjD/result.json",
-  "export_redacted": true,
+  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
   "answer_present": true,
   "trajectory_present": true,
-  "infrastructure_error": false,
-  "condition": {
-    "name": "unspecified",
-    "tool_mode": "unspecified",
-    "network_policy": "unspecified"
-  },
-  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
-  "agent_configuration": {
-    "name": "claude-code",
-    "import_path": null,
-    "model_name": "anthropic/claude-sonnet-5-5",
-    "base_url": null,
-    "model_api_key_name": "[REDACTED]",
-    "model_api_format": null,
-    "skip_model_parsing": false,
-    "n_concurrent": null,
-    "concurrency_group": null,
-    "skills": [],
-    "override_timeout_sec": null,
-    "override_setup_timeout_sec": null,
-    "max_timeout_sec": null,
-    "resume_trajectory": false,
-    "load_trajectory": null,
-    "extra_allowed_hosts": [],
-    "kwargs": {},
-    "mcp_servers": []
-  },
-  "environment_configuration": {
-    "type": "docker",
-    "import_path": null,
-    "force_build": false,
-    "delete": true,
-    "stream": false,
-    "cpu_enforcement_policy": "auto",
-    "memory_enforcement_policy": "auto",
-    "override_cpus": null,
-    "override_memory_mb": null,
-    "override_storage_mb": null,
-    "override_gpus": null,
-    "override_tpu": null,
-    "mounts": null,
-    "extra_docker_compose": [],
-    "kwargs": {},
-    "extra_allowed_hosts": []
-  },
   "usage": {
     "n_input_tokens": 280132,
     "n_cache_tokens": 262557,
     "n_output_tokens": 3606,
     "cost_usd": 0.10624320000000001
   },
-  "elapsed_sec": 131.740702,
   "diagnostics": {
     "correct": 1
-  }
+  },
+  "agent_configuration": {
+    "sha256": "33b3469123ae8c49ce14ad53d89ad83eafe8dd476568a7b306d06d6cb1868764"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
 }

@@ -57,7 +57,9 @@ metadata, not independently trusted evidence of correct scientific reasoning.
 
 This is illustrative and not a valid completed gold. Human names, methods,
 evidence, schemas and values must be filled in and independently checked.
-`solution/answer.json` uses the instruction's answer schema and remains ignored.
+Commit an offset-only `solution/oracle_plan.json` for real tasks. The materializer
+builds an answer in the instruction's schema at run time. Keep quote-bearing
+answer files outside Git.
 
 Mapping gold items use id, status and citations (path/page_min/page_max).
 Numeric items use id, reported, recomputed, unit, method, inputs,
@@ -108,4 +110,5 @@ use ignored raw jobs to inspect failures and review exports before sharing.
 
 Task Dockerfiles pin direct source-reader versions and capture pip freeze as an
 artifact. The base image/system packages still require an actual backend image
-digest for stronger reproducibility. The fictional container oracle passed on local Docker through Colima. Real task oracles await human-verified gold.
+digest for stronger reproducibility. Docker is currently missing, so neither the
+updated image nor a container oracle has been validated on this laptop.

@@ -1,36 +1,41 @@
 {
   "files": [
     {
-      "source": "1.14.4.investigator-brochure.pdf",
-      "destination": "summaries/investigator-brochure.txt"
+      "source": "ind/1.14.4.investigator-brochure.pdf",
+      "destination": "summaries/investigator-brochure.txt",
+      "sha256": "f27f81918e4b1220429ddbac25168ffda0b155ec5c89e74849a0ed96a4f18374"
     },
     {
-      "source": "1.20.General-Investigational-Plan.pdf",
-      "destination": "summaries/general-investigational-plan.txt"
+      "source": "ind/1.20.General-Investigational-Plan.pdf",
+      "destination": "summaries/general-investigational-plan.txt",
+      "sha256": "70c10a3f4d30c7eb44990b41d3464da6f2aa9a23ce8445896bd9437c5fd4975f"
     },
     {
-      "source": "A-703-01-FinalReport.pdf",
+      "source": "ind/A-703-01-FinalReport.pdf",
       "destination": "study-reports/A-703-01-report.txt",
       "pages": [
         1,
         26
-      ]
+      ],
+      "sha256": "d3997beb3f45277ebde5e773004baa4c321d97963a0d65e5d0b7aeca80e8d65e"
     },
     {
-      "source": "A-703-02-FinalReport.pdf",
+      "source": "ind/A-703-02-FinalReport.pdf",
       "destination": "study-reports/A-703-02-report.txt",
       "pages": [
         1,
         31
-      ]
+      ],
+      "sha256": "b0892b5c6f9192c475859f85bf975bebe989ca2f72131f87165369c959158421"
     },
     {
-      "source": "A-703-03-Summary-Report.pdf",
+      "source": "ind/A-703-03-Summary-Report.pdf",
       "destination": "study-reports/A-703-03-summary-report.txt",
       "pages": [
         1,
         7
-      ]
+      ],
+      "sha256": "a44af0cf51ff6b24684b63914d5a721028e65eaa941c75552dc935383505de8e"
     }
   ]
 }
