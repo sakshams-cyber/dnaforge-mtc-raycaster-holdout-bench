@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "source": "source-data/ind_enabling/BioA_dog_plasma.tsv",
+      "destination": "BioA_dog_plasma.tsv"
+    }
+  ]
+}

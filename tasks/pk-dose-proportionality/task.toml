@@ -1,0 +1,17 @@
+schema_version = "1.4"
+artifacts = ["/app/output/answer.json", "/app/ENVIRONMENT_PACKAGES.txt"]
+[task]
+name = "holdout/pk-dose-proportionality"
+description = "Reconstruct dog plasma exposure from raw bioanalytical data and judge dose proportionality"
+[metadata]
+pack = "divalent-sirna-ind-167326"
+difficulty_target = "10-30 min"
+[agent]
+timeout_sec = 1800
+[verifier]
+timeout_sec = 300
+[environment]
+build_timeout_sec = 900
+cpus = 2
+memory_mb = 4096
+workdir = "/app"
