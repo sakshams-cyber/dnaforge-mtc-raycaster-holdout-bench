@@ -42,15 +42,20 @@ def resolve_source(pack_root, name):
     return matches[0]
 
 
-def pdf_pages(path):
-    """Page texts via pdftotext when installed, else pdfplumber."""
+def pdf_pages(path, last=None):
+    """Page texts up to `last` (all when None), via pdftotext when installed, else pdfplumber.
+
+    Only the requested pages are extracted: study reports run to ~1,000 pages and
+    layout extraction of the appendices takes minutes.
+    """
     if shutil.which('pdftotext'):
-        result = subprocess.run(['pdftotext', '-layout', str(path), '-'],
+        limit = ['-l', str(last)] if last else []
+        result = subprocess.run(['pdftotext', '-layout', *limit, str(path), '-'],
                                 capture_output=True, text=True, check=True, timeout=600)
         return result.stdout.rstrip('\f').split('\f')
     import pdfplumber
     with pdfplumber.open(path) as pdf:
-        return [page.extract_text(layout=True) or '' for page in pdf.pages]
+        return [page.extract_text(layout=True) or '' for page in pdf.pages[:last]]
 
 
 def render(pages, first):
@@ -103,8 +108,9 @@ def stage_text(task, pack_root, plan_path=None, clean=False):
             if relative in seen or target.suffix != '.txt' or source.suffix.lower() != '.pdf':
                 raise ValueError(f'Bad manifest entry: {entry["source"]}')
             seen.add(relative)
-            pages = pdf_pages(source)
-            first, last = entry.get('pages', [1, len(pages)])
+            wanted = entry.get('pages')
+            pages = pdf_pages(source, wanted[1] if wanted else None)
+            first, last = wanted or [1, len(pages)]
             # The graders' page markers must be contiguous from 1, so ranges trim the tail only.
             if first != 1 or not first <= last <= len(pages):
                 raise ValueError(f'Bad page range for {entry["source"]} (must start at page 1)')
