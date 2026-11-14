@@ -114,6 +114,10 @@ def sanity(task):
     if gold_meta.get('penalize_false_positives'):
         extra = dict(gold['items'][0], path='nonexistent-extra-finding.pdf')
         cases.insert(-1, ('correct_plus_false_positive', {'items': [*gold['items'], extra]}, False))
+        cap = gold_meta['answer_schema']['properties']['items']['maxItems']
+        overflow = {'items': [dict(gold['items'][0], id=f'overflow-{i}') for i in range(cap+1)]}
+        cases = [(name, overflow, False) if name == 'overlisting' else (name, value, skip)
+                 for name, value, skip in cases]
     rows=[]
     with tempfile.TemporaryDirectory() as tmp:
         tmp=Path(tmp);workspace=tmp/'workspace'
@@ -142,7 +146,13 @@ def sanity(task):
                 # successful rejection of an adversarial answer.
                 valid=valid and 'grader_error' not in data.get('details',{})
                 if name=='gold': passed=valid and score==1
-                elif name in {'missing','empty','empty_items','malformed_json','duplicate_id'}: passed=valid and score==0
+                elif name in {'missing','empty','empty_items','malformed_json'}: passed=valid and score==0
+                elif name=='duplicate_id':
+                    if gold_meta.get('penalize_false_positives'):
+                        expected=len(gold['items'])/(len(gold['items'])+1)
+                        passed=valid and math.isclose(score, expected) and data['details'].get('false_positives')==1
+                    else:
+                        passed=valid and score==0
                 elif name=='all_resolved':
                     ceiling=sum(i.get('status')=='resolved' for i in gold['items'])/len(gold['items'])
                     passed=valid and score<=ceiling
