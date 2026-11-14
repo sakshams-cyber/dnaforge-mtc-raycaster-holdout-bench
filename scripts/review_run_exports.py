@@ -15,7 +15,7 @@ from collect_runs import summarize
 TOKEN = re.compile(r'[A-Za-z0-9_.:/+\-]{1,150}\Z')
 TOOL = re.compile(r'[A-Za-z0-9_.-]{1,48}\Z')
 META_FIELDS = ('task_name', 'trial_name', 'task_checksum', 'started_at', 'finished_at',
-               'agent', 'model', 'version', 'score', 'elapsed_sec', 'infrastructure_error',
+               'agent', 'model', 'version', 'score', 'elapsed_sec', 'infrastructure_error', 'exception_type',
                'raw_result_sha256', 'condition_sha256', 'answer_present', 'trajectory_present')
 SAFE_DETAILS = {'missing', 'grounding', 'extraction', 'comparison', 'method', 'calculation', 'format',
                 'credit', 'reported', 'known_baseline_flags', 'other_flags', 'false_positives', 'extra_ids',

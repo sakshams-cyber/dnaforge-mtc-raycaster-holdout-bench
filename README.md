@@ -54,8 +54,9 @@ policy remains to be tested.
 
 Restricted pack access is through the [Raycaster portal](https://www.raycaster.ai/hackathon).
 Each teammate accepts the access terms themselves. Pack files, staged workspaces,
-oracle excerpts and raw jobs stay ignored; manifests stage local copies with
-`scripts/stage.py`. The pack PDF search index is local under `data/text/`.
+and raw jobs stay ignored. Commit verified values and quote offsets; regenerate
+quote-bearing answers from an authorized workspace. The PDF search index stays
+local under `data/text/`.
 
 The owner confirms model improvement is off; training/data sharing must remain off
 for pack work. Keep the GitHub repo private and grant access only to the team and

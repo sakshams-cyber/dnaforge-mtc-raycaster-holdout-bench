@@ -57,7 +57,9 @@ metadata, not independently trusted evidence of correct scientific reasoning.
 
 This is illustrative and not a valid completed gold. Human names, methods,
 evidence, schemas and values must be filled in and independently checked.
-`solution/answer.json` uses the instruction's answer schema and remains ignored.
+Commit an offset-only `solution/oracle_plan.json` for real tasks. The materializer
+builds an answer in the instruction's schema at run time. Keep quote-bearing
+answer files outside Git.
 
 Mapping gold items use id, status and citations (path/page_min/page_max).
 Numeric items use id, reported, recomputed, unit, method, inputs,

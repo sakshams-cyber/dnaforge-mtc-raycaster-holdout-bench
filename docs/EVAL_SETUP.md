@@ -59,8 +59,10 @@ and method; the shared library does not substitute for that work. The template
 has no gold and cannot pass sanity until the team supplies it. Record gold
 verification with `status: human_verified`, `who`, `how`, and source references.
 For mapping, the gold has `answer_schema` and `items` with `id`, `status`, and
-`citations` (`path`, `page_min`, `page_max`). `solution/answer.json` is the oracle
-in the instruction's answer format, including exact source quotes, kept ignored.
+`citations` (`path`, `page_min`, `page_max`). For real tasks, commit the verified
+key and an offset-only `solution/oracle_plan.json`. The materializer regenerates
+the actual oracle answer from staged documents. Keep any quote-bearing answer
+out of Git. The bundled example answers are fictional.
 
 The image copies only `environment/workspace`. Gold and tests are outside the
 agent image. Harbor delivers tests after the attempt. Use schema 1.4, verified
