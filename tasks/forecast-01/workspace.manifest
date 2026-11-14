@@ -1,0 +1,17 @@
+{
+  "cutoff_sequence": "0053",
+  "files": [
+    {
+      "source": "eCTD/0034/m3/32-body-data/32s-drug-sub/oxalate-decarboxylase-mfr-a/32s7-stab/stability-data.pdf",
+      "destination": "0034/stability-data.txt"
+    },
+    {
+      "source": "eCTD/0039/m3/32-body-data/32s-drug-sub/oxalate-decarboxylase-mfr-a/32s7-stab/stability-data.pdf",
+      "destination": "0039/stability-data.txt"
+    },
+    {
+      "source": "eCTD/0053/m3/32-body-data/32s-drug-sub/substance-1-manufacturer-1/32s7-stab/stability-data.pdf",
+      "destination": "0053/stability-data.txt"
+    }
+  ]
+}

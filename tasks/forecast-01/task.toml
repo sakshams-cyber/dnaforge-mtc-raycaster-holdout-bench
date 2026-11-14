@@ -1,0 +1,17 @@
+schema_version = "1.4"
+artifacts = ["/app/output/answer.json", "/app/ENVIRONMENT_PACKAGES.txt"]
+[task]
+name = "holdout/forecast-01"
+description = "Forecast values in submission 0063 from filings up to 0053"
+[metadata]
+pack = "altu-237-ind-100169"
+difficulty_target = "forecast"
+[agent]
+timeout_sec = 1800
+[verifier]
+timeout_sec = 300
+[environment]
+build_timeout_sec = 900
+cpus = 2
+memory_mb = 4096
+workdir = "/app"
