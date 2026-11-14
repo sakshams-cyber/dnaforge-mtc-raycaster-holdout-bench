@@ -2,7 +2,9 @@
 import argparse
 import json
 from pathlib import Path
+import subprocess
 import sys
+from tempfile import TemporaryDirectory
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -17,11 +19,25 @@ def readiness(task, allow_synthetic=False):
     task = Path(task)
     errors = []
     for name in ('task.toml','instruction.md','workspace.manifest','environment/Dockerfile',
-                 'solution/solve.sh','solution/answer.json','tests/test.sh','tests/grade.py','tests/gold.json'):
+                 'solution/solve.sh','tests/test.sh','tests/grade.py','tests/gold.json'):
         if not (task/name).is_file(): errors.append(f'missing {name}')
     gold = load_answer(task/'tests/gold.json')
-    answer = load_answer(task/'solution/answer.json')
     workspace = task/'environment/workspace'
+    plan = task/'solution/oracle_plan.json'
+    answer = None
+    if plan.is_file():
+        try:
+            with TemporaryDirectory() as tmp:
+                output = Path(tmp)/'answer.json'
+                subprocess.run([sys.executable, str(task/'solution/materialize.py'), str(plan),
+                                str(workspace), str(output)], check=True, capture_output=True, timeout=90)
+                answer = load_answer(output)
+        except (OSError, subprocess.SubprocessError):
+            errors.append('oracle plan could not be materialized from the staged workspace')
+    else:
+        answer = load_answer(task/'solution/answer.json')
+    if answer is None:
+        errors.append('missing valid local oracle answer or offset plan')
     if not workspace.is_dir() or not any(p.is_file() for p in workspace.rglob('*')):
         errors.append('workspace not staged')
     if gold:
@@ -48,6 +64,8 @@ def readiness(task, allow_synthetic=False):
                         errors.append('answer.schema.json differs from task grader schema')
                 else:
                     schema = gold['answer_schema']
+                    if gold.get('kind') == 'discrepancy' and load_answer(task/'answer.schema.json') != schema:
+                        errors.append('answer.schema.json differs from discrepancy gold schema')
                 if validate(answer, schema): errors.append('oracle violates answer schema')
             except (KeyError, StopIteration, ValueError):
                 errors.append('unsupported or missing answer schema')

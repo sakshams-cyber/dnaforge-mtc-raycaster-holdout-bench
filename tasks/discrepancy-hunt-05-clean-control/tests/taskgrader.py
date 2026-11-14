@@ -348,6 +348,12 @@ def discrepancy(items, gold, workspace):
     # Include every extra finding in the denominator without allowing one
     # correct item to erase a phantom citation or a repeated finding.
     score = earned / (len(targets) + false_positives) if gold.get('penalize_false_positives') else earned / len(targets)
+    criteria = [{'id': f'C{i:02}', 'item_id': target['id'],
+                 'desc': 'Locate and correct the finding with grounded evidence',
+                 'passed': bool(rows[target['id']]['credit'])}
+                for i, target in enumerate(targets, 1)]
     return score, {'items': rows, 'kind': 'discrepancy', 'reported': len(items),
                    'known_baseline_flags': baseline_flags, 'other_flags': others,
+                   'criteria': criteria, 'criteria_met': earned, 'criteria_total': len(criteria),
+                   'pass': score >= 0.9999,
                    'false_positives': false_positives}

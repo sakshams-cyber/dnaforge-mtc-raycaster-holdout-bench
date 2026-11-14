@@ -335,7 +335,7 @@ def write_score(score, details, output_dir=None):
     out = Path(output_dir or os.environ.get('HOLDOUT_SCORE_DIR', '/logs/verifier'))
     out.mkdir(parents=True, exist_ok=True)
     (out / 'reward.txt').write_text(f'{score:.12g}\n')
-    result = {'score': score, 'details': details}
+    result = {'score': score, 'reward': score, 'details': details}
     if 'criteria' in details:
         result.update({key: details[key] for key in ('criteria', 'criteria_met', 'criteria_total', 'pass')})
     (out / 'score.json').write_text(json.dumps(result, indent=2, allow_nan=False)+'\n')
