@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "source": "response.txt",
+      "destination": "response.txt"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "kind": "numeric",
+  "answer_schema": {
+    "type": "object",
+    "required": [
+      "items"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "reported",
+            "recomputed",
+            "unit",
+            "method",
+            "inputs",
+            "matches_reported"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "reported": {
+              "type": "number"
+            },
+            "recomputed": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string"
+            },
+            "method": {
+              "type": "string",
+              "enum": [
+                "mean",
+                "median"
+              ]
+            },
+            "inputs": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "path",
+                  "sheet",
+                  "row",
+                  "col",
+                  "value"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "sheet": {
+                    "type": "string"
+                  },
+                  "row": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "col": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "matches_reported": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "synthetic-mean",
+      "reported": 12,
+      "recomputed": 10,
+      "unit": "mg",
+      "method": "mean",
+      "inputs": [
+        {
+          "path": "raw.csv",
+          "sheet": "csv",
+          "row": 2,
+          "col": "B",
+          "value": "9"
+        },
+        {
+          "path": "raw.csv",
+          "sheet": "csv",
+          "row": 3,
+          "col": "B",
+          "value": "11"
+        }
+      ],
+      "matches_reported": false,
+      "rtol": 0.001,
+      "atol": 0
+    }
+  ],
+  "verification": {
+    "status": "synthetic_fixture",
+    "who": "programmatic arithmetic fixture",
+    "how": "mean of 9 and 11 is 10; fictional reported value is 12"
+  }
+}

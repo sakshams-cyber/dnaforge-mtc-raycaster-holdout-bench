@@ -1,0 +1,17 @@
+schema_version = "1.4"
+artifacts = ["/app/output/answer.json", "/app/ENVIRONMENT_PACKAGES.txt"]
+[task]
+name = "holdout/numeric-smoke"
+description = "Fictional numeric grader validation only"
+[metadata]
+pack = "pending human selection"
+difficulty_target = "10-30 min"
+[agent]
+timeout_sec = 1800
+[verifier]
+timeout_sec = 300
+[environment]
+build_timeout_sec = 900
+cpus = 2
+memory_mb = 4096
+workdir = "/app"

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holdout — find the clinical hold before the FDA does</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/web/styles.css">
+</head>
+<body>
+<header class="bar">
+  <div class="brand">
+    <span class="mark" aria-hidden="true"></span>
+    <span class="name">Holdout</span>
+    <span class="tagline">Find the clinical hold before the FDA does</span>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab-btn active" data-tab="review" role="tab">Review</button>
+    <button class="tab-btn" data-tab="memo" role="tab">Memo</button>
+    <button class="tab-btn" data-tab="bench" role="tab">Benchmark</button>
+  </nav>
+  <div class="actions">
+    <button id="demoBtn" class="btn">Load demo filing</button>
+    <label class="btn primary">Upload filing<input id="fileInput" type="file" accept=".pdf,.md,.txt" hidden></label>
+  </div>
+</header>
+
+<div id="status" class="status hidden"></div>
+
+<main>
+  <section id="empty" class="empty">
+    <h1>Upload an IND filing to review it.</h1>
+    <p>Holdout reads the filing, extracts every NOAEL, starting dose, study and duration with its page,
+      then runs deterministic checks from FDA and ICH guidance. Every flag links to the pages it rests on.</p>
+    <p class="muted">No filing handy? <a href="#" id="demoLink">Load the synthetic demo filing</a> (fictional compound HX-101, five planted issues).</p>
+  </section>
+
+  <section id="review" class="tab hidden">
+    <aside class="map">
+      <div class="file-name" id="fileName"></div>
+      <div class="counts" id="counts"></div>
+      <h3>Document map</h3>
+      <ol class="sections" id="sections"></ol>
+      <div class="meta muted" id="meta"></div>
+    </aside>
+    <div class="center">
+      <div class="panel" id="dosePanel"></div>
+      <div id="findings"></div>
+    </div>
+    <div class="viewer">
+      <div class="viewer-head" id="viewerHead">Select a finding or a page</div>
+      <div class="viewer-body" id="viewerBody"></div>
+    </div>
+  </section>
+
+  <section id="memo" class="tab hidden">
+    <div class="memo-tools">
+      <button class="btn" id="copyMemo">Copy markdown</button>
+      <button class="btn" id="downloadMemo">Download .md</button>
+    </div>
+    <article class="memo" id="memoBody"></article>
+  </section>
+
+  <section id="bench" class="tab hidden">
+    <div class="bench" id="benchBody"></div>
+  </section>
+</main>
+
+<script src="/web/app.js"></script>
+</body>
+</html>
