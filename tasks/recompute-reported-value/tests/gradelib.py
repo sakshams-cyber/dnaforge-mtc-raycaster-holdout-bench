@@ -53,7 +53,8 @@ def validate(answer, schema_dict):
                  'boolean': lambda v: type(v) is bool,
                  'null': lambda v: v is None}
         kind = schema.get('type')
-        if kind and (kind not in types or not types[kind](value)):
+        kinds = kind if isinstance(kind, list) else [kind]
+        if kind and not any(k in types and types[k](value) for k in kinds):
             errors.append(f'{where}: expected {kind}')
             return
         if 'enum' in schema and not any(type(value) is type(v) and value == v for v in schema['enum']):
@@ -167,7 +168,7 @@ def quote_in_file(quote, path, page=None, min_len=20):
 
 
 def cell_value(path, sheet, row, col):
-    """Coordinates are 1-based; CSV sheet must be None, empty, or 'csv'."""
+    """Coordinates are 1-based; flat tables use an empty or format-named sheet."""
     if type(row) is not int or row < 1:
         return None
     if isinstance(col, str):
@@ -181,11 +182,18 @@ def cell_value(path, sheet, row, col):
         return None
     p = Path(path)
     try:
-        if p.suffix.lower() == '.csv':
-            if sheet not in (None, '', 'csv'):
+        if p.suffix.lower() in {'.csv', '.tsv'}:
+            fmt = p.suffix.lower()[1:]
+            if sheet not in (None, '', fmt):
                 return None
-            with p.open(newline='', encoding='utf-8-sig') as f:
-                rows = list(csv.reader(f))
+            delim = '\t' if fmt == 'tsv' else ','
+            for encoding in ('utf-8-sig', 'latin-1'):
+                try:
+                    with p.open(newline='', encoding=encoding) as f:
+                        rows = list(csv.reader(f, delimiter=delim))
+                    break
+                except UnicodeDecodeError:
+                    continue
             return rows[row-1][col-1] if row <= len(rows) and col <= len(rows[row-1]) else None
         if p.suffix.lower() == '.xlsx':
             from openpyxl import load_workbook
@@ -279,7 +287,7 @@ def location_key(ref, workspace):
             n = 0
             for ch in col.upper(): n = n*26+ord(ch)-64
             col = n
-        return (path, sheet or 'csv', row, col)
+        return (path, sheet or Path(path).suffix.lower()[1:], row, col)
     page = ref.get('page')
     try:
         if type(page) is int and 1 <= page <= len(file_pages(Path(workspace)/path)):
@@ -324,5 +332,8 @@ def write_score(score, details, output_dir=None):
     out = Path(output_dir or os.environ.get('HOLDOUT_SCORE_DIR', '/logs/verifier'))
     out.mkdir(parents=True, exist_ok=True)
     (out / 'reward.txt').write_text(f'{score:.12g}\n')
-    (out / 'score.json').write_text(json.dumps({'score': score, 'details': details}, indent=2, allow_nan=False)+'\n')
+    result = {'score': score, 'details': details}
+    if 'criteria' in details:
+        result.update({key: details[key] for key in ('criteria', 'criteria_met', 'criteria_total', 'pass')})
+    (out / 'score.json').write_text(json.dumps(result, indent=2, allow_nan=False)+'\n')
     return score

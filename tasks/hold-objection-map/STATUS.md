@@ -1,7 +1,5 @@
 # Not ready for agent runs
 
-Selected for the benchmark. Human question, source manifest, gold, and verification are pending.
-
-Map FDA hold objections to sponsor responses; human-selected source documents and statuses pending.
-
-The inherited mapping grader is a starting template only. It must be adapted to this task's exact answer schema and verified gold before any score is valid.
+T1-B is active because the hold folder contains no qualifying sponsor response.
+The hold letter is staged as the request. The human must identify the numbered
+items and filed IND evidence and verify the answer key before running agents.

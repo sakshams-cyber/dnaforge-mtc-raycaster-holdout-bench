@@ -3,19 +3,21 @@ from pathlib import Path
 import re
 
 try:
-    from .gradelib import (evidence_check, load_answer, location_key, norm_path,
+    from .gradelib import (evidence_check, file_pages, load_answer, location_key, norm_path,
                           primary_failure, quantity_close, quote_in_file, validate, parse_number,
                           norm_text)
 except ImportError:  # Standalone copy under /tests
-    from gradelib import (evidence_check, load_answer, location_key, norm_path,
+    from gradelib import (evidence_check, file_pages, load_answer, location_key, norm_path,
                          primary_failure, quantity_close, quote_in_file, validate, parse_number,
                          norm_text)
 
 
-def grade(answer_path, workspace, gold_path):
+def grade(answer_path, workspace, gold_path, task_kind=None):
     gold = load_answer(gold_path)
     if not gold or not gold.get('items'):
         return 0, {'grader_error': 'missing_or_empty_gold'}
+    if task_kind is not None:
+        return grade_v2(load_answer(answer_path), workspace, gold, task_kind)
     verification = gold.get('verification', {})
     if verification.get('status') not in {'human_verified', 'synthetic_fixture'}:
         return 0, {'grader_error': 'unverified_gold'}
@@ -63,6 +65,152 @@ def grade(answer_path, workspace, gold_path):
     extras = len(set(ids)-set(expected))
     score = max(0, sum(row['credit'] for row in breakdown.values())/len(expected)-0.1*extras)
     return score, {'items': breakdown, 'extra_ids': extras, 'kind': kind}
+
+
+def object_schema(properties):
+    return {'type': 'object', 'properties': properties, 'required': list(properties),
+            'additionalProperties': False}
+
+
+TEXT = {'type': 'string', 'minLength': 1}
+PAGE_CITE = object_schema({'path': TEXT, 'page': {'type': 'integer', 'minimum': 1}, 'quote': TEXT})
+STATUSES = {'objection': ('present', 'partially_present', 'absent'),
+            'activity': ('permitted', 'not_permitted')}
+CATEGORIES = ('hold_deficiency', 'non_hold_comment')
+TASK_IDS = {'objection': 'hold-objection-map', 'activity': 'hold-scope'}
+
+
+def answer_schema(kind):
+    fields = {'id': TEXT, 'status': {'type': 'string', 'enum': list(STATUSES[kind])}}
+    if kind == 'objection':
+        fields['category'] = {'type': 'string', 'enum': list(CATEGORIES)}
+        fields['cite'] = {**PAGE_CITE, 'type': ['object', 'null']}
+    else:
+        fields['cite'] = PAGE_CITE
+    return object_schema({answer_key(kind): {'type': 'array', 'items': object_schema(fields)}})
+
+
+def answer_key(kind):
+    return 'activities' if kind == 'activity' else 'items'
+
+
+def page_bounds(path, low, high, workspace):
+    actual = norm_path(path, workspace)
+    if actual is None or type(low) is not int or type(high) is not int:
+        raise ValueError('Invalid gold citation location')
+    if not 1 <= low <= high <= len(file_pages(Path(workspace) / actual)):
+        raise ValueError('Gold citation out of bounds')
+    return actual, low, high
+
+
+def checked_citations(target, workspace, kind):
+    expected, accept = target['expected'], target['accept']
+    if expected['status'] not in STATUSES[kind]:
+        raise ValueError('Invalid gold status')
+    if kind == 'objection':
+        if expected['objection_id'] != target['item_id']:
+            raise ValueError('Objection ID differs from the gold item ID')
+        if expected.get('category') not in CATEGORIES:
+            raise ValueError('Missing or invalid objection category')
+        source = accept['objection_cite']
+        letter, _, _ = page_bounds(source['path'], source['page'], source['page'], workspace)
+        refs = accept['filed_cites']
+        if not isinstance(refs, list):
+            raise ValueError('Gold filed_cites must be a list')
+        if expected['status'] == 'absent':
+            if refs:
+                raise ValueError('Absent gold must not claim filed evidence')
+            return []
+    else:
+        if not isinstance(expected.get('activity'), str) or not expected['activity'].strip():
+            raise ValueError('Missing human description for hold activity')
+        refs = accept['decisive_cites']
+    citations = []
+    for ref in refs:
+        low, high = ref['page_range'] if 'page_range' in ref else (ref['page'], ref['page'])
+        location = page_bounds(ref['path'], low, high, workspace)
+        if kind == 'objection' and location[0] == letter:
+            raise ValueError('The hold letter is the ask, not filed IND evidence')
+        citations.append(location)
+    if not citations:
+        raise ValueError('Missing gold citation')
+    return citations
+
+
+def grade_v2(answer, workspace, gold, kind):
+    if gold.get('schema_version') != 2 or gold.get('task_id') != TASK_IDS[kind]:
+        return 0, {'grader_error': 'gold_schema_or_task_mismatch'}
+    verification = gold.get('verification', {})
+    if not all(isinstance(verification.get(k), str) and verification[k].strip()
+               for k in ('verified_by', 'verified_at', 'method')):
+        return 0, {'grader_error': 'unverified_gold'}
+    if verification.get('status') not in (None, 'human_verified', 'synthetic_fixture'):
+        return 0, {'grader_error': 'unverified_gold'}
+    expected = {}
+    for target in gold['items']:
+        key = target['item_id']
+        if not isinstance(key, str) or not key.strip() or key in expected or target['kind'] != kind:
+            return 0, {'grader_error': 'invalid_gold_item'}
+        expected[key] = target
+    criteria = gold.get('criteria', [])
+    criterion_ids = [row['id'] for row in criteria]
+    if (len(criterion_ids) != len(set(criterion_ids)) or sorted(row['item_id'] for row in criteria) != sorted(expected)
+            or any(not isinstance(cid, str) or not cid.strip() for cid in criterion_ids)):
+        return 0, {'grader_error': 'invalid_gold_criteria'}
+    citations = {key: checked_citations(target, workspace, kind) for key, target in expected.items()}
+    schema = answer_schema(kind)
+    key_name = answer_key(kind)
+    if kind == 'activity':
+        # A missing citation loses citation credit. Allow the status-only probe
+        # to measure status leakage instead of merely testing output syntax.
+        row = schema['properties'][key_name]['items']
+        row['required'].remove('cite')
+        row['properties']['cite'] = {**PAGE_CITE, 'type': ['object', 'null']}
+    errors = ['missing_or_invalid_json'] if answer is None else validate(answer, schema)
+    items = [] if errors else answer[key_name]
+    ids = [item['id'] for item in items]
+    if len(items) > 2 * len(expected) or len(ids) != len(set(ids)):
+        errors = ['overlisting_or_duplicate_ids']
+        items = []
+    names = ('category', 'status', 'citation') if kind == 'objection' else ('status', 'citation')
+    breakdown = {key: {'credit': 0, 'missing': True, 'primary_failure': 'missing',
+                       'criteria_checks': dict.fromkeys(names, False)} for key in expected}
+    for item in items:
+        key = item['id']
+        if key not in expected:
+            continue
+        status = expected[key]['expected']['status']
+        ref = item.get('cite')
+        status_correct = item['status'] == status
+        if kind == 'objection' and ((ref is None) != (item['status'] == 'absent')):
+            status_correct = False
+        if ref is None:
+            allowed = grounded = kind == 'objection' and status == 'absent'
+        else:
+            path = norm_path(ref['path'], workspace)
+            page = ref['page']
+            exists = path is not None and location_key({'path': path, 'page': page}, workspace) is not None
+            status_correct = status_correct and exists
+            allowed = exists and any(path == accepted and low <= page <= high for accepted, low, high in citations[key])
+            grounded = bool(status_correct and allowed and quote_in_file(ref['quote'], Path(workspace) / path, page))
+        marks = {'status': bool(status_correct), 'citation': grounded}
+        if kind == 'objection':
+            marks['category'] = item['category'] == expected[key]['expected']['category']
+        checks = {'grounding': grounded, 'comparison': all(marks[c] for c in marks if c != 'citation')}
+        breakdown[key] = {'checks': checks, 'credit': sum(marks.values())/len(names),
+                          'criteria_checks': marks, 'citation_allowed': bool(allowed),
+                          'primary_failure': primary_failure(checks)}
+    extra = len(set(ids) - expected.keys())
+    expanded = [{'id': f"{row['id']}.{name}", 'item_id': row['item_id'], 'check': name,
+                 'passed': breakdown[row['item_id']]['criteria_checks'][name]}
+                for row in criteria for name in names]
+    met = sum(row['passed'] for row in expanded)
+    score = 0 if errors else max(0, met / len(expanded) - (0.05 * extra if kind == 'objection' else 0))
+    details = {'items': breakdown, 'kind': kind, 'criteria_met': met, 'criteria_total': len(expanded),
+               'pass': score == 1, 'criteria': expanded, 'extra_ids': extra}
+    if errors:
+        details.update(primary_failure='format', errors=errors)
+    return score, details
 
 
 def numeric_item(item, target, workspace):

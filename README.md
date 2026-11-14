@@ -1,53 +1,68 @@
-# Holdout-Bench — DNAForge × MTC AI × Biology Hackathon
+# Holdout-Bench: can AI agents do an FDA reviewer's job on a real siRNA IND?
 
-**Raycaster track · Public code and synthetic examples**
+- **Team ID:** pending team entry
+- **Sponsor prizes entered:** Raycaster intended; opt-in submission pending
 
-Holdout-Bench tests whether an AI agent can do parts of a regulatory review:
-trace objections to responses, recompute reported values, and verify evidence.
-This is the public companion for the Nov 14, 2026 Berkeley hackathon project.
+## Problem
 
-## What is available
+Regulatory reviewers must reconcile correspondence, recompute scientific results,
+and verify evidence across filings. We aim to test whether AI agents can do that
+work with answers a human can check against the source documents.
 
-- Five unscored task templates covering objection mapping, recomputation,
-  discrepancy hunting, sequence checking, and required-study mapping.
-- Deterministic graders for citation grounding and numerical checks, plus
-  workspace staging, task fingerprints, and Harbor run collection.
-- Two runnable fictional tasks: objection mapping and numeric recomputation.
-- Local [pack index setup](docs/PACKINDEX.md): Phase 0 discovery and a SQLite schema.
+## What we built
 
-## Try the synthetic tasks
+Evaluation infrastructure and three selected task scaffolds: hold scope, whether
+the filed IND contained what the hold letter requested, and raw-data recomputation.
+Shared tools validate citations, units and exact spreadsheet locations, preserve
+source layout, fingerprint tasks, run adversarial sanity probes, and collect
+configuration-separated agent results with failure diagnostics.
 
-With Python 3.12:
+**Incomplete:** reviewer item lists, human-verified gold,
+and real agent runs. No real regulatory task is ready yet. The earlier review-app
+scaffold is retained as disclosed reference, outside the current deliverable.
+
+## Run or view the demo
+
+Python 3.12 dependencies and Harbor are installed locally. From the repo root:
 
 ```bash
-python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements-eval.txt
-make eval-smoke eval-numeric-smoke
-python -m pytest -q
+make eval-smoke
+./demo.sh examples/plumbing-smoke
 ```
 
-The smoke tests run locally without an API key or container. They exercise
-empty, wrong, and adversarial answers as well as the verified fictional
-answers. The typical result is 0 for invalid answers and 1 for the oracle.
+The fictional tasks return 0 for invalid answers and 1 for the reference answer.
+Harbor's fictional container oracle scored 1.0 on local Docker (Colima).
+For authorized pack holders, staging and per-task sanity/oracle commands are in
+[environment instructions](docs/EVAL_SETUP.md). Real-data demos require the local
+workspace and verified gold; run evidence is not yet available.
 
 ## Evidence and limitations
 
-The fictional tasks test the infrastructure. This release contains no
-completed real-filing tasks, human-verified regulatory answers, or real
-model results. See [provenance](DISCLOSURE.md) for the split between the
-pre-event scaffold and the event-day evaluation work.
+55 tests pass across the legacy scaffold and new eval tools. Synthetic sanity
+probes cover missing/empty/wrong answers, nonexistent citations, quote stuffing,
+overlisting and wrong pages. These checks do not establish scientific validity.
+The [four-paper methods review](docs/RESEARCH_SYNTHESIS_AND_CHANGES.md) explains
+the implemented safeguards; [usage commands](docs/EVAL_ENHANCEMENTS_USAGE.md)
+cover local source tools, readiness checks and experiment snapshots.
+See [WRITEUP.md](WRITEUP.md), [task status](tasks/README.md), and [run status](runs/README.md).
+No model comparison, regulatory findings, or v1/v2 improvement is claimed yet.
+The planned evaluation is limited to one IND and a small sample; its network
+policy remains to be tested.
 
 ## Data and permissions
 
-The Raycaster filing pack remains restricted. Authorized participants can
-obtain it directly through the [Raycaster portal](https://www.raycaster.ai/hackathon).
-Use the local tools on your own authorized download. Keep pack files, extracts,
-staged workspaces, source-derived answers, and real run logs out of this public
-repository. The official judged repository is subject to the event's private
-repository requirement.
+Restricted pack access is through the [Raycaster portal](https://www.raycaster.ai/hackathon).
+Each teammate accepts the access terms themselves. Pack files, staged workspaces,
+oracle excerpts and raw jobs stay ignored; manifests stage local copies with
+`scripts/stage.py`. The pack PDF search index is local under `data/text/`.
+
+The owner confirms model improvement is off; training/data sharing must remain off
+for pack work. Keep the GitHub repo private and grant access only to the team and
+reviewers. [DISCLOSURE.md](DISCLOSURE.md) distinguishes the pre-event scaffold from
+event-day work. Paperclip is optional for outside public sources only.
 
 ## Next step
 
-Complete one task with an independently verified answer, validate its grader
-against adversarial answers, and compare agent attempts on that task.
+Complete and human-verify the hold-objection task, then run two agents twice to
+identify a concrete search or grounding failure before expanding the task set.

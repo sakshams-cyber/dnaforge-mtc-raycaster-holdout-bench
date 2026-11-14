@@ -7,13 +7,16 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def sync(task, check=False):
-    names = ['gradelib.py', 'taskgrader.py']
-    gold = Path(task)/'tests'/'gold.json'
+    task = Path(task)
+    pairs = [(ROOT/'graders'/name, task/'tests'/name) for name in ('gradelib.py', 'taskgrader.py')]
+    if (task/'solution/materialize.py').exists():
+        pairs.extend([(ROOT/'scripts/materialize_oracle.py', task/'solution/materialize.py'),
+                      (ROOT/'graders/gradelib.py', task/'solution/gradelib.py')])
+    gold = task/'tests'/'gold.json'
     if gold.exists() and json.loads(gold.read_text()).get('kind') == 'forecast':
-        names.append('forecastgrader.py')
-    for name in names:
-        source = (ROOT/'graders'/name).read_bytes()
-        dest = Path(task)/'tests'/name
+        pairs.append((ROOT/'graders/forecastgrader.py', task/'tests/forecastgrader.py'))
+    for src, dest in pairs:
+        source = src.read_bytes()
         if check:
             if not dest.exists() or dest.read_bytes() != source:
                 raise ValueError(f'Stale verifier library: {dest}')

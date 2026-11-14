@@ -27,8 +27,6 @@ examples/*/environment/workspace.receipt.json
 
 boltz-experiments/
 
-# Real run records and reference answers stay in the private project.
+# Keep generated run exports local until reviewed for pack confidentiality.
 runs/*
 !runs/README.md
-tasks/*/tests/gold.json
-tasks/*/solution/oracle_plan.json

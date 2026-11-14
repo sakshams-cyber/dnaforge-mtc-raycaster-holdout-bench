@@ -7,6 +7,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from graders.gradelib import load_answer, location_key, validate
+from graders.taskgrader import TASK_IDS, answer_schema
 from scripts.eval_provenance import task_fingerprint
 from scripts.sync_gradelib import sync
 from scripts.sync_environment import sync_environment
@@ -26,20 +27,23 @@ def readiness(task, allow_synthetic=False):
     if gold:
         record = gold.get('verification', {})
         statuses = {'human_verified'} | ({'synthetic_fixture'} if allow_synthetic else set())
-        if record.get('status') not in statuses or not record.get('who') or not record.get('how'):
+        v2 = gold.get('schema_version') == 2
+        status = record.get('status', 'human_verified' if v2 else None)
+        identity = ('verified_by', 'verified_at', 'method') if v2 else ('who', 'how')
+        if status not in statuses or not all(isinstance(record.get(k), str) and record[k].strip() for k in identity):
             errors.append('missing human verification identity/method')
         evidence = record.get('evidence', [])
         if gold.get('kind') == 'forecast':
             # A forecast is not answerable from the workspace by design. The human attests
             # instead that each value was read from the held-back filing and is absent here.
-            if record.get('status') != 'synthetic_fixture':
+            if status != 'synthetic_fixture':
                 if record.get('absent_from_workspace') is not True:
                     errors.append('human attestation that gold values are absent from the workspace is missing')
                 if not all(isinstance(t.get('source'), dict) and t['source'].get('page') for t in gold['items']):
                     errors.append('each forecast target needs its source page in the held-back filing')
             if not gold.get('cutoff_sequence') or not gold.get('target_sequence'):
                 errors.append('forecast gold needs cutoff_sequence and target_sequence')
-        elif record.get('status') != 'synthetic_fixture':
+        elif status != 'synthetic_fixture':
             if not evidence or record.get('answerable_from_workspace') is not True:
                 errors.append('human answerability attestation/evidence missing')
         for ref in evidence:
@@ -47,8 +51,15 @@ def readiness(task, allow_synthetic=False):
                 errors.append('verification cites nonexistent evidence')
         if answer is not None:
             try:
-                if validate(answer, gold['answer_schema']): errors.append('oracle violates answer schema')
-            except (KeyError, ValueError):
+                if v2:
+                    kind = next(key for key, slug in TASK_IDS.items() if slug == task.name == gold['task_id'])
+                    schema = answer_schema(kind)
+                    if load_answer(task/'answer.schema.json') != schema:
+                        errors.append('answer.schema.json differs from task grader schema')
+                else:
+                    schema = gold['answer_schema']
+                if validate(answer, schema): errors.append('oracle violates answer schema')
+            except (KeyError, StopIteration, ValueError):
                 errors.append('unsupported or missing answer schema')
     else:
         errors.append('missing valid gold')
