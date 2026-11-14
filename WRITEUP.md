@@ -16,7 +16,10 @@ reference answers 1. Both v2 Harbor oracles and the hold-scope oracle scored 1.0
 (one attempt per model per case). The v2 agent trials did not yield scores:
 the original setup timed out in seven trials, and Anthropic rejected the
 credential on the eight attempts that reached authentication. See
-[runs/SUMMARY.md](runs/SUMMARY.md).
+[runs/SUMMARY.md](runs/SUMMARY.md). Both hold-scope runs got all eight statuses right and missed two citation
+allowlists (14/16 criteria). The reviewer approved a CFR citation for act-7;
+[replaying the two existing answers](runs/T5_REGRADE.md) gave 15/16 each. This
+was a grader change, with no new model call.
 
 **Iteration.** v1 had a score ceiling and did not penalize unsupported extras.
 We removed target hints, added complete reports and distractors, and made

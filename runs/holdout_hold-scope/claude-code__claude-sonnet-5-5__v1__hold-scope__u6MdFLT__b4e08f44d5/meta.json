@@ -1,0 +1,35 @@
+{
+  "task_name": "holdout/hold-scope",
+  "trial_name": "hold-scope__u6MdFLT",
+  "task_checksum": "248782bee0b58ecf92c80c121a27ab79326db2e303f5c24cbad1a476f2d26a4f",
+  "started_at": "2026-11-14T23:38:05.058989Z",
+  "finished_at": "2026-11-14T23:39:07.352477Z",
+  "agent": "claude-code",
+  "model": "claude-sonnet-5-5",
+  "version": "v1",
+  "score": 0.875,
+  "elapsed_sec": 62.293488,
+  "infrastructure_error": false,
+  "exception_type": null,
+  "raw_result_sha256": "64ac9d819fa62ba2b67aede36f11ba91042e4464a5497f1e714e0b455512463e",
+  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
+  "answer_present": true,
+  "trajectory_present": true,
+  "usage": {
+    "n_input_tokens": 120868,
+    "n_cache_tokens": 105684,
+    "n_output_tokens": 2766,
+    "cost_usd": 0.0761824
+  },
+  "diagnostics": {
+    "correct": 6,
+    "grounding": 2
+  },
+  "agent_configuration": {
+    "sha256": "33b3469123ae8c49ce14ad53d89ad83eafe8dd476568a7b306d06d6cb1868764"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
+}

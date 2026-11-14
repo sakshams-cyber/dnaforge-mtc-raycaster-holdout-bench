@@ -1,0 +1,33 @@
+{
+  "task": "hold-scope",
+  "change": "Accept 21 CFR 312.42 page 1 as alternate evidence for act-7",
+  "new_gold_sha256": "b5b265c6a19fffa1121df0da679fc82a770f279649ba39123a61c65ce490cefc",
+  "replays": [
+    {
+      "trial": "holdout_hold-scope/claude-code__claude-sonnet-5-5__v1__hold-scope__u6MdFLT__b4e08f44d5",
+      "original_reward": 0.875,
+      "replayed_reward": 0.9375,
+      "original_criteria_met": 14,
+      "replayed_criteria_met": 15,
+      "criteria_total": 16,
+      "changed_criteria": [
+        "C07.citation"
+      ],
+      "new_model_call": false,
+      "answer_sha256": "95836565ec292f3f321d9181c0cf898e44e93b145e9707b996805c7ae838dd54"
+    },
+    {
+      "trial": "holdout_hold-scope/claude-code__claude-sonnet-5-5__v1__hold-scope__47VtYxD__a7171ef223",
+      "original_reward": 0.875,
+      "replayed_reward": 0.9375,
+      "original_criteria_met": 14,
+      "replayed_criteria_met": 15,
+      "criteria_total": 16,
+      "changed_criteria": [
+        "C07.citation"
+      ],
+      "new_model_call": false,
+      "answer_sha256": "28951b7cdc530ea01299d19d9f5399066a41b1a2c159359a151c90728778a804"
+    }
+  ]
+}

@@ -37,7 +37,10 @@ tasks (one scored attempt per model per task). The follow-up gives agents longer
 reports and fewer hints and penalizes unsupported findings. Different task
 designs mean the version scores are descriptive rather than paired. Both
 follow-up oracles scored 1.0 in local Harbor. Anthropic authentication blocked
-the scored v2 attempts; setup and authentication failures are listed separately.
+the first v2 attempts; setup and authentication failures are listed separately.
+Sonnet scored 0.875 (14/16 criteria) on both hold-scope attempts. A single
+reviewer-approved citation addition raised both [saved-answer replays](runs/T5_REGRADE.md)
+to 0.9375 (15/16).
 
 ## Data and permissions
 

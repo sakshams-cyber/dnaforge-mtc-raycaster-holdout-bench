@@ -20,7 +20,13 @@
         "path": "public/21-cfr-312.42.txt",
         "page": 1
       }
-    ]
+    ],
+    "citation_addendum": {
+      "item_id": "act-7",
+      "reviewer": "Saksham Srivastava",
+      "verified_at": "2026-11-14T15:42:23-08:00",
+      "reason": "Approved CFR page 1 as alternate evidence for the notification requirement."
+    }
   },
   "criteria": [
     {
@@ -173,6 +179,10 @@
           {
             "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
             "page": 2
+          },
+          {
+            "path": "public/21-cfr-312.42.txt",
+            "page": 1
           }
         ]
       }

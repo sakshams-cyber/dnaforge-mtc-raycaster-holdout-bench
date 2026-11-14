@@ -27,4 +27,13 @@ examples/*/environment/workspace.receipt.json
 
 boltz-experiments/
 
+# Local sponsor setup and reference materials.
+boltz-smoke/
+AGENTS_PAPERCLIP.md
+docs/PLAYBOOK.pdf
+
+# A draft may still be staged locally for review.
+templates/unused/*/environment/workspace/
+templates/unused/*/environment/workspace.receipt.json
+
 # Keep generated run exports local until reviewed for pack confidentiality.

@@ -1,0 +1,191 @@
+{
+  "score": 0.875,
+  "reward": 0.875,
+  "criteria_met": 14,
+  "criteria_total": 16,
+  "pass": false,
+  "criteria": [
+    {
+      "id": "C01.status",
+      "item_id": "act-1",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C01.citation",
+      "item_id": "act-1",
+      "check": "citation",
+      "passed": true
+    },
+    {
+      "id": "C02.status",
+      "item_id": "act-2",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C02.citation",
+      "item_id": "act-2",
+      "check": "citation",
+      "passed": true
+    },
+    {
+      "id": "C03.status",
+      "item_id": "act-3",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C03.citation",
+      "item_id": "act-3",
+      "check": "citation",
+      "passed": true
+    },
+    {
+      "id": "C04.status",
+      "item_id": "act-4",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C04.citation",
+      "item_id": "act-4",
+      "check": "citation",
+      "passed": true
+    },
+    {
+      "id": "C05.status",
+      "item_id": "act-5",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C05.citation",
+      "item_id": "act-5",
+      "check": "citation",
+      "passed": true
+    },
+    {
+      "id": "C06.status",
+      "item_id": "act-6",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C06.citation",
+      "item_id": "act-6",
+      "check": "citation",
+      "passed": false
+    },
+    {
+      "id": "C07.status",
+      "item_id": "act-7",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C07.citation",
+      "item_id": "act-7",
+      "check": "citation",
+      "passed": false
+    },
+    {
+      "id": "C08.status",
+      "item_id": "act-8",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C08.citation",
+      "item_id": "act-8",
+      "check": "citation",
+      "passed": true
+    }
+  ],
+  "details": {
+    "extra_ids": 0,
+    "items": {
+      "act-1": {
+        "checks": {
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1.0,
+        "criteria_checks": {},
+        "citation_allowed": true,
+        "primary_failure": "correct"
+      },
+      "act-2": {
+        "checks": {
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1.0,
+        "criteria_checks": {},
+        "citation_allowed": true,
+        "primary_failure": "correct"
+      },
+      "act-3": {
+        "checks": {
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1.0,
+        "criteria_checks": {},
+        "citation_allowed": true,
+        "primary_failure": "correct"
+      },
+      "act-4": {
+        "checks": {
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1.0,
+        "criteria_checks": {},
+        "citation_allowed": true,
+        "primary_failure": "correct"
+      },
+      "act-5": {
+        "checks": {
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1.0,
+        "criteria_checks": {},
+        "citation_allowed": true,
+        "primary_failure": "correct"
+      },
+      "act-6": {
+        "checks": {
+          "grounding": false,
+          "comparison": true
+        },
+        "credit": 0.5,
+        "criteria_checks": {},
+        "citation_allowed": false,
+        "primary_failure": "grounding"
+      },
+      "act-7": {
+        "checks": {
+          "grounding": false,
+          "comparison": true
+        },
+        "credit": 0.5,
+        "criteria_checks": {},
+        "citation_allowed": false,
+        "primary_failure": "grounding"
+      },
+      "act-8": {
+        "checks": {
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1.0,
+        "criteria_checks": {},
+        "citation_allowed": true,
+        "primary_failure": "correct"
+      }
+    },
+    "kind": "activity"
+  }
+}

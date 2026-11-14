@@ -1,0 +1,29 @@
+{
+  "task_name": "holdout/hold-scope",
+  "trial_name": "hold-scope__mGqk4Y3",
+  "task_checksum": "651c55795efddfa4b1f60ad92e8d8d3e2acd4d0a0e6c6f441d216317c6bab72a",
+  "started_at": "2026-11-14T23:42:40.535246Z",
+  "finished_at": "2026-11-14T23:42:59.536387Z",
+  "agent": "oracle",
+  "model": "none",
+  "version": "v2",
+  "score": 1.0,
+  "elapsed_sec": 19.001141,
+  "infrastructure_error": false,
+  "exception_type": null,
+  "raw_result_sha256": "b712beaaa3549485fccc81514334c73b6ca0d81f7e0bd071f1dda94a9dc005f4",
+  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
+  "answer_present": true,
+  "trajectory_present": false,
+  "usage": {},
+  "diagnostics": {
+    "correct": 8
+  },
+  "agent_configuration": {
+    "sha256": "28ee62ab1bd3673de723014cb9f474d260ec2db2c75b94c2335ee9d0ca58a234"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
+}

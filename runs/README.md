@@ -13,3 +13,5 @@ assigning human failure tags. To prepare new commit-safe exports:
 python scripts/collect_runs.py jobs/v2 --version v2 --output data/v2-run-review
 python scripts/review_run_exports.py data/v2-run-review --output runs
 ```
+
+[T5_REGRADE.md](T5_REGRADE.md) isolates the citation revision from live agent attempts.

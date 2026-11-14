@@ -23,14 +23,16 @@ Redacted exports; raw jobs remain local. Infrastructure failures are separate fr
 | holdout/discrepancy-hunt-05-clean-control | claude-code | claude-sonnet-5-5 | v2 | 6b1fd175d024 | — | 0 | 2 | 2 |
 | holdout/discrepancy-hunt-05-clean-control | claude-code | claude-sonnet-5-5 | v2 | a57f7f47dd8e | — | 0 | 2 | 2 |
 | holdout/discrepancy-hunt-05-clean-control | oracle | none | v2 | e35ace97e55e | 1.000 | 1 | 0 | 1 |
+| holdout/hold-scope | claude-code | claude-sonnet-5-5 | v1 | f50f5fdf29a0 | 0.875 | 2 | 0 | 2 |
 | holdout/hold-scope | oracle | none | v1 | 612dfd1b2a55 | 1.000 | 1 | 0 | 1 |
+| holdout/hold-scope | oracle | none | v2 | 9978a0a3db43 | 1.000 | 1 | 0 | 1 |
 
 ## Task-weighted agent results
 
 | Version | Agent | Model | Tasks | Attempts | Mean reward | Pass@1 | ±95% |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | v1 | claude-code | claude-haiku-5-5 | 3 | 3 | 1.000 | 1.000 | 0.000 |
-| v1 | claude-code | claude-sonnet-5-5 | 3 | 3 | 1.000 | 1.000 | 0.000 |
+| v1 | claude-code | claude-sonnet-5-5 | 4 | 5 | 0.969 | 0.750 | 0.061 |
 
 Each task has equal weight. The margin is an approximate 95% interval across task means.
 Versions use different task designs; their means are descriptive, not a paired comparison.
