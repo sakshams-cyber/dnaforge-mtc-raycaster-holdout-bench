@@ -128,10 +128,9 @@
     }
   ],
   "verification": {
-    "status": "pending_human_verification",
-    "who": "",
-    "how": "",
-    "how_to_verify": "A-703-02 report p. 12 Table 1 (unaltered) lists Group 3 as 60 mg at 20.0 mg/mL with a 3 mL dose volume (60 / 3 = 20). Confirm against the protocol table on p. 43 and the formulation analysis on p. 115. Then set status to human_verified and fill who/how.",
+    "status": "human_verified",
+    "who": "Ahmad (asaber010), 2026-11-14",
+    "how": "Read A-703-02 report p. 12 Table 1 in the original PDF: Group 3 is 60 mg at 20.0 mg/mL with a 3 mL dose volume.",
     "answerable_from_workspace": true,
     "evidence": [
       {

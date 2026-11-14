@@ -1,4 +1,4 @@
-# Awaiting human verification
+# Human-verified, ready for agent runs
 
 Planted-discrepancy task on the divalent siRNA IND (167326), whole-filing review:
 the workspace includes the complete dog toxicology report with appendices. The grader
