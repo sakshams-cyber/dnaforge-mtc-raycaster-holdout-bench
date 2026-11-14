@@ -1,0 +1,113 @@
+{
+  "kind": "discrepancy",
+  "answer_schema": {
+    "type": "object",
+    "required": [
+      "items"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "type": "array",
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "path",
+            "page",
+            "quote",
+            "corrected_value",
+            "source_path",
+            "source_page",
+            "source_quote"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 20
+            },
+            "corrected_value": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "source_quote": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        }
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "plant-1",
+      "error_class": "derived_figure_arithmetic",
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 14,
+      "page_max": 14,
+      "anchor": "80 times higher",
+      "expected": {
+        "type": "quantity",
+        "value": "8.33",
+        "unit": "x",
+        "rtol": "0.2"
+      },
+      "sources": [
+        {
+          "path": "summaries/investigator-brochure.txt",
+          "page_min": 9,
+          "page_max": 9,
+          "anchor": "12%"
+        }
+      ]
+    }
+  ],
+  "known_baseline": [
+    {
+      "path": "summaries/general-investigational-plan.txt",
+      "page_min": 3,
+      "page_max": 3,
+      "anchor": "recovery timepoint",
+      "note": "Present in the unaltered filing: the plan reports gliosis in 1/4 recovery animals at a 30-day timepoint; A-703-02 reports none, at a 28-day recovery."
+    }
+  ],
+  "verification": {
+    "status": "human_verified",
+    "who": "Ahmad (asaber010), 2026-11-14",
+    "how": "Read the original brochure pp. 9 and 14; margin is ~8x from CSF-volume scaling (200 mg / 12% = 1,667 mg vs 200 mg). Toxicologist second opinion on the scaling basis still open.",
+    "answerable_from_workspace": true,
+    "evidence": [
+      {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 9
+      },
+      {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 14
+      }
+    ]
+  }
+}

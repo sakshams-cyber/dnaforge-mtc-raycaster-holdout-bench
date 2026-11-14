@@ -1,0 +1,10 @@
+{
+  "mutations": [
+    {
+      "file": "summaries/investigator-brochure.txt",
+      "page": 14,
+      "before": "doses ~8 times higher",
+      "after": "doses ~80 times higher"
+    }
+  ]
+}

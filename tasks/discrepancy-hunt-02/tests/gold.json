@@ -1,0 +1,143 @@
+{
+  "kind": "discrepancy",
+  "answer_schema": {
+    "type": "object",
+    "required": [
+      "items"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "type": "array",
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "path",
+            "page",
+            "quote",
+            "corrected_value",
+            "source_path",
+            "source_page",
+            "source_quote"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 20
+            },
+            "corrected_value": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "source_quote": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        }
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "plant-1",
+      "error_class": "classification_reasoning",
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 13,
+      "page_max": 13,
+      "anchor": "classified as adverse",
+      "expected": {
+        "type": "label",
+        "accept": [
+          "non-adverse",
+          "not adverse",
+          "nonadverse"
+        ]
+      },
+      "sources": [
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 4,
+          "page_max": 4,
+          "anchor": "non-adverse"
+        },
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 27,
+          "page_max": 27,
+          "anchor": "non-adverse"
+        },
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 29,
+          "page_max": 29,
+          "anchor": "non-adverse"
+        },
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 4,
+          "page_max": 4,
+          "anchor": "no adverse"
+        },
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 29,
+          "page_max": 29,
+          "anchor": "no adverse"
+        }
+      ]
+    }
+  ],
+  "known_baseline": [
+    {
+      "path": "summaries/general-investigational-plan.txt",
+      "page_min": 3,
+      "page_max": 3,
+      "anchor": "recovery timepoint",
+      "note": "Present in the unaltered filing: the plan reports gliosis in 1/4 recovery animals at a 30-day timepoint; A-703-02 reports none, at a 28-day recovery."
+    }
+  ],
+  "verification": {
+    "status": "human_verified",
+    "who": "Ahmad (asaber010), 2026-11-14",
+    "how": "Read A-703-02 report pp. 4, 27 and 29 and the original brochure p. 13; gliosis at 60 and 200 mg is classified non-adverse.",
+    "answerable_from_workspace": true,
+    "evidence": [
+      {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 4
+      },
+      {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 27
+      },
+      {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 13
+      }
+    ]
+  }
+}

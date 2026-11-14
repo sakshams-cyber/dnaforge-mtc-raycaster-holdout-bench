@@ -1,0 +1,122 @@
+{
+  "kind": "discrepancy",
+  "answer_schema": {
+    "type": "object",
+    "required": [
+      "items"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "type": "array",
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "path",
+            "page",
+            "quote",
+            "corrected_value",
+            "source_path",
+            "source_page",
+            "source_quote"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 20
+            },
+            "corrected_value": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "source_quote": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        }
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "plant-1",
+      "error_class": "cross_document_value",
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 13,
+      "page_max": 13,
+      "anchor": "NOAEL in dogs was 20 mg",
+      "expected": {
+        "type": "quantity",
+        "value": "200",
+        "unit": "mg"
+      },
+      "sources": [
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 4,
+          "page_max": 4,
+          "anchor": "200 mg"
+        },
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 29,
+          "page_max": 29,
+          "anchor": "200 mg"
+        }
+      ]
+    }
+  ],
+  "known_baseline": [
+    {
+      "path": "summaries/general-investigational-plan.txt",
+      "page_min": 3,
+      "page_max": 3,
+      "anchor": "recovery timepoint",
+      "note": "Present in the unaltered filing: the plan reports gliosis in 1/4 recovery animals at a 30-day timepoint; A-703-02 reports none, at a 28-day recovery."
+    }
+  ],
+  "verification": {
+    "status": "human_verified",
+    "who": "Ahmad (asaber010), 2026-11-14",
+    "how": "Read A-703-02 report pp. 4 and 29 and the original brochure p. 13; dog NOAEL is 200 mg in all three.",
+    "answerable_from_workspace": true,
+    "evidence": [
+      {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 4
+      },
+      {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 29
+      },
+      {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 13
+      }
+    ]
+  }
+}
