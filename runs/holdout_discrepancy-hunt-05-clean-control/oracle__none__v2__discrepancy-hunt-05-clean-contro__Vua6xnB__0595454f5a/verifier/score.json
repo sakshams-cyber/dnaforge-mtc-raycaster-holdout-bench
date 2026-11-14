@@ -1,0 +1,33 @@
+{
+  "score": 1.0,
+  "reward": 1.0,
+  "criteria_met": 1,
+  "criteria_total": 1,
+  "pass": true,
+  "criteria": [
+    {
+      "id": "C01",
+      "item_id": "real-recovery-count",
+      "check": null,
+      "passed": true
+    }
+  ],
+  "details": {
+    "reported": 1,
+    "known_baseline_flags": 0,
+    "other_flags": 0,
+    "false_positives": 0,
+    "items": {
+      "real-recovery-count": {
+        "checks": {
+          "extraction": true,
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1,
+        "primary_failure": "correct"
+      }
+    },
+    "kind": "discrepancy"
+  }
+}

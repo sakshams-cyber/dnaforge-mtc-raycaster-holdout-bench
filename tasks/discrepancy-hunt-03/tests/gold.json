@@ -1,0 +1,155 @@
+{
+  "kind": "discrepancy",
+  "answer_schema": {
+    "type": "object",
+    "required": [
+      "items"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "type": "array",
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "path",
+            "page",
+            "quote",
+            "corrected_value",
+            "source_path",
+            "source_page",
+            "source_quote"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 20
+            },
+            "corrected_value": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "source_quote": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        }
+      }
+    }
+  },
+  "items": [
+    {
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 14,
+      "page_max": 14,
+      "anchor_ref": {
+        "page": 14,
+        "start": 367,
+        "end": 382
+      },
+      "id": "plant-1",
+      "expected": {
+        "type": "quantity",
+        "value": "8.33",
+        "unit": "x",
+        "rtol": "0.2"
+      },
+      "error_class": "derived_figure_arithmetic",
+      "sources": [
+        {
+          "path": "summaries/investigator-brochure.txt",
+          "page_min": 9,
+          "page_max": 9,
+          "anchor_ref": {
+            "page": 9,
+            "start": 1110,
+            "end": 1113
+          }
+        }
+      ],
+      "planted": true
+    }
+  ],
+  "known_baseline": [
+    {
+      "path": "summaries/general-investigational-plan.txt",
+      "page_min": 3,
+      "page_max": 3,
+      "anchor_ref": {
+        "page": 3,
+        "start": 1977,
+        "end": 1995
+      }
+    },
+    {
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 4,
+      "page_max": 4,
+      "anchor_ref": {
+        "page": 4,
+        "start": 2173,
+        "end": 2179
+      }
+    },
+    {
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 13,
+      "page_max": 13,
+      "anchor_ref": {
+        "page": 13,
+        "start": 1814,
+        "end": 1836
+      }
+    },
+    {
+      "path": "study-reports/A-703-02-report.txt",
+      "page_min": 21,
+      "page_max": 21,
+      "anchor_ref": {
+        "page": 21,
+        "start": 578,
+        "end": 587
+      }
+    }
+  ],
+  "verification": {
+    "status": "human_verified",
+    "who": "Ahmad (asaber010), 2026-11-14",
+    "how": "Read the original brochure pp. 9 and 14; margin is ~8x from CSF-volume scaling (200 mg / 12% = 1,667 mg vs 200 mg). Toxicologist second opinion on the scaling basis still open.",
+    "answerable_from_workspace": true,
+    "evidence": [
+      {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 9
+      },
+      {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 14
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "id": "f1",
+      "path": "summaries/investigator-brochure.txt",
+      "page": 13,
+      "corrected_value": "non-adverse",
+      "source_path": "study-reports/A-703-02-report.txt",
+      "source_page": 27,
+      "quote_ref": {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 13,
+        "start": 512,
+        "end": 549
+      },
+      "source_quote_ref": {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 27,
+        "start": 2178,
+        "end": 2243
+      }
+    }
+  ]
+}

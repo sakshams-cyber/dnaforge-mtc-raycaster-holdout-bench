@@ -1,0 +1,28 @@
+{
+  "task_name": "holdout/discrepancy-hunt-01",
+  "trial_name": "discrepancy-hunt-01__SX2kW4s",
+  "task_checksum": "cd0b4744e8508fcab1948d5a078fffd4623cfa4e6183665c620273e9e3ca4126",
+  "started_at": "2026-11-14T21:51:04.890199Z",
+  "finished_at": "2026-11-14T21:51:42.936759Z",
+  "agent": "oracle",
+  "model": "none",
+  "version": "v1",
+  "score": 1.0,
+  "elapsed_sec": 38.04656,
+  "infrastructure_error": false,
+  "raw_result_sha256": "d6dcdc7a9c25bfba48af594e5ff51996bc8361ababc37b6b0c8da511f7b6dd5d",
+  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
+  "answer_present": true,
+  "trajectory_present": false,
+  "usage": {},
+  "diagnostics": {
+    "correct": 1
+  },
+  "agent_configuration": {
+    "sha256": "28ee62ab1bd3673de723014cb9f474d260ec2db2c75b94c2335ee9d0ca58a234"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
+}

@@ -1,0 +1,33 @@
+{
+  "task_name": "holdout/discrepancy-hunt-01",
+  "trial_name": "discrepancy-hunt-01__B9L5YqF",
+  "task_checksum": "cd0b4744e8508fcab1948d5a078fffd4623cfa4e6183665c620273e9e3ca4126",
+  "started_at": "2026-11-14T22:13:14.965585Z",
+  "finished_at": "2026-11-14T22:15:13.429783Z",
+  "agent": "claude-code",
+  "model": "claude-haiku-5-5",
+  "version": "v1",
+  "score": 1.0,
+  "elapsed_sec": 118.464198,
+  "infrastructure_error": false,
+  "raw_result_sha256": "fdbf524c113e9c6d89986055f09694a6687111bb951c764ae09097735bba621b",
+  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
+  "answer_present": true,
+  "trajectory_present": true,
+  "usage": {
+    "n_input_tokens": 268792,
+    "n_cache_tokens": 207775,
+    "n_output_tokens": 8570,
+    "cost_usd": 0.013989625
+  },
+  "diagnostics": {
+    "correct": 1
+  },
+  "agent_configuration": {
+    "sha256": "762c72bfc232ac3dd52599547b67dad0895cb904f977a5e063a69fade1f96745"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
+}

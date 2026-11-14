@@ -1,0 +1,168 @@
+{
+  "kind": "discrepancy",
+  "answer_schema": {
+    "type": "object",
+    "required": [
+      "items"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "items": {
+        "type": "array",
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "path",
+            "page",
+            "quote",
+            "corrected_value",
+            "source_path",
+            "source_page",
+            "source_quote"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "quote": {
+              "type": "string",
+              "minLength": 20
+            },
+            "corrected_value": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_page": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "source_quote": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        }
+      }
+    }
+  },
+  "items": [
+    {
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 13,
+      "page_max": 13,
+      "anchor_ref": {
+        "page": 13,
+        "start": 142,
+        "end": 165
+      },
+      "id": "plant-1",
+      "expected": {
+        "type": "quantity",
+        "value": "200",
+        "unit": "mg"
+      },
+      "error_class": "cross_document_value",
+      "sources": [
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 4,
+          "page_max": 4,
+          "anchor_ref": {
+            "page": 4,
+            "start": 675,
+            "end": 681
+          }
+        },
+        {
+          "path": "study-reports/A-703-02-report.txt",
+          "page_min": 29,
+          "page_max": 29,
+          "anchor_ref": {
+            "page": 29,
+            "start": 277,
+            "end": 283
+          }
+        }
+      ],
+      "planted": true
+    }
+  ],
+  "known_baseline": [
+    {
+      "path": "summaries/general-investigational-plan.txt",
+      "page_min": 3,
+      "page_max": 3,
+      "anchor_ref": {
+        "page": 3,
+        "start": 1977,
+        "end": 1995
+      }
+    },
+    {
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 4,
+      "page_max": 4,
+      "anchor_ref": {
+        "page": 4,
+        "start": 2173,
+        "end": 2179
+      }
+    },
+    {
+      "path": "summaries/investigator-brochure.txt",
+      "page_min": 13,
+      "page_max": 13,
+      "anchor_ref": {
+        "page": 13,
+        "start": 1813,
+        "end": 1835
+      }
+    },
+    {
+      "path": "study-reports/A-703-02-report.txt",
+      "page_min": 21,
+      "page_max": 21,
+      "anchor_ref": {
+        "page": 21,
+        "start": 578,
+        "end": 587
+      }
+    }
+  ],
+  "verification": {
+    "status": "human_verified",
+    "who": "Ahmad (asaber010), 2026-11-14",
+    "how": "Read A-703-02 report pp. 4 and 29 and the original brochure p. 13; dog NOAEL is 200 mg in all three.",
+    "answerable_from_workspace": true,
+    "evidence": [
+      {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 4
+      },
+      {
+        "path": "study-reports/A-703-02-report.txt",
+        "page": 29
+      },
+      {
+        "path": "summaries/investigator-brochure.txt",
+        "page": 13
+      }
+    ]
+  }
+}
