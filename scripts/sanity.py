@@ -24,9 +24,10 @@ def probes(gold):
                 item['status']={'resolved':'unresolved','unresolved':'resolved','partially_resolved':'resolved'}[item['status']]
             for key in ('recomputed','value','position','mismatches'):
                 if type(item.get(key)) in (int,float): item[key]=item[key]*1.2+1
+            if 'corrected_value' in item: item['corrected_value']='999 mg'
     yield changed('plausible_wrong',wrong)
     for name in ('nonexistent_path','keyword_stuffing','all_resolved','overlisting','wrong_page',
-                 'wrong_cell','wrong_unit','copied_reported'):
+                 'wrong_cell','wrong_unit','copied_reported','wrong_source'):
         def modify(value, name=name):
             for item in value.get('items',[]):
                 if name=='nonexistent_path':
@@ -35,6 +36,7 @@ def probes(gold):
                 if name=='keyword_stuffing' and 'quote' in item: item['quote']='resolved NOAEL FDA response '*8
                 if name=='all_resolved' and 'status' in item: item['status']='resolved'
                 if name=='wrong_page' and 'page' in item: item['page']=999999
+                if name=='wrong_source' and 'source_quote' in item: item['source_quote']=item['quote']
                 if name=='wrong_cell':
                     for ref in item.get('inputs',[]):
                         if 'row' in ref: ref['row']+=99999

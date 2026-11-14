@@ -1,0 +1,36 @@
+{
+  "files": [
+    {
+      "source": "1.14.4.investigator-brochure.pdf",
+      "destination": "summaries/investigator-brochure.txt"
+    },
+    {
+      "source": "1.20.General-Investigational-Plan.pdf",
+      "destination": "summaries/general-investigational-plan.txt"
+    },
+    {
+      "source": "A-703-01-FinalReport.pdf",
+      "destination": "study-reports/A-703-01-report.txt",
+      "pages": [
+        1,
+        26
+      ]
+    },
+    {
+      "source": "A-703-02-FinalReport.pdf",
+      "destination": "study-reports/A-703-02-report.txt",
+      "pages": [
+        1,
+        31
+      ]
+    },
+    {
+      "source": "A-703-03-Summary-Report.pdf",
+      "destination": "study-reports/A-703-03-summary-report.txt",
+      "pages": [
+        1,
+        7
+      ]
+    }
+  ]
+}
