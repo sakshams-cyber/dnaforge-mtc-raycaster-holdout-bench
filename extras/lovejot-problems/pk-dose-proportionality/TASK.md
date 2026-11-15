@@ -1,28 +1,12 @@
-# Reconstruct dog plasma exposure from the raw bioanalytical data
+# HoldoutBench — Task 2: Reconstruct Dog Plasma Exposure
 
-You are reviewing source data for the investigational siRNA 2439-exNA. The workspace holds
-one file, `/app/workspace/BioA_dog_plasma.tsv`: individual plasma concentrations from the
-dog toxicology study, one row per animal and time point. Compute from that file.
+You are reviewing source data for investigational siRNA 2439-exNA. You may access the authorized local file `BioA_dog_plasma.tsv` and the sponsor's pharmacokinetics written summary PDF if staged in your environment. You must compute from the TSV, not copy an exposure table from the PDF.
 
-1. For male and female dogs separately, at 20, 60 and 200 mg, compute **observed Cmax per
-   animal** and **AUC0-24 per animal by linear trapezoids**, then report the arithmetic
-   group means (n = 6 per sex and dose). Use only nominal times 0, 0.5, 4, 8, 12 and 24
-   hours. Where a concentration is below that row's LLOQ, use zero. Do not pool animals
-   into a composite profile.
-2. For each sex, give the ratio of group-mean Cmax and of group-mean AUC0-24 for
-   20 to 60 mg, 60 to 200 mg, and 20 to 200 mg (higher dose over lower dose).
-3. State whether exposure is dose-proportional over 20 to 200 mg. Divide each sex's
-   20-to-200 AUC0-24 ratio by the 10-fold dose ratio and apply the conventional
-   0.80 to 1.25 band: above 1.25 is greater than proportional, below 0.80 is less.
-   If the two sexes fall in different categories, answer `mixed_by_sex`.
-4. For each sex and dose, name two animal IDs from that group as evidence.
+1. For male and female dogs separately, for doses 20, 60, and 200 mg, reconstruct **observed Cmax per animal** and **AUC0–24 by linear trapezoids per animal**, then report the arithmetic group means (n=6 per sex/dose). Restrict this part to nominal times 0, 0.5, 4, 8, 12, and 24 hours. At each time use zero if concentration < the corresponding LLOQ; do not combine different animals into a composite profile. Provide two actual source animal IDs for each sex/dose group.
+2. Calculate the ratio of group-mean Cmax and AUC0–24 for 20→60, 60→200, and 20→200 mg, separately by sex. Distinguish administered-dose ratios from measured-exposure ratios.
+3. Classify dose proportionality overall (20 to 200 mg). Compare your conclusion to the regulatory PK written summary, **without alleging a discrepancy merely because AUC0–24 and AUClast/AUC∞ are different parameters**.
+4. Identify limitations: BLQ substitution, uneven 24-vs-72-hour observation periods, nonidentity of AUC0–24 and reported AUClast, inability to infer a validated AUC∞ using this task's calculations, and between-animal variability.
 
-This is a 0 to 24 hour partial reconstruction, not the sponsor's full noncompartmental
-analysis. Do not report AUClast or AUC to infinity.
+Output only JSON with `source_file`, `analysis_window_hours`, `cmax_units`, `auc_units`, `results`, `conclusion`, `report_comparison` and `limitations`. Nest `groups` and `ratios` under each sex. Use `n`, `cmax_mean_ng_ml`, `auc0_24_mean_ng_h_ml` and `evidence_animal_ids` for a dose group. Use `cmax_ratio` and `auc0_24_ratio` for each dose pair. The local reference must supply the accepted conclusion, report comparison and limitation codes to the grader.
 
-## Output
-
-Give the source file, analysis window and units. For each sex, list the
-group size, mean Cmax, mean AUC0–24 and two animal IDs for each dose. Report
-both ratios for each dose pair and give the overall conclusion. The means
-must agree within 0.5% and the ratios within 1%.
+This is a *0–24-hour partial reconstruction*, not a claim to reproduce the sponsor's complete noncompartmental analysis. Scientific conclusions must not be extrapolated into human clinical safety recommendations.

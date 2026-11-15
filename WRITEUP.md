@@ -58,10 +58,10 @@ Lovejot's **PK dose proportionality** grader scored **0 / 0 / 1** on an empty,
 wrong and reference answer. Saksham confirmed that the M 20 mg and F 20 mg
 values match Lovejot’s hand calculation. [PK task](extras/lovejot-problems/pk-dose-proportionality/TASK.md)
 
-Lovejot's **CSF vs brain** bundle was unavailable in this checkout, so its
-self-test result is pending verification.
+Lovejot's **CSF vs brain** grader also scored **0 / 0 / 1** on an empty,
+wrong and reference answer. [CSF task](extras/lovejot-problems/csf-vs-brain/TASK.md)
 
-**Next steps.** Remove the categorical answers from the examples, reject
-extra limitations codes, and replace all-or-nothing scoring with the fraction
+**Next steps.** Remove the categorical answers from the original examples,
+reject extra PK limitations codes, and replace all-or-nothing scoring with the fraction
 of checks passed. Verify the bounded audit and replay the extra unsuffixed audit
 oracle after its setup failures. [Drafts](templates/unused/)
