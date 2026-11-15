@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "id": "finding-1",
+      "path": "ind/1.14.4.investigator-brochure.txt",
+      "page": 13,
+      "quote": "The NOAEL in rats was 3.0 mg and the NOAEL in dogs was 20 mg,",
+      "corrected_value": "200 mg",
+      "source_path": "ind/A-703-02-FinalReport.txt",
+      "source_page": 4,
+      "source_quote": "Therefore, 200 mg PrP lowering"
+    },
+    {
+      "id": "finding-2",
+      "path": "ind/1.20.General-Investigational-Plan.txt",
+      "page": 3,
+      "quote": "only 1/4 animals at the 30-day recovery timepoint",
+      "corrected_value": "No gliosis at the 28-day (Day 29) recovery timepoint",
+      "source_path": "ind/A-703-02-FinalReport.txt",
+      "source_page": 4,
+      "source_quote": "There was no gliosis noted in the recovery animals."
+    },
+    {
+      "id": "finding-3",
+      "path": "ind/1.14.4.investigator-brochure.txt",
+      "page": 13,
+      "quote": "The gliosis was classified as adverse",
+      "corrected_value": "non-adverse",
+      "source_path": "ind/A-703-02-FinalReport.txt",
+      "source_page": 4,
+      "source_quote": "was considered non-adverse (Bolon"
+    },
+    {
+      "id": "finding-4",
+      "path": "ind/1.14.4.investigator-brochure.txt",
+      "page": 4,
+      "quote": "In transgenic human PrP mice, a single dose of PrP-siRNA at 35 \u2013 52 \u00b5g can",
+      "corrected_value": "18 \u2013 52 \u00b5g",
+      "source_path": "ind/1.14.4.investigator-brochure.txt",
+      "source_page": 11,
+      "source_quote": "18 \u00b5g may correspond to 59 mg in a human."
+    },
+    {
+      "id": "finding-5",
+      "path": "ind/1.14.4.investigator-brochure.txt",
+      "page": 14,
+      "quote": "doses ~80 times higher than the maximum proposed human dose of 200 mg.",
+      "corrected_value": "~8 times",
+      "source_path": "ind/1.14.4.investigator-brochure.txt",
+      "source_page": 9,
+      "source_quote": "species with only 12% the CSF volume of humans"
+    },
+    {
+      "id": "finding-6",
+      "path": "ind/2.6.4.pharmacokinetics-written-summary.txt",
+      "page": 4,
+      "quote": "Study Number         Study                 GLP Status            Route                Dose (mg/kg)",
+      "corrected_value": "Dose (mg)",
+      "source_path": "ind/A-703-01-FinalReport.txt",
+      "source_page": 3,
+      "source_quote": "Group 2-Low (0.3 mg), Group 3-Mid"
+    }
+  ]
+}

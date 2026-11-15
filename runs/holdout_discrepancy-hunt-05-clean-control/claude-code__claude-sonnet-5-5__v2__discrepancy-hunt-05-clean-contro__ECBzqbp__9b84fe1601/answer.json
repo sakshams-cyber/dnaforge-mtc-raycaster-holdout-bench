@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "id": "finding-1",
+      "path": "ind/1.20.General-Investigational-Plan.txt",
+      "page": 3,
+      "quote": "gliosis, which was classified as non-adverse; only 1/4 animals at the 30-day recovery timepoint",
+      "corrected_value": "0/4 (no gliosis at the 28-day recovery timepoint)",
+      "source_path": "ind/A-703-02-FinalReport.txt",
+      "source_page": 4,
+      "source_quote": "There was no gliosis noted in the recovery animals."
+    },
+    {
+      "id": "finding-2",
+      "path": "ind/2.6.4.pharmacokinetics-written-summary.txt",
+      "page": 4,
+      "quote": "Table 1. Toxicokinetic Studies with 2439-exNA",
+      "corrected_value": "Dose (mg)",
+      "source_path": "ind/A-703-02-FinalReport.txt",
+      "source_page": 12,
+      "source_quote": "Group          Dose (mg)      (mg/mL)a"
+    }
+  ]
+}
