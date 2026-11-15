@@ -1,0 +1,17 @@
+schema_version = "1.4"
+artifacts = ["/app/output/answer.json", "/app/ENVIRONMENT_PACKAGES.txt"]
+[task]
+name = "holdout/discrepancy-audit"
+description = "Audit explicitly listed IND claims against their source of record."
+[metadata]
+pack = "siRNA IND 167326"
+difficulty_target = "10-30 min"
+[agent]
+timeout_sec = 1800
+[verifier]
+timeout_sec = 300
+[environment]
+build_timeout_sec = 900
+cpus = 2
+memory_mb = 4096
+workdir = "/app"

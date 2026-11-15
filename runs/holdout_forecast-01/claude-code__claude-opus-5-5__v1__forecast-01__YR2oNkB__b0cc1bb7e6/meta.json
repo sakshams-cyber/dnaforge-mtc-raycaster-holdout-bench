@@ -8,71 +8,28 @@
   "model": "claude-opus-5-5",
   "version": "v1",
   "score": 0.333333333333,
-  "raw_result_sha256": "55b92ee904c2d8fbc2b4477bc5b07c65de342799682a46e6312fb525606f4750",
-  "source_local": "jobs/forecast-v1/forecast-01--claude-opus-5-5/2026-11-14__16-21-36/forecast-01__YR2oNkB/result.json",
-  "export_redacted": true,
-  "answer_present": true,
-  "trajectory_present": true,
+  "elapsed_sec": 110.233845,
   "infrastructure_error": false,
   "exception_type": null,
-  "condition": {
-    "name": "v1-forecast-local-source-tools",
-    "model": "anthropic/claude-haiku-5-5, anthropic/claude-sonnet-5-5, anthropic/claude-opus-5-5 (one model per job)",
-    "agent": "claude-code (Harbor 0.26.0)",
-    "tool_mode": "local source_tool plus Harbor agent tools",
-    "network_policy": "not enforced: the agent container had network access, which it needs to reach the model API",
-    "reasoning": "agent default",
-    "attempts": 2,
-    "timeout_sec": 1800
-  },
+  "raw_result_sha256": "55b92ee904c2d8fbc2b4477bc5b07c65de342799682a46e6312fb525606f4750",
   "condition_sha256": "a1c384cdc2a4c29a17a23f98ce6fb43d1d0e871d8ea28a9c8bec368b9f0a34d8",
-  "agent_configuration": {
-    "name": "claude-code",
-    "import_path": null,
-    "model_name": "anthropic/claude-opus-5-5",
-    "base_url": null,
-    "model_api_key_name": "[REDACTED]",
-    "model_api_format": null,
-    "skip_model_parsing": false,
-    "n_concurrent": null,
-    "concurrency_group": null,
-    "skills": [],
-    "override_timeout_sec": null,
-    "override_setup_timeout_sec": null,
-    "max_timeout_sec": null,
-    "resume_trajectory": false,
-    "load_trajectory": null,
-    "extra_allowed_hosts": [],
-    "kwargs": {},
-    "mcp_servers": []
-  },
-  "environment_configuration": {
-    "type": "docker",
-    "import_path": null,
-    "force_build": false,
-    "delete": true,
-    "stream": false,
-    "cpu_enforcement_policy": "auto",
-    "memory_enforcement_policy": "auto",
-    "override_cpus": null,
-    "override_memory_mb": null,
-    "override_storage_mb": null,
-    "override_gpus": null,
-    "override_tpu": null,
-    "mounts": null,
-    "extra_docker_compose": [],
-    "kwargs": {},
-    "extra_allowed_hosts": []
-  },
+  "answer_present": true,
+  "trajectory_present": true,
   "usage": {
     "n_input_tokens": 106887,
     "n_cache_tokens": 92152,
     "n_output_tokens": 1221,
     "cost_usd": 0.11651539999999999
   },
-  "elapsed_sec": 110.233845,
   "diagnostics": {
     "correct": 1,
     "comparison": 2
-  }
+  },
+  "agent_configuration": {
+    "sha256": "076e0d68b0701a339bad583326999a3eeb682602040143e950847dfd76da159a"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
 }

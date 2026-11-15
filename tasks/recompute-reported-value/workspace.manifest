@@ -1,0 +1,104 @@
+{
+  "files": [
+    {
+      "source": "source-data/elisa/026.tsv",
+      "sha256": "044d3643de75127820fb61671bc64ddfccbaec9113c44181b6c58370448c273b"
+    },
+    {
+      "source": "source-data/elisa/026_summary.tsv",
+      "sha256": "b8926b8e223323face42739232532b72d9731d3f32a56a3bc1806c7cb0710e15"
+    },
+    {
+      "source": "source-data/elisa/027.tsv",
+      "sha256": "12dad166b3bb5e2351fa003ebc375fe3749a5904dc8d40b8ac90bf43b89ba353"
+    },
+    {
+      "source": "source-data/elisa/043.tsv",
+      "sha256": "1d1464438cb3c139af0ee1bd035cfc7c1bf7c2d06f0837d4226868d310963071"
+    },
+    {
+      "source": "source-data/elisa/044.tsv",
+      "sha256": "8a948f98779cc48cda93f9127c788feb0a729171d3c40344487d98f81f2fb95b"
+    },
+    {
+      "source": "source-data/elisa/047.tsv",
+      "sha256": "443b4458616b3d42923ef98b6d0bc7702465dad4d12405568f85ed7cc2062bcc"
+    },
+    {
+      "source": "source-data/elisa/049.tsv",
+      "sha256": "7c850743b972b96bd350838acd9dcb80b6c2f3a92e7d308a029733b355363140"
+    },
+    {
+      "source": "source-data/elisa/050.tsv",
+      "sha256": "a7e05349212ec723aa913cd49ca74fbeb982fefd2d7fbdcef5a8f8ead4bfc608"
+    },
+    {
+      "source": "source-data/elisa/052.tsv",
+      "sha256": "6d49b7aeda045a45865eca9961607cfe7ef5c0dcb469e662204954a1dcfee9b2"
+    },
+    {
+      "source": "source-data/elisa/053.tsv",
+      "sha256": "928693e915293360a8ae83f87a4211825469d93b7447b79eff55ec2350a086b1"
+    },
+    {
+      "source": "source-data/elisa/064.tsv",
+      "sha256": "4a52b273db2d96987c25d4fe29d40b808aa1f3e498def4b658078e284694ea95"
+    },
+    {
+      "source": "source-data/elisa/084.tsv",
+      "sha256": "b2cb2740185a95fd00dbe8f6b6bcd58ee888fe13905c6d7d423b45c764607162"
+    },
+    {
+      "source": "source-data/elisa/085.tsv",
+      "sha256": "c8f28e2f7fe29c2a48dab94a6a0f8b83cc012bc8a050635eca61d060ce4d9d66"
+    },
+    {
+      "source": "source-data/elisa/087.tsv",
+      "sha256": "13d603d8bb6ead60bbb8c98e7f8c21bc2bb1eee2f247094ca6ec013cdb7f36f2"
+    },
+    {
+      "source": "source-data/elisa/088.tsv",
+      "sha256": "d8c4a80a531d3b58042bb01df4f8bfd518a2225a9ab02207c44c09a4b04d0ff3"
+    },
+    {
+      "source": "source-data/elisa/106.tsv",
+      "sha256": "7f4eb68c0feba75970f876e60c2b5fd3a52c6b541b427a24421a5b5404ad8ac8"
+    },
+    {
+      "source": "source-data/elisa/114.tsv",
+      "sha256": "30d6440fce25b415393b84b054028efee25a0738b918bf82846b3a466b263500"
+    },
+    {
+      "source": "source-data/elisa/124.tsv",
+      "sha256": "37509ae043d783575be08ea3d82af6a097d7d6e2d1ff32a5af3348fee3b8f14f"
+    },
+    {
+      "source": "source-data/elisa/126.tsv",
+      "sha256": "0058e7b6c54b2e28313607dfc7cdc767faa88a39b1e52bc078c5e382fd0f312a"
+    },
+    {
+      "source": "source-data/elisa/138.tsv",
+      "sha256": "49032a8a2782cbff9b2ad91d412e5cecd7ebddd535f8e5b5a230c32ce5085f81"
+    },
+    {
+      "source": "source-data/elisa/188.tsv",
+      "sha256": "3d71bdf7e5210370a07e4ea4c15c0b8fac97341a78530fbc03245a78028ce984"
+    },
+    {
+      "source": "source-data/elisa/193.tsv",
+      "sha256": "7a774b750f4cda8ee3f902d39e8a951eca69b104d2bb13e84171e8ed3a68c856"
+    },
+    {
+      "source": "source-data/elisa/222.tsv",
+      "sha256": "d5d2ec4f1ffce4429633e74ead53462b70f8e5eaf46308c08e97d57a4f281205"
+    },
+    {
+      "source": "source-data/elisa/224.tsv",
+      "sha256": "bda91dc06d639032d2e4f454ff8e95b26ade146a785271075acab6a412ac7aef"
+    },
+    {
+      "source": "source-data/elisa/233.tsv",
+      "sha256": "c6c430ea361df10847f403f8a705932c7df60c13abc1105b6f1432479639f2f8"
+    }
+  ]
+}

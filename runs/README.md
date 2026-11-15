@@ -15,3 +15,6 @@ python scripts/review_run_exports.py data/v2-run-review --output runs
 ```
 
 [T5_REGRADE.md](T5_REGRADE.md) isolates the citation revision from live agent attempts.
+[FAILURES_DRAFT.md](FAILURES_DRAFT.md) records the T1 status and citation misses.
+The recompute task has one verified oracle and one scored Haiku attempt in
+[its trial records](holdout_recompute-reported-value/).

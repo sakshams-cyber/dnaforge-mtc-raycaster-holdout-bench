@@ -1,0 +1,49 @@
+{
+  "score": 1.0,
+  "reward": 1.0,
+  "criteria_met": 6,
+  "criteria_total": 6,
+  "pass": true,
+  "criteria": [
+    {
+      "id": "C01",
+      "item_id": "recompute-reported-value",
+      "check": "mean_ng_ml",
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "item_id": "recompute-reported-value",
+      "check": "sum_ng_ml",
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "item_id": "recompute-reported-value",
+      "check": "range_ng_ml",
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "item_id": "recompute-reported-value",
+      "check": "method",
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "item_id": "recompute-reported-value",
+      "check": "matches_reported",
+      "passed": true
+    },
+    {
+      "id": "C06",
+      "item_id": "recompute-reported-value",
+      "check": "inputs",
+      "passed": true
+    }
+  ],
+  "details": {
+    "items": {},
+    "kind": null
+  }
+}

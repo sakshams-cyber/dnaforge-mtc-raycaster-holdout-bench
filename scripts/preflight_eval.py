@@ -25,7 +25,14 @@ def readiness(task, allow_synthetic=False):
     workspace = task/'environment/workspace'
     plan = task/'solution/oracle_plan.json'
     answer = None
-    if plan.is_file():
+    if gold and gold.get('kind') == 'recompute_replicates':
+        try:
+            result = subprocess.run([sys.executable, str(task/'solution/recompute.py'), '--pack',
+                                     str(workspace), '--oracle'], check=True, capture_output=True, timeout=90)
+            answer = json.loads(result.stdout)
+        except (OSError, ValueError, subprocess.SubprocessError):
+            errors.append('replicate answer could not be computed from the staged workspace')
+    elif plan.is_file():
         try:
             with TemporaryDirectory() as tmp:
                 output = Path(tmp)/'answer.json'
@@ -73,7 +80,13 @@ def readiness(task, allow_synthetic=False):
                     if load_answer(task/'answer.schema.json') != schema:
                         errors.append('answer.schema.json differs from task grader schema')
                 else:
-                    schema = gold['answer_schema']
+                    if gold.get('kind') in {'recompute_replicates', 'bounded_audit'}:
+                        schema = load_answer(task/'answer.schema.json')
+                        if schema is None or load_answer(task/'tests/answer.schema.json') != schema:
+                            errors.append('verifier answer schema differs from the task')
+                            schema = {}
+                    else:
+                        schema = gold['answer_schema']
                     if gold.get('kind') == 'discrepancy' and load_answer(task/'answer.schema.json') != schema:
                         errors.append('answer.schema.json differs from discrepancy gold schema')
                 if validate(answer, schema): errors.append('oracle violates answer schema')

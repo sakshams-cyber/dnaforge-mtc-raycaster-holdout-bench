@@ -1,0 +1,32 @@
+{
+  "task_name": "holdout/recompute-reported-value",
+  "trial_name": "recompute-reported-value__vHFTFVj",
+  "task_checksum": "d158e46c68d71f6c3489bfcaa7a696b2d3bf1ec867d3d2e662b51310404320df",
+  "started_at": "2026-11-15T00:24:38.835192Z",
+  "finished_at": "2026-11-15T00:25:13.775392Z",
+  "agent": "claude-code",
+  "model": "claude-haiku-5-5",
+  "version": "v1",
+  "score": 1.0,
+  "elapsed_sec": 34.9402,
+  "infrastructure_error": false,
+  "exception_type": null,
+  "raw_result_sha256": "daaf8a3624762d0a76e040ab612cbaf355c3c80abe25ae8924651d87a3949740",
+  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
+  "answer_present": true,
+  "trajectory_present": true,
+  "usage": {
+    "n_input_tokens": 132623,
+    "n_cache_tokens": 117916,
+    "n_output_tokens": 2357,
+    "cost_usd": 0.004195735
+  },
+  "diagnostics": {},
+  "agent_configuration": {
+    "sha256": "762c72bfc232ac3dd52599547b67dad0895cb904f977a5e063a69fade1f96745"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
+}
