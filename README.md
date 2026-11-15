@@ -5,7 +5,10 @@
 
 ## Problem
 
-TODO: add the team's problem statement.
+An FDA reviewer reading an IND has to catch statements that disagree with the study reports behind them, work out what a
+clinical hold still allows, and judge whether the filing already contains what the agency asked for. Holdout-Bench measures
+whether coding agents can do those jobs on a real filing. Every grader is deterministic and gives credit only for the right
+answer backed by a verbatim quote from the right page, so an answer cannot score by sounding plausible.
 
 ## What we built
 
@@ -52,9 +55,10 @@ combined count and duration. In hold scope, an approved alternate citation
 raised both [saved-answer replays](runs/T5_REGRADE.md) to 0.9375.
 
 Blank and plausibly wrong answers scored 0 on the eight locally staged tasks.
-The objection-map shortcut probes scored 0.600, 0.400 and 0.333. The ELISA copy
-and numeric-shift probes scored 0.667 and 0.500. The reviewer approved keeping
-the partial-credit rubrics and reporting those missed cutoffs. See the
+Under the original objection-map rubric the shortcut probes scored 0.600, 0.400
+and 0.333; under the revised rubric below they score 0. The ELISA copy and
+numeric-shift probes scored 0.667 and 0.500, and the reviewer approved reporting
+those two missed cutoffs. See the
 [run summary](runs/SUMMARY.md) and [failure notes](runs/FAILURES_DRAFT.md).
 
 The objection-map rubric has since changed: a row earns credit only when
@@ -63,8 +67,18 @@ the two rows a constant answer earns. Under it the all-absent, all-present and
 rotated-status probes score 0, and both Sonnet attempts replay to 0 with one
 row fully right. See
 [the T1 replay](runs/T1_REGRADE.md). The recovery-count item in the full audit
-and clean control was also widened; see [the replay](runs/T04_T05_REGRADE.md).
-Both changes await reviewer confirmation.
+and clean control was also widened, and four inconsistencies already present in
+the unaltered filing are no longer counted against a clean-control answer; see
+[the replay](runs/T04_T05_REGRADE.md). These changes await reviewer confirmation.
+
+Saved answers replayed under the revised graders, with no new model calls
+(mean, replayed attempts in parentheses):
+
+| Task | Haiku 5.5 | Sonnet 5.5 | Opus 5.5 |
+| --- | ---: | ---: | ---: |
+| Full audit | 0.667 (2) | 0.367 (2) | 0.600 (2) |
+| Clean control | 0.200 (2) | 0.417 (2) | 0.375 (2) |
+| Hold objection map | — | 0.000 (2) | — |
 
 ## Data and permissions
 

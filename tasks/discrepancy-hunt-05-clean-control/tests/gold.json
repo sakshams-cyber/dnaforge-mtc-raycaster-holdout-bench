@@ -1,8 +1,49 @@
 {
   "kind": "discrepancy",
   "penalize_false_positives": true,
-  "ignore_known_baseline": false,
-  "known_baseline": [],
+  "ignore_known_baseline": true,
+  "known_baseline": [
+    {
+      "path": "ind/1.14.4.investigator-brochure.txt",
+      "page_min": 4,
+      "page_max": 4,
+      "anchor_ref": {
+        "page": 4,
+        "start": 2173,
+        "end": 2179
+      }
+    },
+    {
+      "path": "ind/1.14.4.investigator-brochure.txt",
+      "page_min": 13,
+      "page_max": 13,
+      "anchor_ref": {
+        "page": 13,
+        "start": 1814,
+        "end": 1836
+      }
+    },
+    {
+      "path": "ind/A-703-02-FinalReport.txt",
+      "page_min": 21,
+      "page_max": 21,
+      "anchor_ref": {
+        "page": 21,
+        "start": 578,
+        "end": 587
+      }
+    },
+    {
+      "path": "ind/2.6.2.pharmacology-written-summary.txt",
+      "page_min": 7,
+      "page_max": 7,
+      "anchor_ref": {
+        "page": 7,
+        "start": 1015,
+        "end": 1024
+      }
+    }
+  ],
   "answer_schema": {
     "type": "object",
     "required": [
@@ -177,6 +218,19 @@
           "end": 1423
         }
       ]
+    },
+    "known_baseline_addendum": {
+      "changed_by": "Ahmad Saber",
+      "changed_at": "2026-11-14T16:45:00-08:00",
+      "reviewer_confirmation": "pending: the original reviewer has not confirmed this change",
+      "reason": "The three inconsistencies that task 04 lists as already present in the unaltered filing are also present in this clean workspace. They are now listed here and not counted against an answer, as in task 04. They earn no credit. Offsets were re-derived for the unaltered text; the page 13 passage sits 5 characters later than in task 04."
+    },
+    "compound_name_addendum": {
+      "changed_by": "Ahmad Saber",
+      "changed_at": "2026-11-14T16:47:00-08:00",
+      "reviewer_confirmation": "pending: the original reviewer has not confirmed this change",
+      "reason": "Page 7 of the pharmacology summary misspells the compound code twice by transposing two digits; the correct code occurs 27 times in the same document. Several saved answers report it. It is listed as a known inconsistency of the unaltered filing: not counted against an answer, not credited.",
+      "how_checked": "string search of the staged workspace text"
     }
   }
 }

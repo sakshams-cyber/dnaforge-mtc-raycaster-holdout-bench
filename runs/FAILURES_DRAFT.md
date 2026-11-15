@@ -71,3 +71,39 @@ when visible in the reviewed trace. Suggested tags need reviewer confirmation.
 | [YR2oNkB](holdout_forecast-01/claude-code__claude-opus-5-5__v1__forecast-01__YR2oNkB__b0cc1bb7e6/verifier/score.json) | 0.333 | — | 5 | Two target values missed tolerance | domain_knowledge (tentative) |
 | [kcV2QMJ](holdout_forecast-01/claude-code__claude-sonnet-5-5__v1__forecast-01__kcV2QMJ__0a3087fac1/verifier/score.json) | 0.333 | — | 3 | Two target values missed tolerance | domain_knowledge (tentative) |
 | [ooVDocg](holdout_forecast-01/claude-code__claude-sonnet-5-5__v1__forecast-01__ooVDocg__b6296bc657/verifier/score.json) | 0.167 | — | 6 | Two target values missed tolerance | domain_knowledge (tentative) |
+
+## What the replicate audit, clean-control and forecast runs show
+
+This section replaces the tentative tags in the table above for the 18 attempts it lists. It is based on the saved answers and the
+verifier output for each attempt.
+
+**Full audit, six attempts.** Every attempt located the real recovery-count issue. As first graded, none was credited for it; after
+the gold change in [the replay](T04_T05_REGRADE.md), five are. The sixth (sonnet eoem6vf) quoted the sentence that follows the wrong
+count, so its quote does not contain the error. The planted items were graded the same before and after:
+
+- Haiku found all three planted items in both attempts and reported two extra findings each time.
+- Opus found all three in one attempt (jb9oLCF). In the other (B95Erpo) it cited an allowed page for plant 1 without quoting the
+  supporting value, and did not report plant 3.
+- Sonnet missed plant 3 in both attempts, and in one (Tp4i4wJ) made the same plant 1 citation error as Opus.
+
+So the losses that remain are a missed finding (plant 3, three of six attempts), an evidence quote that names the page but not the
+value (plant 1, two of six), and extra findings (one or two per attempt). Tag: search_process for plant 3, grounding for plant 1.
+
+**Clean control, six attempts.** All six found the one credited issue with the right source and correction. The first grading gave
+all of them 0 because of the quote and label matching described above, not because of what the models did. After replay they score
+between 0.200 and 0.500, and what separates them is restraint: Sonnet and Opus added one to three further findings per attempt,
+Haiku four. Several of those recur across models at the same location and have not been reviewed; they are listed in the
+replay note. Tag: over-reporting, with the caveat that some extra findings may be true.
+
+**Forecast, six attempts.** All three models read the earlier reports, fitted the decline and extrapolated it.
+
+| Target | Last filed | Reported later | Predictions | Result |
+| --- | ---: | ---: | --- | --- |
+| Lot RX501601.01 purity, 36 months | 62% | 56% | 55 to 58% | full credit in five attempts, half in one |
+| Lot RX501601.005 purity, 24 months | 66% | 69% | 62 to 64% | missed in all six |
+| Lot RX501601.005 potency, 24 months | 12 u/mg | 19 u/mg | 8 to 10 u/mg | missed in all six |
+
+The first series kept falling and was forecast to within two points, where repeating the last filed value would have been six points
+off. The other two reversed direction in the held-back report, and every model continued the trend instead. The earlier tag of
+domain_knowledge does not fit: nothing in the staged reports signals the reversal, so these two misses reflect noisy data. The
+carry-forward baseline scores 0 on this task, so each model beat it, but with three targets the task cannot rank the models.

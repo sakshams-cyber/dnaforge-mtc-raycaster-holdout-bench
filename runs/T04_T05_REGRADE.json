@@ -1,11 +1,11 @@
 {
- "change": "real-recovery-count: claim anchor narrowed to the erroneous count; supporting-passage anchors on study report pages 4 and 29 narrowed to the finding; correction accepts text naming the corrected count as well as exact labels",
- "scope_note": "Replays cover the 12 attempts whose raw answers were available locally. The 8 earlier attempts on main were exported without answer.json and need the same replay from their raw jobs.",
+ "change": "real-recovery-count: claim anchor narrowed to the erroneous count; source anchors on study report pages 4 and 29 narrowed to the finding; correction accepts text naming the corrected count. Clean control: the three inconsistencies task 04 already lists as present in the unaltered filing, plus a misspelled compound code, are listed as known and not counted against an answer (the compound code is added to task 04 as well).",
+ "scope_note": "Replays cover the 12 attempts whose raw answers were available locally; the 8 earlier attempts need the same replay from their raw jobs.",
  "reviewer_confirmation": "pending",
  "tasks": [
   {
    "task": "discrepancy-hunt-04-full-audit",
-   "gold_sha256": "339cb1ece1c25965ab470fc05741c9a1bde5c73034111b75b96266e73c8dfb16",
+   "gold_sha256": "15f48162cc43496d753032df85c5c3b8374453dc6177cb6a3e84477b72e8621a",
    "replays": [
     {
      "trial": "runs/holdout_discrepancy-hunt-04-full-audit/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-04-full-audit__iP53qpK__2587d96738",
@@ -179,21 +179,21 @@
   },
   {
    "task": "discrepancy-hunt-05-clean-control",
-   "gold_sha256": "a9b4e3d115139403f8729cac24e16d3546130c7087ee9700d9cf8513c6a7ca9a",
+   "gold_sha256": "b77afbc965fa6ef78f90f2d317791bf10ae492a5f591898fdad59833608e3fb9",
    "replays": [
     {
      "trial": "runs/holdout_discrepancy-hunt-05-clean-control/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-05-clean-contro__JsiTakK__3cb836e02a",
      "model": "claude-haiku-5-5",
      "original_reward": 0.0,
-     "replayed_reward": 0.16666666666666666,
+     "replayed_reward": 0.2,
      "items": {
       "real-recovery-count": {
        "credit": 1,
        "primary_failure": "correct"
       }
      },
-     "other_flags": 5,
-     "false_positives": 5,
+     "other_flags": 4,
+     "false_positives": 4,
      "new_model_call": false,
      "answer_sha256": "b23f7f92a0351cf7c51397b06a99cac8b0c94ae6aa8d43f6e3a27249cdd1183a"
     },
@@ -201,15 +201,15 @@
      "trial": "runs/holdout_discrepancy-hunt-05-clean-control/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-05-clean-contro__VDnbZNw__dc6a6b3781",
      "model": "claude-haiku-5-5",
      "original_reward": 0.0,
-     "replayed_reward": 0.16666666666666666,
+     "replayed_reward": 0.2,
      "items": {
       "real-recovery-count": {
        "credit": 1,
        "primary_failure": "correct"
       }
      },
-     "other_flags": 5,
-     "false_positives": 5,
+     "other_flags": 4,
+     "false_positives": 4,
      "new_model_call": false,
      "answer_sha256": "e83a0ee94aa0d5fe169e841907dd6f04290715bbbd4fefe9b0258d0ae8f70d09"
     },
