@@ -13,6 +13,9 @@ Redacted exports; raw jobs remain local. Infrastructure failures are separate fr
 | holdout/discrepancy-hunt-03 | claude-code | claude-haiku-5-5 | v1 | 92ca1dd4376c | 1.000 | 1 | 0 | 1 |
 | holdout/discrepancy-hunt-03 | claude-code | claude-sonnet-5-5 | v1 | a40a013528cf | 1.000 | 1 | 0 | 1 |
 | holdout/discrepancy-hunt-03 | oracle | none | v1 | 1d155cab5b97 | 1.000 | 1 | 0 | 1 |
+| holdout/discrepancy-hunt-04 | claude-code | claude-haiku-5-5 | v2 | 1df9fdb9d3da | — | 0 | 1 | 1 |
+| holdout/discrepancy-hunt-04 | claude-code | claude-sonnet-5-5 | v2 | a85897bab226 | — | 0 | 1 | 1 |
+| holdout/discrepancy-hunt-04 | oracle | none | v2 | 9b13769c747c | — | 0 | 1 | 1 |
 | holdout/discrepancy-hunt-04-full-audit | claude-code | claude-haiku-5-5 | v2 | 1ab5fe7ca82b | — | 0 | 2 | 2 |
 | holdout/discrepancy-hunt-04-full-audit | claude-code | claude-haiku-5-5 | v2 | 3cb965fdb537 | 0.357 | 2 | 0 | 2 |
 | holdout/discrepancy-hunt-04-full-audit | claude-code | claude-haiku-5-5 | v2 | acecdb077cec | — | 0 | 2 | 2 |
@@ -32,13 +35,14 @@ Redacted exports; raw jobs remain local. Infrastructure failures are separate fr
 | holdout/hold-scope | claude-code | claude-sonnet-5-5 | v1 | f50f5fdf29a0 | 0.875 | 2 | 0 | 2 |
 | holdout/hold-scope | oracle | none | v1 | 612dfd1b2a55 | 1.000 | 1 | 0 | 1 |
 | holdout/hold-scope | oracle | none | v2 | 9978a0a3db43 | 1.000 | 1 | 0 | 1 |
+| holdout/recompute-reported-value | claude-code | claude-haiku-5-5 | v1 | eb766a248b29 | 1.000 | 1 | 0 | 1 |
 | holdout/recompute-reported-value | oracle | none | v1 | 5be045778c58 | 1.000 | 1 | 0 | 1 |
 
 ## Task-weighted agent results
 
 | Version | Agent | Model | Tasks | Attempts | Mean reward | Pass@1 | ±95% |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| v1 | claude-code | claude-haiku-5-5 | 3 | 3 | 1.000 | 1.000 | 0.000 |
+| v1 | claude-code | claude-haiku-5-5 | 4 | 4 | 1.000 | 1.000 | 0.000 |
 | v1 | claude-code | claude-sonnet-5-5 | 5 | 7 | 0.882 | 0.600 | 0.177 |
 | v2 | claude-code | claude-haiku-5-5 | 2 | 4 | 0.179 | 0.000 | 0.350 |
 | v2 | claude-code | claude-sonnet-5-5 | 2 | 4 | 0.067 | 0.000 | 0.131 |

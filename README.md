@@ -65,8 +65,8 @@ The Harbor oracle scored 1.0. Both Sonnet attempts scored 8/15 (0.533),
 with the same three status disagreements and a sampling citation outside
 the accepted pages. See [the T1 trial analysis](runs/FAILURES_DRAFT.md#t1-b-hold-objection-map).
 
-The ELISA recompute oracle scored 1.0. Its blank and plausibly wrong answers
-scored 0. Copying the reported mean into every numeric field scored 0.667,
+The ELISA recompute oracle and one Haiku attempt both scored 1.0. Blank and
+plausibly wrong answers scored 0. Copying the reported mean into every numeric field scored 0.667,
 and shifting all three numeric fields by 20% scored 0.500 with the other
 fields correct. These scores show the partial credit available for method,
 source and the agreement flag.

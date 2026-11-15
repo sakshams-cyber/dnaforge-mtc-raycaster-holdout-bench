@@ -21,7 +21,7 @@ Both hold-scope runs got 14/16. A reviewer-approved alternate source raised
 both [saved-answer replays](runs/T5_REGRADE.md) to 15/16; no new model was called.
 The objection-map Harbor oracle scored 1.0. Both Sonnet attempts scored 8/15.
 Saksham hand-checked the two ELISA wells and approved the three statistics.
-The recompute Harbor oracle scored 1.0.
+The recompute Harbor oracle and the single Haiku run scored 6/6.
 
 **What failed.** The apparent recovery-count miss was not a retrieval miss.
 All eight v2 answers located the issue. Seven quotations did not include the
