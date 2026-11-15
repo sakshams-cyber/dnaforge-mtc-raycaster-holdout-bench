@@ -1,0 +1,111 @@
+{
+  "score": 0.5,
+  "reward": 0.5,
+  "details": {
+    "items": {
+      "plant-1": {
+        "checks": {
+          "extraction": true,
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1,
+        "primary_failure": "correct",
+        "error_class": "cross_document_value"
+      },
+      "plant-2": {
+        "checks": {
+          "extraction": true,
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1,
+        "primary_failure": "correct",
+        "error_class": "classification_reasoning"
+      },
+      "plant-3": {
+        "checks": {
+          "extraction": true,
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1,
+        "primary_failure": "correct",
+        "error_class": "derived_figure_arithmetic"
+      },
+      "real-recovery-count": {
+        "checks": {
+          "extraction": true,
+          "grounding": true,
+          "comparison": false
+        },
+        "credit": 0,
+        "primary_failure": "comparison",
+        "error_class": "cross_document_count"
+      }
+    },
+    "kind": "discrepancy",
+    "reported": 5,
+    "known_baseline_flags": 0,
+    "other_flags": 1,
+    "criteria": [
+      {
+        "id": "C01",
+        "item_id": "plant-1",
+        "desc": "Locate and correct the finding with grounded evidence",
+        "passed": true
+      },
+      {
+        "id": "C02",
+        "item_id": "plant-2",
+        "desc": "Locate and correct the finding with grounded evidence",
+        "passed": true
+      },
+      {
+        "id": "C03",
+        "item_id": "plant-3",
+        "desc": "Locate and correct the finding with grounded evidence",
+        "passed": true
+      },
+      {
+        "id": "C04",
+        "item_id": "real-recovery-count",
+        "desc": "Locate and correct the finding with grounded evidence",
+        "passed": false
+      }
+    ],
+    "criteria_met": 3,
+    "criteria_total": 4,
+    "pass": false,
+    "false_positives": 2
+  },
+  "criteria": [
+    {
+      "id": "C01",
+      "item_id": "plant-1",
+      "desc": "Locate and correct the finding with grounded evidence",
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "item_id": "plant-2",
+      "desc": "Locate and correct the finding with grounded evidence",
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "item_id": "plant-3",
+      "desc": "Locate and correct the finding with grounded evidence",
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "item_id": "real-recovery-count",
+      "desc": "Locate and correct the finding with grounded evidence",
+      "passed": false
+    }
+  ],
+  "criteria_met": 3,
+  "criteria_total": 4,
+  "pass": false
+}
