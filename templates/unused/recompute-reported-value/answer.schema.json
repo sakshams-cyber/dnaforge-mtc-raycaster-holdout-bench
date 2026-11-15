@@ -1,81 +1,64 @@
 {
   "type": "object",
-  "required": [
-    "items"
-  ],
-  "additionalProperties": false,
   "properties": {
-    "items": {
+    "values": {
+      "type": "object",
+      "properties": {
+        "mean_ng_ml": {
+          "type": "number"
+        },
+        "sum_ng_ml": {
+          "type": "number"
+        },
+        "range_ng_ml": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "mean_ng_ml",
+        "sum_ng_ml",
+        "range_ng_ml"
+      ],
+      "additionalProperties": false
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "raw_mean",
+        "blank_subtracted_mean",
+        "normalized_to_control"
+      ]
+    },
+    "inputs": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "reported",
-          "recomputed",
-          "unit",
-          "method",
-          "inputs",
-          "matches_reported"
-        ],
         "properties": {
-          "id": {
-            "type": "string"
-          },
-          "reported": {
-            "type": "number"
-          },
-          "recomputed": {
-            "type": "number"
-          },
-          "unit": {
-            "type": "string"
-          },
-          "method": {
+          "path": {
             "type": "string",
-            "enum": [
-              "mean"
-            ]
+            "minLength": 1
           },
-          "inputs": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "type": "object",
-              "additionalProperties": false,
-              "required": [
-                "path",
-                "sheet",
-                "row",
-                "col",
-                "value"
-              ],
-              "properties": {
-                "path": {
-                  "type": "string"
-                },
-                "sheet": {
-                  "type": "string"
-                },
-                "row": {
-                  "type": "integer",
-                  "minimum": 1
-                },
-                "col": {
-                  "type": "string"
-                },
-                "value": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "matches_reported": {
-            "type": "boolean"
+          "sheet": {
+            "type": "string"
           }
-        }
+        },
+        "required": [
+          "path",
+          "sheet"
+        ],
+        "additionalProperties": false
       }
+    },
+    "matches_reported": {
+      "type": "boolean"
     }
-  }
+  },
+  "required": [
+    "values",
+    "method",
+    "inputs",
+    "matches_reported"
+  ],
+  "additionalProperties": false
 }

@@ -19,7 +19,17 @@ WRONG_STATUS = {'resolved': 'unresolved', 'unresolved': 'resolved', 'partially_r
                 'present': 'absent', 'partially_present': 'present', 'absent': 'present'}
 
 
-def probes(gold, sponsor_cite=None):
+def probes(gold, sponsor_cite=None, gold_meta=None):
+    gold_meta = gold_meta or {}
+    if gold_meta.get('kind') == 'recompute_replicates':
+        copied = dict.fromkeys(gold['values'], gold_meta['reported'])
+        shifted = {key: value * 1.2 for key, value in gold['values'].items()}
+        yield 'copied_reported_fields', {**gold, 'values': copied, 'matches_reported': True}, False
+        yield 'shifted_numeric_fields', {**gold, 'values': shifted}, False
+        yield 'plausible_wrong', {**gold, 'values': shifted, 'method': 'normalized_to_control',
+                                  'matches_reported': not gold['matches_reported'],
+                                  'inputs': [{'path': 'missing.tsv', 'sheet': ''}]}, False
+        return
     key = 'activities' if 'activities' in gold else 'items'
     def changed(name, modify):
         value=copy.deepcopy(gold)
@@ -40,9 +50,17 @@ def probes(gold, sponsor_cite=None):
                                     'quote': 'Fictional evidence of sufficient length.'}
             if 'corrected_value' in item:
                 item['corrected_value'] = 'unsupported correction'
+            if 'verdict' in item:
+                item['verdict'] = ('consistent' if item['verdict'] == 'inconsistent' else 'inconsistent')
             for field in ('recomputed','recomputed_value','value','position','mismatches'):
                 if type(item.get(field)) in (int,float): item[field]=item[field]*1.2+1
     yield changed('plausible_wrong',wrong)
+    if gold_meta.get('kind') == 'bounded_audit':
+        reported = {item['id']: item['reported'] for item in gold_meta['items']}
+        for verdict in ('consistent', 'inconsistent'):
+            yield f'everything_{verdict}', {key: [
+                {**item, 'verdict': verdict, 'correct_value': reported[item['id']]} for item in gold[key]
+            ]}, False
     if key == 'activities':
         yield 'everything_not_permitted', {key: [{'id': i['id'], 'status': 'not_permitted'}
                                                 for i in gold[key]]}, False
@@ -74,6 +92,7 @@ def probes(gold, sponsor_cite=None):
                             if name == 'wrong_page': ref['page'] = 999999
                 if name=='nonexistent_path':
                     if 'path' in item: item['path']='nonexistent-file.pdf'
+                    if 'source' in item: item['source']['path']='nonexistent-file.pdf'
                     if 'source_key' in item: item['source_key']='nonexistent-file.csv::!A2'
                     for ref in item.get('inputs',[]): ref['path']='nonexistent-file.csv'
                 if name=='keyword_stuffing' and 'quote' in item: item['quote']='resolved NOAEL FDA response '*8
@@ -114,7 +133,12 @@ def sanity(task):
         raise ValueError(f'{task.name}: verification record missing')
     solution=task/'solution'
     plan=solution/'oracle_plan.json'
-    if plan.is_file():
+    if gold_meta.get('kind') == 'recompute_replicates':
+        result = subprocess.run([sys.executable, str(solution/'recompute.py'), '--pack',
+                                 str(task/'environment/workspace'), '--oracle'],
+                                check=True, capture_output=True, timeout=90)
+        gold = json.loads(result.stdout)
+    elif plan.is_file():
         with tempfile.TemporaryDirectory() as tmp:
             answer=Path(tmp)/'answer.json'
             subprocess.run([sys.executable,str(solution/'materialize.py'),str(plan),
@@ -136,7 +160,7 @@ def sanity(task):
             raise ValueError('Sponsor probe needs at least 20 characters on page 1')
         sponsor_cite = {'path': sponsor.relative_to(workspace).as_posix(), 'page': 1, 'quote': quote}
     cases=[('missing',None,False),('empty',{},False),('empty_items',{key:[]},False),('malformed_json','{',False),
-           *probes(gold, sponsor_cite),('gold',gold,False)]
+           *probes(gold, sponsor_cite, gold_meta),('gold',gold,False)]
     if gold_meta.get('penalize_false_positives'):
         extra = dict(gold['items'][0], path='nonexistent-extra-finding.pdf')
         cases.insert(-1, ('correct_plus_false_positive', {'items': [*gold['items'], extra]}, False))
@@ -193,6 +217,10 @@ def sanity(task):
                     passed=valid and score<.4
                 elif name=='rotated_statuses':
                     passed=valid and score<.3
+                elif name in {'everything_consistent', 'everything_inconsistent', 'copied_reported_fields'}:
+                    passed=valid and score<=.4
+                elif name=='shifted_numeric_fields':
+                    passed=valid and score<=.2
                 elif name in {'everything_not_permitted', 'everything_permitted'}:
                     passed=valid and score<=.3
                 elif name=='correct_plus_false_positive':

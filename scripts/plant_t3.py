@@ -26,8 +26,8 @@ def plant(workspace, plan):
         if relative is None:
             raise ValueError('Missing or unsafe mutation path')
         path = workspace/relative
-        if path.suffix.lower() not in {'.csv', '.xlsx'}:
-            raise ValueError('Only CSV/XLSX cells may be planted')
+        if path.suffix.lower() not in {'.csv', '.tsv', '.xlsx'}:
+            raise ValueError('Only CSV/TSV/XLSX cells may be planted')
         key = (relative, item['sheet'], item['row'], item['col'])
         if key in seen:
             raise ValueError('Duplicate mutation cell')
@@ -41,12 +41,13 @@ def plant(workspace, plan):
             n = 0
             for ch in col.upper(): n = 26*n+ord(ch)-64
             col = n
-        if path.suffix.lower() == '.csv':
+        if path.suffix.lower() in {'.csv', '.tsv'}:
+            delimiter = '\t' if path.suffix.lower() == '.tsv' else ','
             with path.open(newline='', encoding='utf-8-sig') as f:
-                rows = list(csv.reader(f))
+                rows = list(csv.reader(f, delimiter=delimiter))
             rows[item['row']-1][col-1] = item['after']
             with path.open('w', newline='', encoding='utf-8') as f:
-                csv.writer(f).writerows(rows)
+                csv.writer(f, delimiter=delimiter).writerows(rows)
         else:
             from openpyxl import load_workbook
             wb = load_workbook(path)

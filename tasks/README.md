@@ -24,3 +24,5 @@ approved running T1 with the measured shortcut scores documented.
 
 See [run results](../runs/SUMMARY.md). The fictional demos and their bundled
 reference answers are in `examples/`.
+
+Unverified scaffolds live under [`templates/unused/`](../templates/unused/).
