@@ -57,6 +57,15 @@ and numeric-shift probes scored 0.667 and 0.500. The reviewer approved keeping
 the partial-credit rubrics and reporting those missed cutoffs. See the
 [run summary](runs/SUMMARY.md) and [failure notes](runs/FAILURES_DRAFT.md).
 
+The objection-map rubric has since changed: a row earns credit only when
+category, status and citation are all right, and the score is corrected for
+the two rows a constant answer earns. Under it the all-absent, all-present and
+rotated-status probes score 0, and both Sonnet attempts replay to 0 with one
+row fully right. See
+[the T1 replay](runs/T1_REGRADE.md). The recovery-count item in the full audit
+and clean control was also widened; see [the replay](runs/T04_T05_REGRADE.md).
+Both changes await reviewer confirmation.
+
 ## Data and permissions
 
 Obtain the restricted filing from the [Raycaster portal](https://www.raycaster.ai/hackathon).

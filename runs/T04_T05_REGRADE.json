@@ -1,0 +1,283 @@
+{
+ "change": "real-recovery-count: claim anchor narrowed to the erroneous count; supporting-passage anchors on study report pages 4 and 29 narrowed to the finding; correction accepts text naming the corrected count as well as exact labels",
+ "scope_note": "Replays cover the 12 attempts whose raw answers were available locally. The 8 earlier attempts on main were exported without answer.json and need the same replay from their raw jobs.",
+ "reviewer_confirmation": "pending",
+ "tasks": [
+  {
+   "task": "discrepancy-hunt-04-full-audit",
+   "gold_sha256": "339cb1ece1c25965ab470fc05741c9a1bde5c73034111b75b96266e73c8dfb16",
+   "replays": [
+    {
+     "trial": "runs/holdout_discrepancy-hunt-04-full-audit/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-04-full-audit__iP53qpK__2587d96738",
+     "model": "claude-haiku-5-5",
+     "original_reward": 0.428571428571,
+     "replayed_reward": 0.6666666666666666,
+     "items": {
+      "plant-1": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "plant-2": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "plant-3": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "real-recovery-count": {
+       "credit": 1,
+       "primary_failure": "correct"
+      }
+     },
+     "other_flags": 2,
+     "false_positives": 2,
+     "new_model_call": false,
+     "answer_sha256": "5bff45056f511b0e51f2ac04e549dfb70a8159f6261146f1c554af56e983aaa1"
+    },
+    {
+     "trial": "runs/holdout_discrepancy-hunt-04-full-audit/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-04-full-audit__xez9CER__5a9325d648",
+     "model": "claude-haiku-5-5",
+     "original_reward": 0.428571428571,
+     "replayed_reward": 0.6666666666666666,
+     "items": {
+      "plant-1": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "plant-2": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "plant-3": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "real-recovery-count": {
+       "credit": 1,
+       "primary_failure": "correct"
+      }
+     },
+     "other_flags": 2,
+     "false_positives": 2,
+     "new_model_call": false,
+     "answer_sha256": "5e6faeebdbfc6c561708fa2737e5695a7bb4392cfd27340a1ad57223fe4ada1d"
+    },
+    {
+     "trial": "runs/holdout_discrepancy-hunt-04-full-audit/claude-code__claude-opus-5-5__v2__discrepancy-hunt-04-full-audit__B95Erpo__5cb918aad9",
+     "model": "claude-opus-5-5",
+     "original_reward": 0.166666666667,
+     "replayed_reward": 0.4,
+     "items": {
+      "plant-1": {
+       "credit": 0,
+       "primary_failure": "grounding"
+      },
+      "plant-2": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "plant-3": {
+       "credit": 0,
+       "primary_failure": "missing"
+      },
+      "real-recovery-count": {
+       "credit": 1,
+       "primary_failure": "correct"
+      }
+     },
+     "other_flags": 0,
+     "false_positives": 1,
+     "new_model_call": false,
+     "answer_sha256": "77f46095c4b0927e03baf0a58a5868cc30ea8e2079d039ce26622d1b38a36e3e"
+    },
+    {
+     "trial": "runs/holdout_discrepancy-hunt-04-full-audit/claude-code__claude-opus-5-5__v2__discrepancy-hunt-04-full-audit__jb9oLCF__f4293aeac7",
+     "model": "claude-opus-5-5",
+     "original_reward": 0.5,
+     "replayed_reward": 0.8,
+     "items": {
+      "plant-1": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "plant-2": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "plant-3": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "real-recovery-count": {
+       "credit": 1,
+       "primary_failure": "correct"
+      }
+     },
+     "other_flags": 1,
+     "false_positives": 1,
+     "new_model_call": false,
+     "answer_sha256": "de97f4f1fa8796dfb53c9560baa193f6b6684df04ed7a9672cb2438d62fda4fe"
+    },
+    {
+     "trial": "runs/holdout_discrepancy-hunt-04-full-audit/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-04-full-audit__Tp4i4wJ__35eafd1f29",
+     "model": "claude-sonnet-5-5",
+     "original_reward": 0.142857142857,
+     "replayed_reward": 0.3333333333333333,
+     "items": {
+      "plant-1": {
+       "credit": 0,
+       "primary_failure": "grounding"
+      },
+      "plant-2": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "plant-3": {
+       "credit": 0,
+       "primary_failure": "missing"
+      },
+      "real-recovery-count": {
+       "credit": 1,
+       "primary_failure": "correct"
+      }
+     },
+     "other_flags": 1,
+     "false_positives": 2,
+     "new_model_call": false,
+     "answer_sha256": "97795aaf028c2bf32a7ae02ad353184d04059e54d02aa0cb226b133ce27bb3af"
+    },
+    {
+     "trial": "runs/holdout_discrepancy-hunt-04-full-audit/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-04-full-audit__eoem6vf__bd97329582",
+     "model": "claude-sonnet-5-5",
+     "original_reward": 0.4,
+     "replayed_reward": 0.4,
+     "items": {
+      "plant-1": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "plant-2": {
+       "credit": 1,
+       "primary_failure": "correct"
+      },
+      "plant-3": {
+       "credit": 0,
+       "primary_failure": "missing"
+      },
+      "real-recovery-count": {
+       "credit": 0,
+       "primary_failure": "missing"
+      }
+     },
+     "other_flags": 1,
+     "false_positives": 1,
+     "new_model_call": false,
+     "answer_sha256": "f81f5c423852c876f529c198a4f8f34172b1563dc731737cbdb226611fe7ac24"
+    }
+   ]
+  },
+  {
+   "task": "discrepancy-hunt-05-clean-control",
+   "gold_sha256": "a9b4e3d115139403f8729cac24e16d3546130c7087ee9700d9cf8513c6a7ca9a",
+   "replays": [
+    {
+     "trial": "runs/holdout_discrepancy-hunt-05-clean-control/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-05-clean-contro__JsiTakK__3cb836e02a",
+     "model": "claude-haiku-5-5",
+     "original_reward": 0.0,
+     "replayed_reward": 0.16666666666666666,
+     "items": {
+      "real-recovery-count": {
+       "credit": 1,
+       "primary_failure": "correct"
+      }
+     },
+     "other_flags": 5,
+     "false_positives": 5,
+     "new_model_call": false,
+     "answer_sha256": "b23f7f92a0351cf7c51397b06a99cac8b0c94ae6aa8d43f6e3a27249cdd1183a"
+    },
+    {
+     "trial": "runs/holdout_discrepancy-hunt-05-clean-control/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-05-clean-contro__VDnbZNw__dc6a6b3781",
+     "model": "claude-haiku-5-5",
+     "original_reward": 0.0,
+     "replayed_reward": 0.16666666666666666,
+     "items": {
+      "real-recovery-count": {
+       "credit": 1,
+       "primary_failure": "correct"
+      }
+     },
+     "other_flags": 5,
+     "false_positives": 5,
+     "new_model_call": false,
+     "answer_sha256": "e83a0ee94aa0d5fe169e841907dd6f04290715bbbd4fefe9b0258d0ae8f70d09"
+    },
+    {
+     "trial": "runs/holdout_discrepancy-hunt-05-clean-control/claude-code__claude-opus-5-5__v2__discrepancy-hunt-05-clean-contro__KAWa7oH__a762becc1a",
+     "model": "claude-opus-5-5",
+     "original_reward": 0.0,
+     "replayed_reward": 0.5,
+     "items": {
+      "real-recovery-count": {
+       "credit": 1,
+       "primary_failure": "correct"
+      }
+     },
+     "other_flags": 1,
+     "false_positives": 1,
+     "new_model_call": false,
+     "answer_sha256": "89a89ffa8454997819afb971f5010a7ca836546685403b9af2c1ffe8408ab710"
+    },
+    {
+     "trial": "runs/holdout_discrepancy-hunt-05-clean-control/claude-code__claude-opus-5-5__v2__discrepancy-hunt-05-clean-contro__uAG2Tjy__88ad4904e2",
+     "model": "claude-opus-5-5",
+     "original_reward": 0.0,
+     "replayed_reward": 0.25,
+     "items": {
+      "real-recovery-count": {
+       "credit": 1,
+       "primary_failure": "correct"
+      }
+     },
+     "other_flags": 3,
+     "false_positives": 3,
+     "new_model_call": false,
+     "answer_sha256": "9a8ea47462713ec82aaca930a2f84a28d30a0f434db61263a79afcd724b29d1e"
+    },
+    {
+     "trial": "runs/holdout_discrepancy-hunt-05-clean-control/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-05-clean-contro__ECBzqbp__9b84fe1601",
+     "model": "claude-sonnet-5-5",
+     "original_reward": 0.0,
+     "replayed_reward": 0.5,
+     "items": {
+      "real-recovery-count": {
+       "credit": 1,
+       "primary_failure": "correct"
+      }
+     },
+     "other_flags": 1,
+     "false_positives": 1,
+     "new_model_call": false,
+     "answer_sha256": "8a0d8f796c7e4b8b51d7f0b0800927196aa4406833b2e58b18d8346bcef5ac55"
+    },
+    {
+     "trial": "runs/holdout_discrepancy-hunt-05-clean-control/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-05-clean-contro__z23CtmY__7b6c4ad529",
+     "model": "claude-sonnet-5-5",
+     "original_reward": 0.0,
+     "replayed_reward": 0.3333333333333333,
+     "items": {
+      "real-recovery-count": {
+       "credit": 1,
+       "primary_failure": "correct"
+      }
+     },
+     "other_flags": 2,
+     "false_positives": 2,
+     "new_model_call": false,
+     "answer_sha256": "1e35cddd128aa41592d159bafb9c5e8f5ca1c7a54f8cc7bc4a39a169f431429e"
+    }
+   ]
+  }
+ ]
+}

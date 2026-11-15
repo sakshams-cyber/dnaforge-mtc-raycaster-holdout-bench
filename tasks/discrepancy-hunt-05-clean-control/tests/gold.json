@@ -72,11 +72,11 @@
       "page_max": 3,
       "anchor_ref": {
         "page": 3,
-        "start": 1946,
-        "end": 2019
+        "start": 1951,
+        "end": 1962
       },
       "expected": {
-        "type": "label",
+        "type": "contains",
         "accept": [
           "0",
           "zero",
@@ -89,6 +89,17 @@
           "no recovery animals with gliosis",
           "no gliosis in recovery animals",
           "0 animals with gliosis at recovery"
+        ],
+        "any": [
+          "0/4",
+          "0 of 4",
+          "0 out of 4",
+          "zero",
+          "no gliosis",
+          "none of the",
+          "no recovery animals",
+          "0 animals",
+          "0 recovery animals"
         ]
       },
       "sources": [
@@ -98,8 +109,8 @@
           "page_max": 4,
           "anchor_ref": {
             "page": 4,
-            "start": 1777,
-            "end": 1827
+            "start": 1787,
+            "end": 1797
           }
         },
         {
@@ -118,8 +129,8 @@
           "page_max": 29,
           "anchor_ref": {
             "page": 29,
-            "start": 1377,
-            "end": 1423
+            "start": 1387,
+            "end": 1397
           }
         }
       ],
@@ -142,6 +153,30 @@
         "path": "ind/A-703-02-FinalReport.txt",
         "page": 27
       }
-    ]
+    ],
+    "acceptance_addendum": {
+      "item_id": "real-recovery-count",
+      "changed_by": "Ahmad Saber",
+      "changed_at": "2026-11-14T16:35:00-08:00",
+      "reviewer_confirmation": "pending: the original reviewer has not confirmed this change",
+      "previous_anchor_ref": {
+        "page": 3,
+        "start": 1946,
+        "end": 2019
+      },
+      "reason": "The claim anchor is narrowed from the 73-character sentence fragment to the 11-character erroneous count, in line with the 15 to 23 character anchors of the planted items; the instruction asks only for a verbatim quote of at least 20 characters. The correction now accepts text that names the corrected count as well as the exact labels, so a correction that also fixes the duration is not rejected. The supporting-passage anchors on study report pages 4 and 29 are narrowed from whole sentences (50 and 46 characters) to the 10-character finding, in line with the 3 to 11 character source anchors of the planted items. The page 27 anchor is unchanged.",
+      "previous_source_anchor_refs": [
+        {
+          "page": 4,
+          "start": 1777,
+          "end": 1827
+        },
+        {
+          "page": 29,
+          "start": 1377,
+          "end": 1423
+        }
+      ]
+    }
   }
 }

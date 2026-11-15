@@ -30,7 +30,9 @@ The first eight v2 answers located the issue. Seven quotations did not include t
 full required anchor. The eighth combined count and duration and failed the
 count-only comparison. Both full-audit Sonnet attempts also quoted an allowed
 page for one planted item without the narrow evidence anchor. See
-[trial-level diagnostics](runs/FAILURES_DRAFT.md).
+[trial-level diagnostics](runs/FAILURES_DRAFT.md). With the recovery-count item's
+anchors narrowed and its correction widened, 11 of 12 later saved answers are
+credited for it ([replay](runs/T04_T05_REGRADE.md)); no new model was called.
 Both objection-map runs had the same three status disagreements and supplied
 the same out-of-set page for a fourth request.
 
@@ -43,10 +45,12 @@ specific alternative, while the original model scores remained recorded.
 trajectory example after reviewing the v1 runs.
 
 **Limitations.** The tasks use two filings, few attempts, and different v1 and v2 task sets.
-On the objection map, correct categories alone earn one-third credit. The
-all-absent, all-present and rotated-status probes missed the sanity cutoffs
-at 0.600, 0.400 and 0.333, respectively. The reviewer approved the run with
-this limitation documented.
+On the objection map, a row now earns credit only when category, status and
+citation are all right, and the score is corrected for the two rows a constant
+answer earns ([replay](runs/T1_REGRADE.md)). The all-absent, all-present and
+rotated-status probes now score 0. Both Sonnet attempts get one row fully
+right and replay to 0. With five rows the score moves in steps of one third.
+This change awaits reviewer confirmation.
 The recompute copy and numeric-shift probes earned 0.667 and 0.500 under
 the independent checks.
 The control grades against one approved issue and can penalize genuine
