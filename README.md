@@ -13,7 +13,8 @@ Three short planted discrepancy tasks, a full-filing audit, and an unedited
 control. The deterministic graders check corrections and source evidence.
 Hold scope tests eight reviewer-verified activity decisions. The hold
 objection map checks whether the original IND supplied what FDA requested for
-five items. The separate
+five items. A recompute task checks the mean, sum and range behind one ELISA
+summary cell. The separate
 [forecast task](tasks/forecast-01) has a reviewer-provided key and requires the
 ALTU-237 pack. It is outside these runs; see [forecast setup](docs/FORECAST_TIER.md).
 
@@ -63,6 +64,12 @@ The reviewer approved reporting these results with the original rubric.
 The Harbor oracle scored 1.0. Both Sonnet attempts scored 8/15 (0.533),
 with the same three status disagreements and a sampling citation outside
 the accepted pages. See [the T1 trial analysis](runs/FAILURES_DRAFT.md#t1-b-hold-objection-map).
+
+The ELISA recompute oracle scored 1.0. Its blank and plausibly wrong answers
+scored 0. Copying the reported mean into every numeric field scored 0.667,
+and shifting all three numeric fields by 20% scored 0.500 with the other
+fields correct. These scores show the partial credit available for method,
+source and the agreement flag.
 
 ## Data and permissions
 

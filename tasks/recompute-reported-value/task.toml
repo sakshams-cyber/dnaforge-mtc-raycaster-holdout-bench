@@ -2,9 +2,9 @@ schema_version = "1.4"
 artifacts = ["/app/output/answer.json", "/app/ENVIRONMENT_PACKAGES.txt"]
 [task]
 name = "holdout/recompute-reported-value"
-description = "Recompute reported values from raw data; human method notes and verified values pending."
+description = "Recompute the mean, sum and range for a reported ELISA result."
 [metadata]
-pack = "pending human selection"
+pack = "siRNA IND 167326"
 difficulty_target = "10-30 min"
 [agent]
 timeout_sec = 1800

@@ -6,6 +6,7 @@
 | v2 full audit | Review nine complete documents for three planted findings and one real inconsistency | Per-item credit and a penalty for unsupported or duplicate findings |
 | Hold scope | Decide eight activities under a partial clinical hold | Exact permission decision and grounded citation |
 | Hold objection map | Check what the filed IND already supplied for five FDA requests | Category, exact status and filed-IND citation |
+| ELISA recompute | Rebuild one reported result from its raw wells | Three numeric outputs, method, source and agreement flag |
 | v2 clean control | Audit the same documents without changes | Credit for the approved original issue; additional findings lower the score |
 
 **Reference checks.** Reviewers supplied the v1 keys and confirmed the v2
@@ -19,6 +20,8 @@ full-audit means were 0.357 and 0.134; both clean-control means were 0.
 Both hold-scope runs got 14/16. A reviewer-approved alternate source raised
 both [saved-answer replays](runs/T5_REGRADE.md) to 15/16; no new model was called.
 The objection-map Harbor oracle scored 1.0. Both Sonnet attempts scored 8/15.
+Saksham hand-checked the two ELISA wells and approved the three statistics.
+The recompute Harbor oracle scored 1.0.
 
 **What failed.** The apparent recovery-count miss was not a retrieval miss.
 All eight v2 answers located the issue. Seven quotations did not include the
@@ -42,5 +45,7 @@ On the objection map, correct categories alone earn one-third credit. The
 all-absent, all-present and rotated-status probes missed the sanity cutoffs
 at 0.600, 0.400 and 0.333, respectively. The reviewer approved the run with
 this limitation documented.
+The recompute copy and numeric-shift probes earned 0.667 and 0.500 under
+the independent checks.
 The control grades against one approved issue and can penalize genuine
 findings that were not in its key. These scores describe the submitted rubrics, not a general ranking of either model.

@@ -1,0 +1,78 @@
+{
+  "task_id": "recompute-reported-value",
+  "kind": "recompute_replicates",
+  "verification": {
+    "status": "human_verified",
+    "who": "Saksham Srivastava",
+    "how": "Hand-checked wells L68:L69 and explicitly approved the mean, sum, range, method and comparison at 2%.",
+    "verified_by": "Saksham Srivastava",
+    "verified_at": "2026-11-14T16:23:07-08:00",
+    "method": "Reviewer hand-check plus independent recomputation from the matching source rows.",
+    "answerable_from_workspace": true,
+    "evidence": [
+      {
+        "path": "source-data/elisa/026_summary.tsv",
+        "sheet": "",
+        "row": 8,
+        "col": "C"
+      },
+      {
+        "path": "source-data/elisa/026.tsv",
+        "sheet": "",
+        "row": 68,
+        "col": "L"
+      },
+      {
+        "path": "source-data/elisa/026.tsv",
+        "sheet": "",
+        "row": 69,
+        "col": "L"
+      }
+    ]
+  },
+  "reported": 130.829,
+  "values": {
+    "mean_ng_ml": 130.829,
+    "sum_ng_ml": 261.658,
+    "range_ng_ml": 0.978
+  },
+  "method": "raw_mean",
+  "matches_reported": true,
+  "input": {
+    "path": "source-data/elisa/026.tsv",
+    "sheet": ""
+  },
+  "rtol": 0.02,
+  "criteria": [
+    {
+      "id": "C01",
+      "item_id": "recompute-reported-value",
+      "desc": "mean_ng_ml"
+    },
+    {
+      "id": "C02",
+      "item_id": "recompute-reported-value",
+      "desc": "sum_ng_ml"
+    },
+    {
+      "id": "C03",
+      "item_id": "recompute-reported-value",
+      "desc": "range_ng_ml"
+    },
+    {
+      "id": "C04",
+      "item_id": "recompute-reported-value",
+      "desc": "method"
+    },
+    {
+      "id": "C05",
+      "item_id": "recompute-reported-value",
+      "desc": "matches_reported"
+    },
+    {
+      "id": "C06",
+      "item_id": "recompute-reported-value",
+      "desc": "inputs"
+    }
+  ]
+}
