@@ -201,10 +201,12 @@ def sanity(task):
                 elif gold_meta.get('schema_version') == 2 and name in {'nonexistent_path','wrong_page','keyword_stuffing'}:
                     # Partial-credit rules preserve independent checks; the attacked
                     # citation must still earn zero, as must status for invalid locations.
-                    criteria=data.get('criteria', [])
+                    # Read the per-item checks: objection rows are scored as a whole,
+                    # so their criteria no longer list status and citation separately.
                     expected_fail={'citation'} if name=='keyword_stuffing' else {'citation','status'}
-                    attacked=[c for c in criteria if c.get('check') in expected_fail]
-                    passed=valid and bool(attacked) and not any(c['passed'] for c in attacked)
+                    attacked=[row['criteria_checks'][check] for row in data.get('details',{}).get('items',{}).values()
+                              for check in expected_fail if check in row.get('criteria_checks',{})]
+                    passed=valid and bool(attacked) and not any(attacked)
                 else: passed=valid and score<.2
                 rows.append({'task':task.name,'probe':name,'score':score,'pass':passed,
                              'diagnostic':name=='all_resolved','details':data.get('details',{})})

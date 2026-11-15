@@ -195,14 +195,23 @@ def grade_v2(answer, workspace, gold, kind):
         if kind == 'objection':
             marks['category'] = item['category'] == expected[key]['expected']['category']
         checks = {'grounding': grounded, 'comparison': all(marks[c] for c in marks if c != 'citation')}
-        breakdown[key] = {'checks': checks, 'credit': sum(marks.values())/len(names),
+        # An objection row counts only when category, status and citation are all right;
+        # partial credit let a constant answer outscore a real attempt.
+        credit = int(all(marks.values())) if kind == 'objection' else sum(marks.values())/len(names)
+        breakdown[key] = {'checks': checks, 'credit': credit,
                           'criteria_checks': marks, 'citation_allowed': bool(allowed),
                           'primary_failure': primary_failure(checks)}
     extra = len(set(ids) - expected.keys())
-    expanded = [{'id': f"{row['id']}.{name}", 'item_id': row['item_id'], 'check': name,
-                 'desc': f"{row.get('desc', 'Verify the item')}: {name}",
-                 'passed': breakdown[row['item_id']]['criteria_checks'][name]}
-                for row in criteria for name in names]
+    if kind == 'objection':
+        expanded = [{'id': row['id'], 'item_id': row['item_id'], 'check': 'row',
+                     'desc': f"{row.get('desc', 'Verify the item')}: category, status and citation",
+                     'passed': all(breakdown[row['item_id']]['criteria_checks'].values())}
+                    for row in criteria]
+    else:
+        expanded = [{'id': f"{row['id']}.{name}", 'item_id': row['item_id'], 'check': name,
+                     'desc': f"{row.get('desc', 'Verify the item')}: {name}",
+                     'passed': breakdown[row['item_id']]['criteria_checks'][name]}
+                    for row in criteria for name in names]
     met = sum(row['passed'] for row in expanded)
     score = 0 if errors else max(0, met / len(expanded) - 0.05 * extra)
     details = {'items': breakdown, 'kind': kind, 'criteria_met': met, 'criteria_total': len(expanded),
@@ -283,11 +292,14 @@ def _in_refs(path, page, quote, refs, workspace):
 def _correction_matches(given, expected):
     """Compare the corrected value only; no credit for prose that merely mentions it."""
     text = norm_text(given)
+    squash = lambda v: re.sub(r'[^a-z0-9]', '', norm_text(v))
     if expected['type'] == 'label':
-        squash = lambda v: re.sub(r'[^a-z0-9]', '', norm_text(v))
         return squash(text) in {squash(v) for v in expected['accept']}
     if expected['type'] == 'contains':
-        # Free-text correction: must name one accepted term and none of the excluded ones.
+        # Free-text correction: an exact accepted label, or text that names one
+        # accepted term and none of the excluded ones.
+        if squash(text) in {squash(v) for v in expected.get('accept', [])}:
+            return True
         return (any(norm_text(v) in text for v in expected['any'])
                 and not any(norm_text(v) in text for v in expected.get('none', [])))
     if expected['type'] != 'quantity':

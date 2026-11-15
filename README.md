@@ -64,6 +64,14 @@ The Harbor oracle scored 1.0. Both Sonnet attempts scored 8/15 (0.533),
 with the same three status disagreements and a sampling citation outside
 the accepted pages. See [the T1 trial analysis](runs/FAILURES_DRAFT.md#t1-b-hold-objection-map).
 
+The objection-map rubric has since changed: a row earns credit only when
+category, status and citation are all right. Under it both Sonnet attempts
+replay to 1/5, the all-present and rotated-status probes score 0, and the
+all-absent probe scores 0.400, still missing its cutoff. See
+[the T1 replay](runs/T1_REGRADE.md). The recovery-count item in the full audit
+and clean control was also widened; see [the replay](runs/T04_T05_REGRADE.md).
+Both changes await reviewer confirmation.
+
 ## Data and permissions
 
 Obtain the restricted filing from the [Raycaster portal](https://www.raycaster.ai/hackathon).

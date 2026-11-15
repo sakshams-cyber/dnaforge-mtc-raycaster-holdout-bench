@@ -1,0 +1,141 @@
+{
+ "task": "hold-objection-map",
+ "change": "a row earns credit only when category, status and citation are all right; score is rows fully right over rows",
+ "reviewer_confirmation": "pending",
+ "shortcut_probes": {
+  "everything_absent": {
+   "before": 0.6,
+   "after": 0.4
+  },
+  "everything_present": {
+   "before": 0.4,
+   "after": 0.0
+  },
+  "rotated_statuses": {
+   "before": 0.333,
+   "after": 0.0
+  }
+ },
+ "replays": [
+  {
+   "trial": "runs/holdout_hold-objection-map/claude-code__claude-sonnet-5-5__v1__hold-objection-map__MA2Zv42__34a234fd18",
+   "agent": "claude-code",
+   "model": "claude-sonnet-5-5",
+   "original_reward": 0.5333333333333333,
+   "original_criteria_met": 8,
+   "original_criteria_total": 15,
+   "replayed_reward": 0.2,
+   "rows_fully_right": 1,
+   "rows_total": 5,
+   "row_checks": {
+    "hold-1": {
+     "category": true,
+     "status": true,
+     "citation": true
+    },
+    "hold-2": {
+     "category": true,
+     "status": false,
+     "citation": false
+    },
+    "comment-1": {
+     "category": true,
+     "status": false,
+     "citation": false
+    },
+    "comment-2": {
+     "category": true,
+     "status": false,
+     "citation": false
+    },
+    "comment-3": {
+     "category": true,
+     "status": true,
+     "citation": false
+    }
+   },
+   "new_model_call": false,
+   "method": "recomputed from the saved per-check results in verifier/score.json"
+  },
+  {
+   "trial": "runs/holdout_hold-objection-map/claude-code__claude-sonnet-5-5__v1__hold-objection-map__QTaa5Lu__8b98443cf1",
+   "agent": "claude-code",
+   "model": "claude-sonnet-5-5",
+   "original_reward": 0.5333333333333333,
+   "original_criteria_met": 8,
+   "original_criteria_total": 15,
+   "replayed_reward": 0.2,
+   "rows_fully_right": 1,
+   "rows_total": 5,
+   "row_checks": {
+    "hold-1": {
+     "category": true,
+     "status": true,
+     "citation": true
+    },
+    "hold-2": {
+     "category": true,
+     "status": false,
+     "citation": false
+    },
+    "comment-1": {
+     "category": true,
+     "status": false,
+     "citation": false
+    },
+    "comment-2": {
+     "category": true,
+     "status": false,
+     "citation": false
+    },
+    "comment-3": {
+     "category": true,
+     "status": true,
+     "citation": false
+    }
+   },
+   "new_model_call": false,
+   "method": "recomputed from the saved per-check results in verifier/score.json"
+  },
+  {
+   "trial": "runs/holdout_hold-objection-map/oracle__none__v1__hold-objection-map__GtKT4x4__9f0ee1303c",
+   "agent": "oracle",
+   "model": "none",
+   "original_reward": 1.0,
+   "original_criteria_met": 15,
+   "original_criteria_total": 15,
+   "replayed_reward": 1.0,
+   "rows_fully_right": 5,
+   "rows_total": 5,
+   "row_checks": {
+    "hold-1": {
+     "category": true,
+     "status": true,
+     "citation": true
+    },
+    "hold-2": {
+     "category": true,
+     "status": true,
+     "citation": true
+    },
+    "comment-1": {
+     "category": true,
+     "status": true,
+     "citation": true
+    },
+    "comment-2": {
+     "category": true,
+     "status": true,
+     "citation": true
+    },
+    "comment-3": {
+     "category": true,
+     "status": true,
+     "citation": true
+    }
+   },
+   "new_model_call": false,
+   "method": "recomputed from the saved per-check results in verifier/score.json"
+  }
+ ]
+}
