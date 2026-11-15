@@ -2,32 +2,31 @@
 
 | Task | Purpose |
 | --- | --- |
-| `discrepancy-hunt-01`–`03` | v1 bounded planted single-finding tasks |
-| `discrepancy-hunt-04-full-audit` | v2 complete reports, four credited findings, and a precision penalty |
-| `discrepancy-hunt-05-clean-control` | v2 unaltered documents, one credited real discrepancy, and a precision penalty |
-| `hold-scope` | Eight reviewer-approved held-study activity decisions; Harbor oracle 1.0 |
-| `hold-objection-map` | Five reviewer-approved checks of what the original IND contained when FDA issued the partial hold |
-| `recompute-reported-value` | Recompute the mean, sum and range from two ELISA wells; Harbor oracle 1.0 |
-| `forecast-01` | Held-back stability values on ALTU-237, with a recorded Harbor oracle at 1.0 |
+| [Discrepancy 01](discrepancy-hunt-01/instruction.md), [02](discrepancy-hunt-02/instruction.md), [03](discrepancy-hunt-03/instruction.md) | Bounded audit cases with one planted discrepancy each |
+| [Full audit](discrepancy-hunt-04-full-audit/instruction.md) | Complete reports, four credited findings, and a precision penalty |
+| [Clean control](discrepancy-hunt-05-clean-control/instruction.md) | Unaltered documents, one credited real discrepancy, and a precision penalty |
+| [Hold scope](hold-scope/instruction.md) | Eight reviewer-approved held-study activity decisions |
+| [Hold objection map](hold-objection-map/instruction.md) | Five checks of what the original IND contained when FDA issued the partial hold |
+| [Recompute a reported value](recompute-reported-value/instruction.md) | Mean, sum and range from two raw ELISA wells |
+| [Stability forecast](forecast-01/instruction.md) | Held-back stability values on ALTU-237 |
 
-For a real discrepancy task, stage the local pack with
-`python scripts/stage_text.py --pack-root data/pack3 --task tasks/<id>`
-(add `--clean` for the control), then run `python scripts/sanity.py tasks/<id>`.
-Every task has a verifier entrypoint and its checked-in solution plan reconstructs
-any quote from the staged document using page and character offsets. The plans
-require no copied filing text.
+## Stage the workspace
 
-Stage either hold task with `python scripts/stage.py --pack-root data/pack3 --task tasks/<id>`.
-For `hold-objection-map`, `python scripts/sanity.py tasks/hold-objection-map`
-reports three shortcut failures at their original cutoffs. Blank and
-plausibly wrong score 0 and the reference answer scores 1.0. The reviewer
-approved running T1 with the measured shortcut scores documented.
+- Discrepancy cases use `python scripts/stage_text.py --pack-root data/pack3 --task tasks/<id>`. Add `--clean` for the clean control.
+- Hold and ELISA tasks use `python scripts/stage.py --pack-root data/pack3 --task tasks/<id>`.
+- The forecast task uses the authorized ALTU-237 download. Follow [forecast setup](../docs/FORECAST_TIER.md).
 
-Stage the recompute task with `python scripts/stage.py --pack-root data/pack3 --task tasks/recompute-reported-value`.
-Then run `python scripts/sanity.py tasks/recompute-reported-value` to see the
-reference and the measured copy and numeric-shift probe scores.
+## Verify the answers
 
-See [run results](../runs/SUMMARY.md). The fictional demos and their bundled
-reference answers are in `examples/`.
+Run `python scripts/sanity.py tasks/<id>` for the blank, plausibly wrong,
+and reference answers plus task-specific probes. The ELISA copy and
+numeric-shift probes exceed their cutoffs under the current partial-credit
+rubric. For a container replay, install [Harbor](../requirements-harbor.txt),
+start Docker, and run `harbor run -p tasks/<id> -a oracle`.
+
+Each task has an entrypoint at `tests/test.sh`. Citation oracles reconstruct
+quotes from page and character offsets in the staged documents. The
+[run summary](../runs/SUMMARY.md) links the recorded results. The
+[fictional examples](../examples/) provide a demo without restricted data.
 
 Unverified scaffolds live under [`templates/unused/`](../templates/unused/).

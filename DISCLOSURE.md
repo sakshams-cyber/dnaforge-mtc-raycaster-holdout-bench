@@ -8,14 +8,13 @@ The event-day Holdout-Bench work added task templates, local staging and
 inspection, deterministic mapping and recomputation checks, sanity probes,
 workspace fingerprints, run collection, and local pack-index setup.
 
-This public snapshot was assembled from source and deliberately fictional
-fixtures. It contains no restricted filings, filing-derived gold, or real
-agent run results. There was no pre-event Git tag to carry forward.
+The starter archive arrived without Git history. The team's local scaffold
+commit is dated November 14, 2026, at 1:57 PM Pacific. The integrated history
+also includes an earlier starter snapshot from 12:31 PM Pacific.
 
-## Nov 14: final task scaffolds
+## Competition submission
 
-The team selected hold scope, filed IND evidence for hold requests, and one
-ELISA recomputation task. Added local PDF search, task-specific graders,
-quote-offset oracle support, and the public regulation source. The staged
-workspaces and reviewer notes remain local. Fictional sanity and a local
-Harbor oracle passed; no real agent run or human-verified answer is included.
+The event-day submission includes nine Harbor tasks, human-verified reference
+answers, deterministic graders, and scrubbed model trial records. The
+restricted filings, staged workspaces, raw jobs, and reviewer notes stay local.
+[Task catalog](tasks/README.md) · [Run evidence](runs/SUMMARY.md)
