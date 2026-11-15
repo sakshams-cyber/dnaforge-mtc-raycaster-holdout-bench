@@ -23,7 +23,10 @@ attempts scored 0. In forecast, Haiku and Opus each averaged 0.333, and Sonnet
 averaged 0.250, with two attempts per model. Both hold-scope Sonnet runs got
 14/16. An approved alternate source raised both [saved-answer replays](runs/T5_REGRADE.md)
 to 15/16. Both objection-map Sonnet runs scored 8/15. Haiku scored 6/6 in the
-single ELISA attempt. See [all trial counts](runs/SUMMARY.md).
+single ELISA attempt. See [all trial counts](runs/SUMMARY.md). Replayed under the
+revised graders, with no new model calls, the six later full-audit answers average
+0.667 (Haiku), 0.367 (Sonnet) and 0.600 (Opus), and the six clean-control answers
+0.200, 0.417 and 0.375.
 
 **What failed.** The apparent recovery-count miss was not a retrieval miss.
 The first eight v2 answers located the issue. Seven quotations did not include the
@@ -41,8 +44,18 @@ and penalized unsupported findings. In hold scope, checking the rejected
 citations exposed a coverage gap in the key; the reviewer approved one
 specific alternative, while the original model scores remained recorded.
 
-**Research insight.** TODO: add the team's interpretation and a concrete
-trajectory example after reviewing the v1 runs.
+**Research insight.** Finding the evidence was not what limited these agents.
+Every audit and control answer located the one real inconsistency in the filing,
+Haiku and Opus found most planted edits and Sonnet about half. Points were lost in three other places.
+Judgment: on the objection map Sonnet classified all five FDA requests correctly
+but disagreed with the reviewer on three of five decisions about whether the IND
+already contained the item. Restraint: on the unedited control every model added
+one to four further findings. Extrapolation: in the forecast all three models
+continued a decline and missed the two values that reversed. Our first graders
+hid this by rejecting correct findings whose quote was shorter than the key, so
+the zeros on the control described the rubric, not the models. Example: Sonnet
+trial eoem6vf quoted the sentence after the wrong count, which is a fair miss;
+the other eleven replayed answers quoted the count itself and are now credited.
 
 **Limitations.** The tasks use two filings, few attempts, and different v1 and v2 task sets.
 On the objection map, a row now earns credit only when category, status and
@@ -53,8 +66,9 @@ right and replay to 0. With five rows the score moves in steps of one third.
 This change awaits reviewer confirmation.
 The recompute copy and numeric-shift probes earned 0.667 and 0.500 under
 the independent checks.
-The control grades against one approved issue and can penalize genuine
-findings outside its key.
+The control credits one approved issue and no longer counts four known
+inconsistencies of the unaltered filing against an answer. Other extra findings
+still lower the score, and some of those have not been reviewed.
 
 ## Additional tasks: built and self-tested, not yet agent-run
 

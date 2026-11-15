@@ -32,6 +32,16 @@
         "start": 578,
         "end": 587
       }
+    },
+    {
+      "path": "ind/2.6.2.pharmacology-written-summary.txt",
+      "page_min": 7,
+      "page_max": 7,
+      "anchor_ref": {
+        "page": 7,
+        "start": 1015,
+        "end": 1024
+      }
     }
   ],
   "answer_schema": {
@@ -352,6 +362,13 @@
           "end": 1423
         }
       ]
+    },
+    "compound_name_addendum": {
+      "changed_by": "Ahmad Saber",
+      "changed_at": "2026-11-14T16:47:00-08:00",
+      "reviewer_confirmation": "pending: the original reviewer has not confirmed this change",
+      "reason": "Page 7 of the pharmacology summary misspells the compound code twice by transposing two digits; the correct code occurs 27 times in the same document. Several saved answers report it. It is listed as a known inconsistency of the unaltered filing: not counted against an answer, not credited.",
+      "how_checked": "string search of the staged workspace text"
     }
   }
 }
