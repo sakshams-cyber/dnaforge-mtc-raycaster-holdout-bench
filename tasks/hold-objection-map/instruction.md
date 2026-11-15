@@ -13,13 +13,20 @@ supplied files. Classify each item using these definitions:
   such as a shorter study or a plan instead of completed data.
 - `absent`: the filed IND documents do not contain the requested item.
 
-Use FDA's numbering (`hold-<n>` or `comment-<n>`) as listed below. Cite a filed
+Use the item IDs listed below. For presence and evidence, use the filed IND
+under `ind/`. The other documents in the hold folder provide context. Cite a filed
 IND page with a verbatim quote of at least 20 characters. The hold letter
 defines the request and cannot serve as evidence that the IND contained it.
 Set `cite` to `null` if and only if the item is `absent`. Cite workspace-relative
 paths and 1-based physical pages. Write `/app/output/answer.json`.
 
-**Draft: insert the human-approved ID and page list here.**
+Hold letter: `partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf`.
+
+- `hold-1` — hold letter page 2.
+- `hold-2` — hold letter page 2.
+- `comment-1` — hold letter page 2.
+- `comment-2` — hold letter page 4.
+- `comment-3` — hold letter page 3.
 
 ```json
 {"items":[{"id":"hold-1","category":"hold_deficiency","status":"partially_present","cite":{"path":"example.pdf","page":2,"quote":"Evidence from the fictional filed document."}}]}

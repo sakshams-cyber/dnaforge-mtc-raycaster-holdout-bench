@@ -5,6 +5,7 @@
 | v1 (01–03) | Locate and correct one planted finding per task | Exact correction or declared numeric tolerance, two grounded citations |
 | v2 full audit | Review nine complete documents for three planted findings and one real inconsistency | Per-item credit and a penalty for unsupported or duplicate findings |
 | Hold scope | Decide eight activities under a partial clinical hold | Exact permission decision and grounded citation |
+| Hold objection map | Check what the filed IND already supplied for five FDA requests | Category, exact status and filed-IND citation |
 | v2 clean control | Audit the same documents without changes | Credit for the approved original issue; additional findings lower the score |
 
 **Reference checks.** Reviewers supplied the v1 keys and confirmed the v2
@@ -34,5 +35,9 @@ specific alternative, while the original model scores remained recorded.
 trajectory example after reviewing the v1 runs.
 
 **Limitations.** One filing, few attempts, and different v1 and v2 task sets.
+On the objection map, correct categories alone earn one-third credit. The
+all-absent, all-present and rotated-status probes missed the sanity cutoffs
+at 0.600, 0.400 and 0.333, respectively. The reviewer approved the run with
+this limitation documented.
 The control grades against one approved issue and can penalize genuine
 findings that were not in its key. These scores describe the submitted rubrics, not a general ranking of either model.

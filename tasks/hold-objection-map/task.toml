@@ -4,7 +4,7 @@ artifacts = ["/app/output/answer.json", "/app/ENVIRONMENT_PACKAGES.txt"]
 name = "holdout/hold-objection-map"
 description = "Check whether the filed IND already contains what the partial hold letter asks for."
 [metadata]
-pack = "pending human selection"
+pack = "siRNA IND 167326"
 difficulty_target = "10-30 min"
 [agent]
 timeout_sec = 1800

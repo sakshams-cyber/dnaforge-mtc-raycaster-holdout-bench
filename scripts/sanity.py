@@ -11,12 +11,15 @@ import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from graders.gradelib import file_pages, norm_text
+
 WRONG_STATUS = {'resolved': 'unresolved', 'unresolved': 'resolved', 'partially_resolved': 'resolved',
                 'permitted': 'not_permitted', 'not_permitted': 'permitted',
                 'present': 'absent', 'partially_present': 'present', 'absent': 'present'}
 
 
-def probes(gold):
+def probes(gold, sponsor_cite=None):
     key = 'activities' if 'activities' in gold else 'items'
     def changed(name, modify):
         value=copy.deepcopy(gold)
@@ -47,6 +50,15 @@ def probes(gold):
                                             for i in gold[key]]}, False
     elif any(i.get('status') in {'present','partially_present','absent'} for i in gold.get(key, [])):
         yield 'everything_absent', {key: [{**i, 'status': 'absent', 'cite': None} for i in gold[key]]}, False
+        if sponsor_cite is not None:
+            yield 'everything_present', {key: [{**i, 'status': 'present', 'cite': sponsor_cite}
+                                               for i in gold[key]]}, False
+            rotate = {'present': 'partially_present', 'partially_present': 'absent', 'absent': 'present'}
+            yield 'rotated_statuses', {key: [
+                {**i, 'status': rotate[i['status']],
+                 'cite': None if rotate[i['status']] == 'absent' else i['cite'] or sponsor_cite}
+                for i in gold[key]
+            ]}, False
     for name in ('nonexistent_path','keyword_stuffing','all_resolved','overlisting','duplicate_id','wrong_page',
                  'wrong_cell','wrong_unit','copied_reported','wrong_source'):
         def modify(value, name=name):
@@ -111,8 +123,20 @@ def sanity(task):
     else:
         gold=json.loads((solution/'answer.json').read_text())
     key = 'activities' if 'activities' in gold else 'items'
+    sponsor_cite = None
+    if gold_meta.get('task_id') == 'hold-objection-map' and verification.get('status') == 'human_verified':
+        workspace = task/'environment/workspace'
+        letter = gold_meta['items'][0]['accept']['objection_cite']['path']
+        sponsor_files = [p for p in sorted((workspace/letter).parent.glob('*.pdf')) if p != workspace/letter]
+        if not sponsor_files:
+            raise ValueError('No sponsor file for the T1 shortcut probe')
+        sponsor = sponsor_files[0]
+        quote = norm_text(file_pages(sponsor)[0])[:80]
+        if len(quote) < 20:
+            raise ValueError('Sponsor probe needs at least 20 characters on page 1')
+        sponsor_cite = {'path': sponsor.relative_to(workspace).as_posix(), 'page': 1, 'quote': quote}
     cases=[('missing',None,False),('empty',{},False),('empty_items',{key:[]},False),('malformed_json','{',False),
-           *probes(gold),('gold',gold,False)]
+           *probes(gold, sponsor_cite),('gold',gold,False)]
     if gold_meta.get('penalize_false_positives'):
         extra = dict(gold['items'][0], path='nonexistent-extra-finding.pdf')
         cases.insert(-1, ('correct_plus_false_positive', {'items': [*gold['items'], extra]}, False))
@@ -165,8 +189,10 @@ def sanity(task):
                 elif name=='all_resolved':
                     ceiling=sum(i.get('status')=='resolved' for i in gold['items'])/len(gold['items'])
                     passed=valid and score<=ceiling
-                elif name in {'everything_absent', 'everything_unresolved'}:
+                elif name in {'everything_absent', 'everything_unresolved', 'everything_present'}:
                     passed=valid and score<.4
+                elif name=='rotated_statuses':
+                    passed=valid and score<.3
                 elif name in {'everything_not_permitted', 'everything_permitted'}:
                     passed=valid and score<=.3
                 elif name=='correct_plus_false_positive':

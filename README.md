@@ -11,7 +11,9 @@ TODO: add the team's problem statement.
 
 Three short planted discrepancy tasks, a full-filing audit, and an unedited
 control. The deterministic graders check corrections and source evidence.
-Hold scope tests eight reviewer-verified activity decisions. The separate
+Hold scope tests eight reviewer-verified activity decisions. The hold
+objection map checks whether the original IND supplied what FDA requested for
+five items. The separate
 [forecast task](tasks/forecast-01) has a reviewer-provided key and requires the
 ALTU-237 pack. It is outside these runs; see [forecast setup](docs/FORECAST_TIER.md).
 
@@ -52,6 +54,12 @@ Sonnet scored 0.875 on both hold-scope attempts. An approved alternate
 citation raised both [saved-answer replays](runs/T5_REGRADE.md) to 0.9375.
 Earlier setup and credential failures are logged separately. The two audit
 oracles and the revised hold-scope oracle scored 1.0 in local Harbor.
+
+In the objection map, blank and plausibly wrong answers scored 0, and the
+reference answer scored 1.0 in local sanity. The all-absent, all-present,
+and rotated-status probes scored 0.600, 0.400, and 0.333. All three missed
+their cutoffs because category and status can earn independent credit.
+The reviewer approved reporting these results with the original rubric.
 
 ## Data and permissions
 

@@ -2,8 +2,8 @@
 
 **Submission deadline: Nov 14, 2026, 5:00 PM PST — confirmed by Saksham.**
 **Data controls: Saksham confirms “Improve the model for everyone” is currently off. Keep it off while handling pack data. The pack and its search index remain local.**
-**Tasks: hold-scope, hold-objection-map (T1-B: filed IND evidence), and recompute-reported-value (plate 026). Human answer keys pending.**
-**Container backend: local Docker via Colima (`colima-holdout`); Harbor's fictional oracle scored 1.0. Real task oracles await verified gold.**
+**Current task list: see [tasks/README.md](tasks/README.md).**
+**Container backend: local Docker via Colima (`colima-holdout`).**
 
 # Setup log
 
@@ -42,5 +42,9 @@
 - 2026-11-14 — Prepared a clean integration of Ahmad’s verified v1 tasks (branch a5ec76f). Converted references and mutations to offsets, preserved six scored model records and three oracle records, and kept raw branch excerpts out of the local main history. Both new oracles scored 1.0; v2 runs were unscored due to setup timeouts and a rejected Anthropic key.
 
 - 2026-11-14 — T5: two Sonnet attempts each got 14/16. Reviewer approved CFR p. 1 for act-7. Replayed saved answers only; both became 15/16, with only C07.citation changing. Revised Harbor oracle remained 1.0.
+
+- 2026-11-14 — Pack 3 index contains 191 supported files and 3,707 1-based pages. Folder file counts: `ind` 87, `partial-clinical-hold` 3, `pre-ind-type-b` 5, `pre-ind-type-d` 6, `source-data` 95. The first dates in the hold folder were January 20, 2025 (sponsor consent form, 25 pages), February 2, 2025 (sponsor protocol, 53 pages) and February 7, 2025 (FDA letter, 8 pages). No qualifying post-hold sponsor submission was found. The public CFR fetch succeeded. Local utilities: `scripts/find.py` and `scripts/locate_quote.py`.
+- 2026-11-14 — T1-B uses five reviewer-approved decisions and the filed IND plus hold-folder files. The roughly 6.8 MB of pre-IND documents were left out under the hold-letter-only scope. Three proof phrases matched and were saved as offsets. Harbor's `oracle`, `claude-code` and `codex` agents were confirmed against the CLI. T1 blank/wrong/gold sanity was 0/0/1. Shortcut scores were 0.600 (all absent), 0.400 (all present) and 0.333 (rotated statuses). Saksham approved running with the original rubric and reporting all three missed cutoffs. The Harbor oracle scored 1.0 in 41 seconds.
+- 2026-11-14 — First scored T5 Sonnet smoke took 62.3 seconds at an estimated $0.0762 from trial usage. The preceding T5 oracle trial took 20.7 seconds and scored 1.0.
 
 - 2026-11-14 — Collected eight scored v2 attempts (two per model per task). Full audit: Haiku 0.357, Sonnet 0.134; clean control: both 0. A focused trace check found retrieval of the count issue in 8/8. Seven citations failed the full target anchor; one corrected-value field combined duration and count. Kept failure tags provisional and excluded earlier infrastructure failures from score means.

@@ -1,0 +1,155 @@
+{
+  "score": 1.0,
+  "reward": 1.0,
+  "criteria_met": 15,
+  "criteria_total": 15,
+  "pass": true,
+  "criteria": [
+    {
+      "id": "C01.category",
+      "item_id": "hold-1",
+      "check": "category",
+      "passed": true
+    },
+    {
+      "id": "C01.status",
+      "item_id": "hold-1",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C01.citation",
+      "item_id": "hold-1",
+      "check": "citation",
+      "passed": true
+    },
+    {
+      "id": "C02.category",
+      "item_id": "hold-2",
+      "check": "category",
+      "passed": true
+    },
+    {
+      "id": "C02.status",
+      "item_id": "hold-2",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C02.citation",
+      "item_id": "hold-2",
+      "check": "citation",
+      "passed": true
+    },
+    {
+      "id": "C03.category",
+      "item_id": "comment-1",
+      "check": "category",
+      "passed": true
+    },
+    {
+      "id": "C03.status",
+      "item_id": "comment-1",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C03.citation",
+      "item_id": "comment-1",
+      "check": "citation",
+      "passed": true
+    },
+    {
+      "id": "C04.category",
+      "item_id": "comment-2",
+      "check": "category",
+      "passed": true
+    },
+    {
+      "id": "C04.status",
+      "item_id": "comment-2",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C04.citation",
+      "item_id": "comment-2",
+      "check": "citation",
+      "passed": true
+    },
+    {
+      "id": "C05.category",
+      "item_id": "comment-3",
+      "check": "category",
+      "passed": true
+    },
+    {
+      "id": "C05.status",
+      "item_id": "comment-3",
+      "check": "status",
+      "passed": true
+    },
+    {
+      "id": "C05.citation",
+      "item_id": "comment-3",
+      "check": "citation",
+      "passed": true
+    }
+  ],
+  "details": {
+    "extra_ids": 0,
+    "items": {
+      "hold-1": {
+        "checks": {
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1.0,
+        "criteria_checks": {},
+        "citation_allowed": true,
+        "primary_failure": "correct"
+      },
+      "hold-2": {
+        "checks": {
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1.0,
+        "criteria_checks": {},
+        "citation_allowed": true,
+        "primary_failure": "correct"
+      },
+      "comment-1": {
+        "checks": {
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1.0,
+        "criteria_checks": {},
+        "citation_allowed": true,
+        "primary_failure": "correct"
+      },
+      "comment-2": {
+        "checks": {
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1.0,
+        "criteria_checks": {},
+        "citation_allowed": true,
+        "primary_failure": "correct"
+      },
+      "comment-3": {
+        "checks": {
+          "grounding": true,
+          "comparison": true
+        },
+        "credit": 1.0,
+        "criteria_checks": {},
+        "citation_allowed": true,
+        "primary_failure": "correct"
+      }
+    },
+    "kind": "objection"
+  }
+}

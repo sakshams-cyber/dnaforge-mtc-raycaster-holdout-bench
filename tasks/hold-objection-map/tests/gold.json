@@ -1,0 +1,161 @@
+{
+  "task_id": "hold-objection-map",
+  "schema_version": 2,
+  "verification": {
+    "status": "human_verified",
+    "verified_by": "Saksham Srivastava",
+    "verified_at": "2026-11-14T15:59:33-08:00",
+    "method": "Reviewer supplied the decisions and evidence page references; citation offsets were machine-checked.",
+    "answerable_from_workspace": true,
+    "evidence": [
+      {
+        "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+        "page": 2
+      },
+      {
+        "path": "ind/1.20.General-Investigational-Plan.pdf",
+        "page": 2
+      },
+      {
+        "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+        "page": 4
+      },
+      {
+        "path": "ind/1.14.4.investigator-brochure.pdf",
+        "page": 9
+      },
+      {
+        "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+        "page": 3
+      },
+      {
+        "path": "ind/1.20.General-Investigational-Plan.pdf",
+        "page": 3
+      }
+    ]
+  },
+  "criteria": [
+    {
+      "id": "C01",
+      "item_id": "hold-1",
+      "desc": "Classify the request and check whether the filing supplies it"
+    },
+    {
+      "id": "C02",
+      "item_id": "hold-2",
+      "desc": "Classify the request and check whether the filing supplies it"
+    },
+    {
+      "id": "C03",
+      "item_id": "comment-1",
+      "desc": "Classify the request and check whether the filing supplies it"
+    },
+    {
+      "id": "C04",
+      "item_id": "comment-2",
+      "desc": "Classify the request and check whether the filing supplies it"
+    },
+    {
+      "id": "C05",
+      "item_id": "comment-3",
+      "desc": "Classify the request and check whether the filing supplies it"
+    }
+  ],
+  "items": [
+    {
+      "item_id": "hold-1",
+      "kind": "objection",
+      "expected": {
+        "objection_id": "hold-1",
+        "category": "hold_deficiency",
+        "status": "absent"
+      },
+      "accept": {
+        "objection_cite": {
+          "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+          "page": 2
+        },
+        "filed_cites": []
+      }
+    },
+    {
+      "item_id": "hold-2",
+      "kind": "objection",
+      "expected": {
+        "objection_id": "hold-2",
+        "category": "hold_deficiency",
+        "status": "absent"
+      },
+      "accept": {
+        "objection_cite": {
+          "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+          "page": 2
+        },
+        "filed_cites": []
+      }
+    },
+    {
+      "item_id": "comment-1",
+      "kind": "objection",
+      "expected": {
+        "objection_id": "comment-1",
+        "category": "non_hold_comment",
+        "status": "present"
+      },
+      "accept": {
+        "objection_cite": {
+          "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+          "page": 2
+        },
+        "filed_cites": [
+          {
+            "path": "ind/1.20.General-Investigational-Plan.pdf",
+            "page": 2
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "comment-2",
+      "kind": "objection",
+      "expected": {
+        "objection_id": "comment-2",
+        "category": "non_hold_comment",
+        "status": "partially_present"
+      },
+      "accept": {
+        "objection_cite": {
+          "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+          "page": 4
+        },
+        "filed_cites": [
+          {
+            "path": "ind/1.14.4.investigator-brochure.pdf",
+            "page": 9
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "comment-3",
+      "kind": "objection",
+      "expected": {
+        "objection_id": "comment-3",
+        "category": "non_hold_comment",
+        "status": "partially_present"
+      },
+      "accept": {
+        "objection_cite": {
+          "path": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+          "page": 3
+        },
+        "filed_cites": [
+          {
+            "path": "ind/1.20.General-Investigational-Plan.pdf",
+            "page": 3
+          }
+        ]
+      }
+    }
+  ]
+}

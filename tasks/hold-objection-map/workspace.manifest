@@ -1,0 +1,364 @@
+{
+  "files": [
+    {
+      "source": "ind/1.12.14.Environmental-Assessment-Claim-For-Exclusion.pdf",
+      "sha256": "cacec2944d622cba96f2eef30d7cfde5cac8ce9742ca5b13d678b10d7e18c49f"
+    },
+    {
+      "source": "ind/1.12.4.Request-For-Comments.pdf",
+      "sha256": "131d580e82a608e395de3b76e80da5f0d8799fbb33e7faba7475dd14d91ff399"
+    },
+    {
+      "source": "ind/1.14.4.investigator-brochure.pdf",
+      "sha256": "f27f81918e4b1220429ddbac25168ffda0b155ec5c89e74849a0ed96a4f18374"
+    },
+    {
+      "source": "ind/1.2.Cover-Letter.pdf",
+      "sha256": "04d1596ebcf26d19ca9a25d3e4c7dad8c6774ac809e59dde33d85d639ccdb88a"
+    },
+    {
+      "source": "ind/1.20.General-Investigational-Plan.pdf",
+      "sha256": "70c10a3f4d30c7eb44990b41d3464da6f2aa9a23ce8445896bd9437c5fd4975f"
+    },
+    {
+      "source": "ind/1.FDA-3454-signed.pdf",
+      "sha256": "87b780c8a38a1c60d5cbcb252f4eae62198bbdecbf68252fd7d68c1e49390ab7"
+    },
+    {
+      "source": "ind/1.FDA-3674-filled-signed.pdf",
+      "sha256": "2718a3800cf41055c85b19f1e9a24a75043b549c1d94ec3dba8ee6c45115d79b"
+    },
+    {
+      "source": "ind/2.2.Introductory-Statement.pdf",
+      "sha256": "669539d45f56494fc8783f4b8f8a6b14c21f39645530a7c6dd65c779dcba1ede"
+    },
+    {
+      "source": "ind/2.4.nonclinical-overview.pdf",
+      "sha256": "25ec12d67da44e7c68f6aef977fc20471afedfe869393b95cec68652c2a2d47c"
+    },
+    {
+      "source": "ind/2.6.2.pharmacology-written-summary.pdf",
+      "sha256": "a2ee79e33ad516053adffa1ecd46ba204f5f72b8be89ebea261f842474133fb4"
+    },
+    {
+      "source": "ind/2.6.4.pharmacokinetics-written-summary.pdf",
+      "sha256": "189cdf722c02d5e648a528fa63fbbcd70ed5cb3733b7c1b020bc090ad210f212"
+    },
+    {
+      "source": "ind/2.6.6.toxicology-written-summary.pdf",
+      "sha256": "e738a51a8bad782e119f16449af88bbf2b1fcc8400e58b6880ac52406f626869"
+    },
+    {
+      "source": "ind/3.2.P.1.description-composition-of-the-drug-product.pdf",
+      "sha256": "66e68d074bd24711eb7902f9dfc8299beb389e6d9a496bfe37ed97bd898ddb4d"
+    },
+    {
+      "source": "ind/3.2.P.2.1.component-of-the-drug-product.pdf",
+      "sha256": "0b7497162bb0c0fdb04ece3adf864b2749509239cf21f25ad53b1af2d66bc037"
+    },
+    {
+      "source": "ind/3.2.P.2.2.drug-product.pdf",
+      "sha256": "0e3ef4c8b77e54d7847d3d5946169cc93ca2658ec1bc5020de116ccc0430528c"
+    },
+    {
+      "source": "ind/3.2.P.2.3.drug-product-manufacturing-process-development.pdf",
+      "sha256": "11c707fbc0e2de274303e6e8e882f567bfcadac21ff2cc1ca24d8d2952e78505"
+    },
+    {
+      "source": "ind/3.2.P.2.4.container-closure-system.pdf",
+      "sha256": "caa2077b1c808cf1f41664ab1492d7e7729105f8ba17017eaca83e1f45d989c1"
+    },
+    {
+      "source": "ind/3.2.P.2.5.microbiological-attributes.pdf",
+      "sha256": "6c793e36b40cc2791ca721cbbe634b830b8ed835484bffda672dceca248810b5"
+    },
+    {
+      "source": "ind/3.2.P.2.6.compatibility.pdf",
+      "sha256": "33d27673b96ff8a14b9d3de3427142e613b41e3dbd77e6a957c8b7f8d852f4af"
+    },
+    {
+      "source": "ind/3.2.P.3.1.manufacturers.pdf",
+      "sha256": "c74d830d495c92296be1da58941e8e1f4ce76b5f9080781348e4911df339847f"
+    },
+    {
+      "source": "ind/3.2.P.3.2.batch-formula.pdf",
+      "sha256": "6cf764fefb866b7f3444f99e0b2143b11881201ce30e44db59b5434c51a1e3f5"
+    },
+    {
+      "source": "ind/3.2.P.3.3.description-manufacturing-process-and-control.pdf",
+      "sha256": "90f5a3dafdec26540926e22217a65ad3dcdc8cd1f8af96df072a30bfb6b84667"
+    },
+    {
+      "source": "ind/3.2.P.3.4.control-of-critical-steps-and-intermediates.pdf",
+      "sha256": "3bb27de18bff1265d2234a093218fe32e9dfc7999d382d3e1aa6a3040b351471"
+    },
+    {
+      "source": "ind/3.2.P.3.5.process-validation.pdf",
+      "sha256": "2df27514aabfc4a6d1f6b75e0dc20a4f2dc174fb77bcab88851876f5cb85bb26"
+    },
+    {
+      "source": "ind/3.2.P.4.excipients.pdf",
+      "sha256": "66fec720bbabfb49a7c4e581b1f0474ad10aeb65c5bf508dd51a9ee1f0160312"
+    },
+    {
+      "source": "ind/3.2.P.5.1.specification-dp.pdf",
+      "sha256": "34dd9b94189e0daeb74258cc12eea8567e7455c5d0940e43a18fcf70c38e1eb4"
+    },
+    {
+      "source": "ind/3.2.P.5.2.analytical-procedures.pdf",
+      "sha256": "e39980ec1c8de61e50644fe1690f9c05ae4ca63551c92c4f51e35c29644ad435"
+    },
+    {
+      "source": "ind/3.2.P.5.3.analytical-validation.pdf",
+      "sha256": "e391a640c8fce3f6ccca71e60560d5777b2389afb33f4b30828f2fae0abaae1f"
+    },
+    {
+      "source": "ind/3.2.P.5.4.batch-analysis.pdf",
+      "sha256": "470c66f00d6ee480752be3b2f397c2db4b2d2dfc5331be03ee6c52ac66b1497a"
+    },
+    {
+      "source": "ind/3.2.P.5.5.characterization-of-impurities.pdf",
+      "sha256": "301594c6f03dbd8dec0b3766e2fd9ced96d589ca9edd7a05fa8a3757bf4eeb54"
+    },
+    {
+      "source": "ind/3.2.P.5.6.justification-of-specifications.pdf",
+      "sha256": "3ba3cc8d04f0056ef326e8d7889ce0e60f19280e456c6a425c9b3e17987e27b1"
+    },
+    {
+      "source": "ind/3.2.P.6.reference-standards-materials.pdf",
+      "sha256": "9b6614fd9e54b24c2fd1b8eda5e884f53977ba4c1c91ca8733d8e7fe96ce9527"
+    },
+    {
+      "source": "ind/3.2.P.7.container-closure-system.pdf",
+      "sha256": "2628647235c9373cb48604469e9a5e3e637965f0b2eb6897b52e4412039f2e57"
+    },
+    {
+      "source": "ind/3.2.P.8.1.stability-summary-and-conclusions.pdf",
+      "sha256": "bba3ff16d09df78bbbf8a5f8ea5880d3aed5192d58a5b5646b643333046d630f"
+    },
+    {
+      "source": "ind/3.2.P.8.2.post-approval-stability.pdf",
+      "sha256": "6cba4983ef58fb48a50e154708e0ce87639ec5caa20c6a2b9ff9d1ede492ef30"
+    },
+    {
+      "source": "ind/3.2.P.8.3.stability-data.pdf",
+      "sha256": "9dc1998220b9e5fd2388600669b3c9b5c4c77dde32ee9ab87a1457f25a2b525c"
+    },
+    {
+      "source": "ind/3.2.P.bse-tse-statement.pdf",
+      "sha256": "5aba0a681c1cd88132a62bd8f0cdd931d178f0eaea0e1ae1e1bb40c6416a05b0"
+    },
+    {
+      "source": "ind/3.2.P.certificate-of-analysis-for-dp.pdf",
+      "sha256": "ef1503eb21720709bef2c049b55ba5398f5defa217fc8a5ca7edd3cc6c18ff28"
+    },
+    {
+      "source": "ind/3.2.P.certificate-of-compliance-for-dp.pdf",
+      "sha256": "2a0a159d8ddeecb1b8b6f95a69885ff52c2f2f88d070222f1528392860306dad"
+    },
+    {
+      "source": "ind/3.2.S.1.1.nomenclature.pdf",
+      "sha256": "bc1b0e32fdf562935dcda13a6cfbaff164f44bf60030e6a3e4724c6a615dc056"
+    },
+    {
+      "source": "ind/3.2.S.1.2.structure.pdf",
+      "sha256": "f0a5da06c2626a0ccc2a2dd32417a99ef620741aff92cf80cf8ca83750621dbc"
+    },
+    {
+      "source": "ind/3.2.S.1.3.general-properties.pdf",
+      "sha256": "d140f776baaa5c212cf0413ae2950c97ed8df44eb2610f044d3f206d8eea1e84"
+    },
+    {
+      "source": "ind/3.2.S.2.1.manufacturer.pdf",
+      "sha256": "8243cef970dcbd11fcb78a8569c55444c9128e748dd776be5662793ac91c8222"
+    },
+    {
+      "source": "ind/3.2.S.2.2.manufacturing-process.pdf",
+      "sha256": "e5aaee7bdeedf5f31c28761834542c31653c1ca702c0cd5b19cc33a68a2a4407"
+    },
+    {
+      "source": "ind/3.2.S.2.3.control-of-materials.pdf",
+      "sha256": "5a37a6a72312f68ecf52cb2bed7f57d7873d688c7eac9b34509e01df1cfad430"
+    },
+    {
+      "source": "ind/3.2.S.2.4.controls-of-critical-steps-and-intermediates.pdf",
+      "sha256": "dc4e44be08773aeff6b2b42ef11fec36809750bfd3ace3fe5c6bc610ef9a91d8"
+    },
+    {
+      "source": "ind/3.2.S.2.5.process-validation.pdf",
+      "sha256": "b33b0a76d50e2bb7e5d1f3696dac0ff30bb81529d0d8f45dc9faa31c01365ef6"
+    },
+    {
+      "source": "ind/3.2.S.2.6.manufacturing-process-development.pdf",
+      "sha256": "7558816a9056b818f6cafe96dbbe4e9f270c88193e62d8b7779aba2f1a2a9dd4"
+    },
+    {
+      "source": "ind/3.2.S.3.1.elucidation-of-structure.pdf",
+      "sha256": "80eec2fd338e9a5cb955f49ce66788e7b4bcf964f73368629b4a27125b840323"
+    },
+    {
+      "source": "ind/3.2.S.3.2.impurities.pdf",
+      "sha256": "27b7be74877421a77ea387c3724f792c24efd18c4d352db5d5972abcd17e8b89"
+    },
+    {
+      "source": "ind/3.2.S.4.1.specifications.pdf",
+      "sha256": "e972c99e0e9d70559948a908402ea1a4b4c4ea6983e5f0eb2806f71940cb6d50"
+    },
+    {
+      "source": "ind/3.2.S.4.2.analytical-procedures.pdf",
+      "sha256": "af083cb993e01cdb8ed050d37784c99231674436534bd7f8dff0b466775a55ae"
+    },
+    {
+      "source": "ind/3.2.S.4.3.validation-analytical-procedures.pdf",
+      "sha256": "f7b6d1e7feb83a26004265310a84ac4bd49657ca6885882adfecd31ebebf358f"
+    },
+    {
+      "source": "ind/3.2.S.4.4.batch-analysis.pdf",
+      "sha256": "e607c318a4beb8d289bcbd62add08ac79c49c18437c88114b4b219b5782da3cc"
+    },
+    {
+      "source": "ind/3.2.S.4.5.justif-of-spec.pdf",
+      "sha256": "4e416610485e04f63910ff154b773a7af956fc0a54030de86cf31947e4447cde"
+    },
+    {
+      "source": "ind/3.2.S.5.reference-standard.pdf",
+      "sha256": "e1611e1e6c87dadf7fc650bc5b2f5e1b8012c7a8cf6219dac00d23f53e3441df"
+    },
+    {
+      "source": "ind/3.2.S.6.container-closure-system.pdf",
+      "sha256": "e359dc59cfad3fddbece9f375c2ca13f202c767b96bd1edc146aa0890861f0a0"
+    },
+    {
+      "source": "ind/3.2.S.7.1-stability-summary-and-conclusions.pdf",
+      "sha256": "5d77436834f75e7dd7361c99f17e1fe60d277d9f1c3ce46b92f1c22ef6dcbf29"
+    },
+    {
+      "source": "ind/3.2.S.7.2.post-approval-stability-protocol-and-stability-commitment.pdf",
+      "sha256": "a69fb873801d2a751d4b941d6179d044c62e4addee2a611cbb51e8d8932f43ed"
+    },
+    {
+      "source": "ind/3.2.S.7.3.stability-data.pdf",
+      "sha256": "0099af6e8178be21f482aad15e3712d77fa14e00b1ca0d6ad471a51cd013414c"
+    },
+    {
+      "source": "ind/4.2.1.1.primary-pharmacodynamics.pdf",
+      "sha256": "9f699c0be0d65acd4e9e2f61809a18c5528b99d7d05864b235b5ab57c20ef5e3"
+    },
+    {
+      "source": "ind/4.2.1.2.secondary-pharmacodynamics.pdf",
+      "sha256": "d921fad7af1fc43b0c34f2cf879d59c035b9d13fb65b8ce9ce85c56a4109a611"
+    },
+    {
+      "source": "ind/4.2.2.1.1.mdr_csf.pdf",
+      "sha256": "aafcf5b9d834617b9c2a7227cc0a5181abff461bfaba6d7624f73e1ef3558fb5"
+    },
+    {
+      "source": "ind/4.2.2.1.10.mvr_rat_csf.pdf",
+      "sha256": "872a2797c082c524c92c43c323df327baee061b300c885da6086f949ee797288"
+    },
+    {
+      "source": "ind/4.2.2.1.11.mvr_rat_plasma.pdf",
+      "sha256": "7306d817d8ebc4e6df8f377c2b2b0c99088b26d307d67916a9b6f08f679f9ec9"
+    },
+    {
+      "source": "ind/4.2.2.1.2.mdr_dog_plasma.pdf",
+      "sha256": "a1007736461ec1d9abca798d15d0d9fe623f98918bc40bc6d3c320833a137496"
+    },
+    {
+      "source": "ind/4.2.2.1.3.mdr_dog_tissue.pdf",
+      "sha256": "ea935871d1c95ebbae1eb55db398a7f43473c9f1a94ee442ebee3e121f0dad4b"
+    },
+    {
+      "source": "ind/4.2.2.1.4.mdr_rat_plasma.pdf",
+      "sha256": "b462c5680c15a2b11eb087631ccd7f2a4e742476cf9b2458cea1c412953121c4"
+    },
+    {
+      "source": "ind/4.2.2.1.5.mdr_rat_tissue.pdf",
+      "sha256": "7e13bff857bf72d2ed5df61c862f0bb30cb199c7ca9e4d25e072d003544a1ca6"
+    },
+    {
+      "source": "ind/4.2.2.1.6.mdr_cellcultures_ddi.pdf",
+      "sha256": "2fdc0df712dbd07e55e431ad8180048b646b97a85568c0ca30b18cfae4b208ce"
+    },
+    {
+      "source": "ind/4.2.2.1.7.mvr_dog_csf.pdf",
+      "sha256": "5645e4e44e2a885424fc1391bba7f08349cc576e7a1b1ff82f0f9cf73f5970f6"
+    },
+    {
+      "source": "ind/4.2.2.1.8.mvr_dog_plasma.pdf",
+      "sha256": "5bd7f7c9d3279f678605ec64c7c15649b25b1af8e49d3148410c51e7408f9a90"
+    },
+    {
+      "source": "ind/4.2.2.1.9.mvr_dog_tissue.pdf",
+      "sha256": "216cec86e9f9f561c21ef572b1d434551789497dcd4d9e694c5e5c6fafe9e1b0"
+    },
+    {
+      "source": "ind/5.3.2.CV_Arnold.pdf",
+      "sha256": "d3ddb4dcc8ad388c657854df5ebcf324890425ee6ed161731820f528480a96a9"
+    },
+    {
+      "source": "ind/5.3.2.FDA-1572-Arnold-signed.pdf",
+      "sha256": "5cdccdd3286865856c6200e10b6d049b150a041854f0d1ad3094de2efefb4b3e"
+    },
+    {
+      "source": "ind/5.3.5.1.1.symptomatic-icf.pdf",
+      "sha256": "a809b1dd84664f4fad3c3b471abf2b8734b4d3e05698b6f5d3c7fb8ce7941371"
+    },
+    {
+      "source": "ind/5.3.5.1.1.symptomatic-protocol.pdf",
+      "sha256": "3dae26867a92741eb80df8ee1be06f7f19f89b33797dda60a9f1e96fa4b415a2"
+    },
+    {
+      "source": "ind/56772-AmesTest-FinalReport.pdf",
+      "sha256": "8b387d403ccc8e5b61f206e9820d9be38d91093a59a2b3006c7bd935039b0dc5"
+    },
+    {
+      "source": "ind/56773-Micronucleus-FinalReport.pdf",
+      "sha256": "aa301284becc92255a102d301872637ddf5a691285cb0b8b59fba3c39deb40f4"
+    },
+    {
+      "source": "ind/A-703-01-FinalReport.pdf",
+      "sha256": "d3997beb3f45277ebde5e773004baa4c321d97963a0d65e5d0b7aeca80e8d65e"
+    },
+    {
+      "source": "ind/A-703-02-FinalReport.pdf",
+      "sha256": "b0892b5c6f9192c475859f85bf975bebe989ca2f72131f87165369c959158421"
+    },
+    {
+      "source": "ind/A-703-03-Summary-Report.pdf",
+      "sha256": "a44af0cf51ff6b24684b63914d5a721028e65eaa941c75552dc935383505de8e"
+    },
+    {
+      "source": "ind/XT233111-Final-Report.pdf",
+      "sha256": "fd2ce442821b2a62d4ff07fd2cd493eacb27f405963af482ec29941b4686b91b"
+    },
+    {
+      "source": "ind/XT235113-Final-Report.pdf",
+      "sha256": "6db447a550285e8b6a673e4c56bdd307b148e6ee00905121533214b617a39858"
+    },
+    {
+      "source": "ind/XT238083-Final-Report.pdf",
+      "sha256": "f5b2c0869e3b44ee0c997f872ef5245259f0915d7ae26877306f34e296115c41"
+    },
+    {
+      "source": "ind/_Form_FDA_1571.pdf",
+      "sha256": "f72210bcf53d0024cd0652f3d6ed45b517b250265e536a65d3a0f9c9b5f9457a"
+    },
+    {
+      "source": "ind/__Table_Of_Contents_SD-11755.pdf",
+      "sha256": "64cc55bd7970c5ad2f928ed91b567593db97df843eae8a4c4b6a7cc2219cfced"
+    },
+    {
+      "source": "partial-clinical-hold/5.3.5.1.2.pre-symptomatic-icf.pdf",
+      "sha256": "8420a91ebbcab0145c67136f15cd3d363c427d1ff64c655e488fb470e9c4ad9f"
+    },
+    {
+      "source": "partial-clinical-hold/5.3.5.1.2.presymptomatic-protocol.pdf",
+      "sha256": "d60a44d6375f7c7f9ebb0fe6a79db3f56f8314f128dd0d6fa2fe36e279c148bc"
+    },
+    {
+      "source": "partial-clinical-hold/IND_167326_PartialClinicalHoldLetter.pdf",
+      "sha256": "bb20eb1274029f51c3b6e0c83f1eadbdb24cd2e6c32da8e210c6cff04aeb8374"
+    }
+  ]
+}

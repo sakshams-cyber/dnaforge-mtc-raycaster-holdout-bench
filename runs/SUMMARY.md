@@ -27,6 +27,7 @@ Redacted exports; raw jobs remain local. Infrastructure failures are separate fr
 | holdout/discrepancy-hunt-05-clean-control | claude-code | claude-sonnet-5-5 | v2 | a57f7f47dd8e | — | 0 | 2 | 2 |
 | holdout/discrepancy-hunt-05-clean-control | claude-code | claude-sonnet-5-5 | v2 | d9f0c4289bee | 0.000 | 2 | 0 | 2 |
 | holdout/discrepancy-hunt-05-clean-control | oracle | none | v2 | e35ace97e55e | 1.000 | 1 | 0 | 1 |
+| holdout/hold-objection-map | oracle | none | v1 | 47c8177713e9 | 1.000 | 1 | 0 | 1 |
 | holdout/hold-scope | claude-code | claude-sonnet-5-5 | v1 | f50f5fdf29a0 | 0.875 | 2 | 0 | 2 |
 | holdout/hold-scope | oracle | none | v1 | 612dfd1b2a55 | 1.000 | 1 | 0 | 1 |
 | holdout/hold-scope | oracle | none | v2 | 9978a0a3db43 | 1.000 | 1 | 0 | 1 |
