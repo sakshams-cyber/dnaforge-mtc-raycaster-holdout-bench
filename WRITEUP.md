@@ -41,10 +41,10 @@ trajectory example after reviewing the v1 runs.
 
 **Limitations.** One filing, few attempts, and different v1 and v2 task sets.
 On the objection map, a row now earns credit only when category, status and
-citation are all right ([replay](runs/T1_REGRADE.md)); both Sonnet attempts
-replay to 1/5. The all-present and rotated-status probes now score 0. The
-all-absent probe still scores 0.400 against a cutoff below 0.4, because two of
-the five requests are truly absent, so that constant answer still outscores
-Sonnet. This change awaits reviewer confirmation.
+citation are all right, and the score is corrected for the two rows a constant
+answer earns ([replay](runs/T1_REGRADE.md)). The all-absent, all-present and
+rotated-status probes now score 0. Both Sonnet attempts get one row fully
+right and replay to 0. With five rows the score moves in steps of one third.
+This change awaits reviewer confirmation.
 The control grades against one approved issue and can penalize genuine
 findings that were not in its key. These scores describe the submitted rubrics, not a general ranking of either model.

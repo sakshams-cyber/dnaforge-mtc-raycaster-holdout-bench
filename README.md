@@ -65,9 +65,10 @@ with the same three status disagreements and a sampling citation outside
 the accepted pages. See [the T1 trial analysis](runs/FAILURES_DRAFT.md#t1-b-hold-objection-map).
 
 The objection-map rubric has since changed: a row earns credit only when
-category, status and citation are all right. Under it both Sonnet attempts
-replay to 1/5, the all-present and rotated-status probes score 0, and the
-all-absent probe scores 0.400, still missing its cutoff. See
+category, status and citation are all right, and the score is corrected for
+the two rows a constant answer earns. Under it the all-absent, all-present and
+rotated-status probes score 0, and both Sonnet attempts replay to 0 with one
+row fully right. See
 [the T1 replay](runs/T1_REGRADE.md). The recovery-count item in the full audit
 and clean control was also widened; see [the replay](runs/T04_T05_REGRADE.md).
 Both changes await reviewer confirmation.

@@ -213,9 +213,18 @@ def grade_v2(answer, workspace, gold, kind):
                      'passed': breakdown[row['item_id']]['criteria_checks'][name]}
                     for row in criteria for name in names]
     met = sum(row['passed'] for row in expanded)
-    score = 0 if errors else max(0, met / len(expanded) - 0.05 * extra)
+    fraction, chance = met / len(expanded), {}
+    if kind == 'objection':
+        # Chance-corrected: one repeated status earns at most the largest group of
+        # rows sharing a status, so only rows beyond that count toward the score.
+        statuses = [target['expected']['status'] for target in expected.values()]
+        constant = max(statuses.count(status) for status in set(statuses))
+        fraction = (max(0, met - constant) / (len(expanded) - constant) if len(expanded) > constant
+                    else float(met == len(expanded)))
+        chance = {'rows_fully_right': met, 'constant_answer_rows': constant}
+    score = 0 if errors else max(0, fraction - 0.05 * extra)
     details = {'items': breakdown, 'kind': kind, 'criteria_met': met, 'criteria_total': len(expanded),
-               'pass': score == 1, 'criteria': expanded, 'extra_ids': extra}
+               'pass': score == 1, 'criteria': expanded, 'extra_ids': extra, **chance}
     if errors:
         details.update(primary_failure='format', errors=errors)
     return score, details

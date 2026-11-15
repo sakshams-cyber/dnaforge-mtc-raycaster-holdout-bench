@@ -1,11 +1,11 @@
 {
  "task": "hold-objection-map",
- "change": "a row earns credit only when category, status and citation are all right; score is rows fully right over rows",
+ "change": "a row earns credit only when category, status and citation are all right; the score is chance-corrected: (rows fully right - constant_answer_rows) / (rows - constant_answer_rows), floored at 0",
  "reviewer_confirmation": "pending",
  "shortcut_probes": {
   "everything_absent": {
    "before": 0.6,
-   "after": 0.4
+   "after": 0.0
   },
   "everything_present": {
    "before": 0.4,
@@ -24,7 +24,7 @@
    "original_reward": 0.5333333333333333,
    "original_criteria_met": 8,
    "original_criteria_total": 15,
-   "replayed_reward": 0.2,
+   "replayed_reward": 0.0,
    "rows_fully_right": 1,
    "rows_total": 5,
    "row_checks": {
@@ -64,7 +64,7 @@
    "original_reward": 0.5333333333333333,
    "original_criteria_met": 8,
    "original_criteria_total": 15,
-   "replayed_reward": 0.2,
+   "replayed_reward": 0.0,
    "rows_fully_right": 1,
    "rows_total": 5,
    "row_checks": {
@@ -137,5 +137,6 @@
    "new_model_call": false,
    "method": "recomputed from the saved per-check results in verifier/score.json"
   }
- ]
+ ],
+ "constant_answer_rows": 2
 }

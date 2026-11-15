@@ -66,14 +66,31 @@ def test_objection_right_status_with_unsupported_quote_earns_nothing_for_that_ro
                              row('c1', 'non_hold_comment', 'present', quote='words that are not in the filed document'),
                              row('c2', 'non_hold_comment', 'partially_present')], workspace)
     assert details['items']['c1']['credit'] == 0
-    assert result == pytest.approx(2/3)
+    # Two of three rows are right; one row is what a constant answer earns.
+    assert result == pytest.approx((2 - 1)/(3 - 1))
 
 
-def test_objection_all_absent_earns_only_the_truly_absent_rows(workspace):
-    result, _ = score([row('h1', 'hold_deficiency', 'absent'),
-                       row('c1', 'non_hold_comment', 'absent'),
-                       row('c2', 'non_hold_comment', 'absent')], workspace)
-    assert result == pytest.approx(1/3)
+def test_objection_constant_all_absent_answer_scores_zero(workspace):
+    result, details = score([row('h1', 'hold_deficiency', 'absent'),
+                             row('c1', 'non_hold_comment', 'absent'),
+                             row('c2', 'non_hold_comment', 'absent')], workspace)
+    assert result == 0
+    assert details['rows_fully_right'] == 1
+    assert details['constant_answer_rows'] == 1
+
+
+def test_objection_constant_answer_baseline_is_the_largest_status_group(workspace):
+    doubled = gold()
+    extra = {'item_id': 'h2', 'kind': 'objection',
+             'expected': {'objection_id': 'h2', 'category': 'hold_deficiency', 'status': 'absent'},
+             'accept': {'objection_cite': {'path': 'letter.txt', 'page': 1}, 'filed_cites': []}}
+    doubled['items'].append(extra)
+    doubled['criteria'].append({'id': 'C4', 'item_id': 'h2', 'desc': 'Check the item'})
+    answer = {'items': [row('h1', 'hold_deficiency', 'absent'), row('h2', 'hold_deficiency', 'absent'),
+                        row('c1', 'non_hold_comment', 'present'), row('c2', 'non_hold_comment', 'absent')]}
+    result, details = tg.grade_v2(answer, workspace, doubled, 'objection')
+    assert details['constant_answer_rows'] == 2
+    assert result == pytest.approx((3 - 2)/(4 - 2))
 
 
 RECOVERY = {'type': 'contains', 'accept': ['0', 'zero', 'none'],
