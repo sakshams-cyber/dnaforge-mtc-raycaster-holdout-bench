@@ -45,3 +45,29 @@ The original recovery-count issue was retrieved in every answer. Seven findings 
 | [sonnet / discrepancy-hunt-05-clean-control](holdout_discrepancy-hunt-05-clean-control/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-05-clean-contro__FoHZpsi__796272dc75/verifier/score.json) | 0.000 | 0/1 | Recovery-count claim anchor incomplete | 25 | Tentative `grounding`; check grader coverage |
 
 No inspected command in the eight scored v2 traces referenced hidden tests, solutions or gold. Earlier setup and credential failures remain separately logged.
+
+## Teammate audit replicates and forecast
+
+These are scored attempts from the later merge. Answer-write steps are listed
+when visible in the reviewed trace. Suggested tags need reviewer confirmation.
+
+| Trial | Reward | Credited items | Answer write | Observed result | Suggested tag |
+| --- | ---: | ---: | ---: | --- | --- |
+| [iP53qpK](holdout_discrepancy-hunt-04-full-audit/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-04-full-audit__iP53qpK__2587d96738/verifier/score.json) | 0.429 | 3/4 | — | At least one gold finding received no credit | search_process or grounding (tentative) |
+| [xez9CER](holdout_discrepancy-hunt-04-full-audit/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-04-full-audit__xez9CER__5a9325d648/verifier/score.json) | 0.429 | 3/4 | 24 | At least one gold finding received no credit | search_process or grounding (tentative) |
+| [B95Erpo](holdout_discrepancy-hunt-04-full-audit/claude-code__claude-opus-5-5__v2__discrepancy-hunt-04-full-audit__B95Erpo__5cb918aad9/verifier/score.json) | 0.167 | 1/4 | 24 | Required finding or citation received no credit | grounding (tentative) |
+| [jb9oLCF](holdout_discrepancy-hunt-04-full-audit/claude-code__claude-opus-5-5__v2__discrepancy-hunt-04-full-audit__jb9oLCF__f4293aeac7/verifier/score.json) | 0.500 | 3/4 | — | A candidate correction failed comparison | format (tentative) |
+| [Tp4i4wJ](holdout_discrepancy-hunt-04-full-audit/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-04-full-audit__Tp4i4wJ__35eafd1f29/verifier/score.json) | 0.143 | 1/4 | 17 | Required finding or citation received no credit | grounding (tentative) |
+| [eoem6vf](holdout_discrepancy-hunt-04-full-audit/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-04-full-audit__eoem6vf__bd97329582/verifier/score.json) | 0.400 | 2/4 | 19 | At least one gold finding received no credit | search_process or grounding (tentative) |
+| [JsiTakK](holdout_discrepancy-hunt-05-clean-control/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-05-clean-contro__JsiTakK__3cb836e02a/verifier/score.json) | 0.000 | 0/1 | — | Required finding or citation received no credit | grounding (tentative) |
+| [VDnbZNw](holdout_discrepancy-hunt-05-clean-control/claude-code__claude-haiku-5-5__v2__discrepancy-hunt-05-clean-contro__VDnbZNw__dc6a6b3781/verifier/score.json) | 0.000 | 0/1 | 27 | Required finding or citation received no credit | grounding (tentative) |
+| [KAWa7oH](holdout_discrepancy-hunt-05-clean-control/claude-code__claude-opus-5-5__v2__discrepancy-hunt-05-clean-contro__KAWa7oH__a762becc1a/verifier/score.json) | 0.000 | 0/1 | 28 | Required finding or citation received no credit | grounding (tentative) |
+| [uAG2Tjy](holdout_discrepancy-hunt-05-clean-control/claude-code__claude-opus-5-5__v2__discrepancy-hunt-05-clean-contro__uAG2Tjy__88ad4904e2/verifier/score.json) | 0.000 | 0/1 | 30 | Required finding or citation received no credit | grounding (tentative) |
+| [ECBzqbp](holdout_discrepancy-hunt-05-clean-control/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-05-clean-contro__ECBzqbp__9b84fe1601/verifier/score.json) | 0.000 | 0/1 | 19 | Required finding or citation received no credit | grounding (tentative) |
+| [z23CtmY](holdout_discrepancy-hunt-05-clean-control/claude-code__claude-sonnet-5-5__v2__discrepancy-hunt-05-clean-contro__z23CtmY__7b6c4ad529/verifier/score.json) | 0.000 | 0/1 | 29 | Required finding or citation received no credit | grounding (tentative) |
+| [TnrsaVH](holdout_forecast-01/claude-code__claude-haiku-5-5__v1__forecast-01__TnrsaVH__10bebcecbc/verifier/score.json) | 0.333 | — | 10 | Two target values missed tolerance | domain_knowledge (tentative) |
+| [iCWVvnc](holdout_forecast-01/claude-code__claude-haiku-5-5__v1__forecast-01__iCWVvnc__a42255ea84/verifier/score.json) | 0.333 | — | — | Two target values missed tolerance | domain_knowledge (tentative) |
+| [7tSLdoc](holdout_forecast-01/claude-code__claude-opus-5-5__v1__forecast-01__7tSLdoc__2008927291/verifier/score.json) | 0.333 | — | 5 | Two target values missed tolerance | domain_knowledge (tentative) |
+| [YR2oNkB](holdout_forecast-01/claude-code__claude-opus-5-5__v1__forecast-01__YR2oNkB__b0cc1bb7e6/verifier/score.json) | 0.333 | — | 5 | Two target values missed tolerance | domain_knowledge (tentative) |
+| [kcV2QMJ](holdout_forecast-01/claude-code__claude-sonnet-5-5__v1__forecast-01__kcV2QMJ__0a3087fac1/verifier/score.json) | 0.333 | — | 3 | Two target values missed tolerance | domain_knowledge (tentative) |
+| [ooVDocg](holdout_forecast-01/claude-code__claude-sonnet-5-5__v1__forecast-01__ooVDocg__b6296bc657/verifier/score.json) | 0.167 | — | 6 | Two target values missed tolerance | domain_knowledge (tentative) |

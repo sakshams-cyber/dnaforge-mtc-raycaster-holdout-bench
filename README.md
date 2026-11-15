@@ -14,9 +14,8 @@ control. The deterministic graders check corrections and source evidence.
 Hold scope tests eight reviewer-verified activity decisions. The hold
 objection map checks whether the original IND supplied what FDA requested for
 five items. A recompute task checks the mean, sum and range behind one ELISA
-summary cell. The separate
-[forecast task](tasks/forecast-01) has a reviewer-provided key and requires the
-ALTU-237 pack. It is outside these runs; see [forecast setup](docs/FORECAST_TIER.md).
+summary cell. The [forecast task](tasks/forecast-01) uses the separate ALTU-237
+pack to predict three values from a held-back stability submission.
 
 ## Run or view the demo
 
@@ -34,42 +33,29 @@ reference reply from the local workspace and reports the verifier's results.
 
 ## Evidence and limitations
 
-See [run evidence](runs/SUMMARY.md) and the [task list](tasks/README.md).
-Both Claude models scored 1.0 on each of the three bounded v1 tasks
-(one attempt per model per task). The full audit and control results are means
-over two scored attempts per model per task.
+All nine tasks have a recorded Harbor oracle at 1.0. Both Claude models scored
+1.0 on each of the three bounded v1 tasks (one attempt per model per task).
+The table reports mean reward with scored attempts in parentheses.
 
-| Task | Haiku 5.5 | Sonnet 5.5 |
-| --- | ---: | ---: |
-| Full audit | 0.357 | 0.134 |
-| Clean control | 0.000 | 0.000 |
+| Task | Haiku 5.5 | Sonnet 5.5 | Opus 5.5 |
+| --- | ---: | ---: | ---: |
+| Full audit | 0.393 (4) | 0.203 (4) | 0.333 (2) |
+| Clean control | 0.000 (4) | 0.000 (4) | 0.000 (2) |
+| Hold scope | — | 0.875 (2) | — |
+| Hold objection map | — | 0.533 (2) | — |
+| ELISA recompute | 1.000 (1) | — | — |
+| Forecast | 0.333 (2) | 0.250 (2) | 0.333 (2) |
 
-All eight v2 answers found the recovery-count issue, but the grader missed
-seven because their quotes did not contain its full literal anchor. The
-eighth combined count and duration and failed a count-only comparison.
-The clean control and full audit therefore measure the citation and answer
-contract as well as search. See [trial diagnostics](runs/FAILURES_DRAFT.md).
-Version means are descriptive because the task sets differ.
+The first eight full-audit and clean-control answers found the recovery-count
+issue. Seven quotes missed the required literal anchor, and one correction
+combined count and duration. In hold scope, an approved alternate citation
+raised both [saved-answer replays](runs/T5_REGRADE.md) to 0.9375.
 
-Sonnet scored 0.875 on both hold-scope attempts. An approved alternate
-citation raised both [saved-answer replays](runs/T5_REGRADE.md) to 0.9375.
-Earlier setup and credential failures are logged separately. The two audit
-oracles and the revised hold-scope oracle scored 1.0 in local Harbor.
-
-In the objection map, blank and plausibly wrong answers scored 0, and the
-reference answer scored 1.0 in local sanity. The all-absent, all-present,
-and rotated-status probes scored 0.600, 0.400, and 0.333. All three missed
-their cutoffs because category and status can earn independent credit.
-The reviewer approved reporting these results with the original rubric.
-The Harbor oracle scored 1.0. Both Sonnet attempts scored 8/15 (0.533),
-with the same three status disagreements and a sampling citation outside
-the accepted pages. See [the T1 trial analysis](runs/FAILURES_DRAFT.md#t1-b-hold-objection-map).
-
-The ELISA recompute oracle and one Haiku attempt both scored 1.0. Blank and
-plausibly wrong answers scored 0. Copying the reported mean into every numeric field scored 0.667,
-and shifting all three numeric fields by 20% scored 0.500 with the other
-fields correct. These scores show the partial credit available for method,
-source and the agreement flag.
+Blank and plausibly wrong answers scored 0 on the eight locally staged tasks.
+The objection-map shortcut probes scored 0.600, 0.400 and 0.333. The ELISA copy
+and numeric-shift probes scored 0.667 and 0.500. The reviewer approved keeping
+the partial-credit rubrics and reporting those missed cutoffs. See the
+[run summary](runs/SUMMARY.md) and [failure notes](runs/FAILURES_DRAFT.md).
 
 ## Data and permissions
 
@@ -77,7 +63,8 @@ Obtain the restricted filing from the [Raycaster portal](https://www.raycaster.a
 Each user needs their own authorized download. This private repo contains
 manifests, checked offsets, synthetic edits, and reviewed trial metadata. It does
 not include the filing, copied text, staged workspaces, local oracle answers,
-or raw jobs. See [DISCLOSURE.md](DISCLOSURE.md) for scaffold provenance.
+or raw jobs. The team confirmed training and data sharing were off for pack
+work. See [DISCLOSURE.md](DISCLOSURE.md) for scaffold provenance.
 
 ## Next step
 

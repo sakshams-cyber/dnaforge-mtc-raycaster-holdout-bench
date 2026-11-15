@@ -8,7 +8,7 @@
 | `hold-scope` | Eight reviewer-approved held-study activity decisions; Harbor oracle 1.0 |
 | `hold-objection-map` | Five reviewer-approved checks of what the original IND contained when FDA issued the partial hold |
 | `recompute-reported-value` | Recompute the mean, sum and range from two ELISA wells; Harbor oracle 1.0 |
-| `forecast-01` | Held-back stability values; requires the separate ALTU-237 pack |
+| `forecast-01` | Held-back stability values on ALTU-237, with a recorded Harbor oracle at 1.0 |
 
 For a real discrepancy task, stage the local pack with
 `python scripts/stage_text.py --pack-root data/pack3 --task tasks/<id>`
