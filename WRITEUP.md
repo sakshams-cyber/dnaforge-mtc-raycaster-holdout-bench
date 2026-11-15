@@ -18,6 +18,7 @@ v1 cases (one attempt per model per case). On two attempts per model per task,
 full-audit means were 0.357 and 0.134; both clean-control means were 0.
 Both hold-scope runs got 14/16. A reviewer-approved alternate source raised
 both [saved-answer replays](runs/T5_REGRADE.md) to 15/16; no new model was called.
+The objection-map Harbor oracle scored 1.0. Both Sonnet attempts scored 8/15.
 
 **What failed.** The apparent recovery-count miss was not a retrieval miss.
 All eight v2 answers located the issue. Seven quotations did not include the
@@ -25,6 +26,8 @@ full required anchor. The eighth combined count and duration and failed the
 count-only comparison. Both full-audit Sonnet attempts also quoted an allowed
 page for one planted item without the narrow evidence anchor. See
 [trial-level diagnostics](runs/FAILURES_DRAFT.md).
+Both objection-map runs had the same three status disagreements and supplied
+the same out-of-set page for a fourth request.
 
 **Iteration.** The full audit removed target hints, included complete reports,
 and penalized unsupported findings. In hold scope, checking the rejected

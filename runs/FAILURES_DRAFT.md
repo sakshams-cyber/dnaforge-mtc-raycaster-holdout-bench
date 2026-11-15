@@ -2,6 +2,25 @@
 
 Tags await reviewer confirmation.
 
+## T1-B hold objection map
+
+Both Sonnet attempts classified all five requests correctly and scored 8/15.
+Each treated the study-duration item as partially supplied, marked the
+eligibility and stability items absent, and used the symptomatic protocol for
+the sampling item. The protocol page was outside the approved citation set.
+
+| Trial | Failed criteria | Answer write | Suggested tags |
+| --- | --- | ---: | --- |
+| [Sonnet MA2Zv42](holdout_hold-objection-map/claude-code__claude-sonnet-5-5__v1__hold-objection-map__MA2Zv42__34a234fd18/verifier/score.json) | C02–C04 status and citation, C05 citation | 12 | `domain_knowledge` for duration, `search_process` for eligibility and stability, `grounding` for the sampling citation |
+| [Sonnet QTaa5Lu](holdout_hold-objection-map/claude-code__claude-sonnet-5-5__v1__hold-objection-map__QTaa5Lu__8b98443cf1/verifier/score.json) | C02–C04 status and citation, C05 citation | 10 | `domain_knowledge` for duration, `search_process` for eligibility and stability, `grounding` for the sampling citation |
+
+The page-only ID list may have contributed to the misses. In both traces the
+answer write is where the discrepancies are visible. The intermediate traces
+do not establish why each status was chosen. No inspected tool arguments
+referenced hidden tests, solutions or gold.
+
+## T5 hold scope
+
 | Trial | Evidence | Answer write | Suggested interpretation |
 | --- | --- | ---: | --- |
 | [T5 Sonnet](holdout_hold-scope/claude-code__claude-sonnet-5-5__v1__hold-scope__u6MdFLT__b4e08f44d5/verifier/score.json) | 14/16; eight statuses right. Two verbatim citations fell outside the accepted set. The act-7 source was subsequently approved and regraded. | 6 | Tentative grounding class only for the remaining act-6 citation; act-7 was a coverage gap in the key. |

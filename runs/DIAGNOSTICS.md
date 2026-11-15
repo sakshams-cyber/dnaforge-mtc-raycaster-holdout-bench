@@ -23,6 +23,8 @@ Per-item symptoms, not causal explanations. Read trajectories before assigning h
 | holdout/discrepancy-hunt-05-clean-control / claude-code / claude-haiku-5-5 / v2 / b023ed37fcf9 | missing | 1 |
 | holdout/discrepancy-hunt-05-clean-control / claude-code / claude-sonnet-5-5 / v2 / d9f0c4289bee | missing | 2 |
 | holdout/discrepancy-hunt-05-clean-control / oracle / none / v2 / e35ace97e55e | correct | 1 |
+| holdout/hold-objection-map / claude-code / claude-sonnet-5-5 / v1 / 52b71801ae0c | correct | 2 |
+| holdout/hold-objection-map / claude-code / claude-sonnet-5-5 / v1 / 52b71801ae0c | grounding | 8 |
 | holdout/hold-objection-map / oracle / none / v1 / 47c8177713e9 | correct | 5 |
 | holdout/hold-scope / claude-code / claude-sonnet-5-5 / v1 / f50f5fdf29a0 | correct | 12 |
 | holdout/hold-scope / claude-code / claude-sonnet-5-5 / v1 / f50f5fdf29a0 | grounding | 4 |

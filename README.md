@@ -60,6 +60,9 @@ reference answer scored 1.0 in local sanity. The all-absent, all-present,
 and rotated-status probes scored 0.600, 0.400, and 0.333. All three missed
 their cutoffs because category and status can earn independent credit.
 The reviewer approved reporting these results with the original rubric.
+The Harbor oracle scored 1.0. Both Sonnet attempts scored 8/15 (0.533),
+with the same three status disagreements and a sampling citation outside
+the accepted pages. See [the T1 trial analysis](runs/FAILURES_DRAFT.md#t1-b-hold-objection-map).
 
 ## Data and permissions
 

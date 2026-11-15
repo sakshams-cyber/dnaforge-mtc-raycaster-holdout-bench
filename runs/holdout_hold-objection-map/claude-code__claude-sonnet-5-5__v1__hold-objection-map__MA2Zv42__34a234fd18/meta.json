@@ -1,0 +1,35 @@
+{
+  "task_name": "holdout/hold-objection-map",
+  "trial_name": "hold-objection-map__MA2Zv42",
+  "task_checksum": "1e4f1a1b36633fe643ec872e8ea6555c6179caef5eac5d455020aa7a5c803c36",
+  "started_at": "2026-11-15T00:04:30.721364Z",
+  "finished_at": "2026-11-15T00:06:30.212814Z",
+  "agent": "claude-code",
+  "model": "claude-sonnet-5-5",
+  "version": "v1",
+  "score": 0.533333333333,
+  "elapsed_sec": 119.49145,
+  "infrastructure_error": false,
+  "exception_type": null,
+  "raw_result_sha256": "770885dec43d1ed649d0eb63ccffd06ac7de7a5f03938f7c5c83f156bab4cf52",
+  "condition_sha256": "d1657223aada2e040b91fc651b0992763d5b406d9234f34067fb2c56ba5c3491",
+  "answer_present": true,
+  "trajectory_present": true,
+  "usage": {
+    "n_input_tokens": 321311,
+    "n_cache_tokens": 297685,
+    "n_output_tokens": 5495,
+    "cost_usd": 0.14377150000000002
+  },
+  "diagnostics": {
+    "correct": 1,
+    "grounding": 4
+  },
+  "agent_configuration": {
+    "sha256": "33b3469123ae8c49ce14ad53d89ad83eafe8dd476568a7b306d06d6cb1868764"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
+}
