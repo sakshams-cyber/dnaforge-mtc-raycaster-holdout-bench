@@ -1,0 +1,29 @@
+{
+  "score": 0.0,
+  "reward": 0.0,
+  "criteria_met": 0,
+  "criteria_total": 1,
+  "pass": false,
+  "criteria": [
+    {
+      "id": "C01",
+      "item_id": "real-recovery-count",
+      "check": null,
+      "passed": false
+    }
+  ],
+  "details": {
+    "reported": 3,
+    "known_baseline_flags": 0,
+    "other_flags": 3,
+    "false_positives": 3,
+    "items": {
+      "real-recovery-count": {
+        "credit": 0,
+        "missing": true,
+        "primary_failure": "missing"
+      }
+    },
+    "kind": "discrepancy"
+  }
+}

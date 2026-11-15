@@ -1,0 +1,25 @@
+{
+  "score": 1.0,
+  "reward": 1.0,
+  "criteria_met": null,
+  "criteria_total": null,
+  "pass": null,
+  "criteria": [],
+  "details": {
+    "items": {
+      "lot01-rphplc-25c-36m": {
+        "credit": 1,
+        "primary_failure": "correct"
+      },
+      "lot005-rphplc-25c-24m": {
+        "credit": 1,
+        "primary_failure": "correct"
+      },
+      "lot005-potency-25c-24m": {
+        "credit": 1,
+        "primary_failure": "correct"
+      }
+    },
+    "kind": "forecast"
+  }
+}

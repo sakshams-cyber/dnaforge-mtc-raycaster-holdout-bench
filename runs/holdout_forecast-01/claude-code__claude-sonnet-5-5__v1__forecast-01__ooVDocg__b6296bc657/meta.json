@@ -1,0 +1,34 @@
+{
+  "task_name": "holdout/forecast-01",
+  "trial_name": "forecast-01__ooVDocg",
+  "task_checksum": "c125eb0ab3152feb7c09fd04ef185d2a7b8d6716c9840517f0e5792a91083d21",
+  "started_at": "2026-11-15T00:21:35.028602Z",
+  "finished_at": "2026-11-15T00:23:29.481356Z",
+  "agent": "claude-code",
+  "model": "claude-sonnet-5-5",
+  "version": "v1",
+  "score": 0.166666666667,
+  "elapsed_sec": 114.452754,
+  "infrastructure_error": false,
+  "exception_type": null,
+  "raw_result_sha256": "936a5487f3fed550f7ee8bcb3863402931252075d913702e95222a2228592bee",
+  "condition_sha256": "a1c384cdc2a4c29a17a23f98ce6fb43d1d0e871d8ea28a9c8bec368b9f0a34d8",
+  "answer_present": true,
+  "trajectory_present": true,
+  "usage": {
+    "n_input_tokens": 145676,
+    "n_cache_tokens": 128329,
+    "n_output_tokens": 1402,
+    "cost_usd": 0.07021440000000001
+  },
+  "diagnostics": {
+    "comparison": 2
+  },
+  "agent_configuration": {
+    "sha256": "33b3469123ae8c49ce14ad53d89ad83eafe8dd476568a7b306d06d6cb1868764"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
+}

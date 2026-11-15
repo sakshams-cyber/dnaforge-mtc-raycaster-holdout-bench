@@ -1,0 +1,35 @@
+{
+  "task_name": "holdout/forecast-01",
+  "trial_name": "forecast-01__7tSLdoc",
+  "task_checksum": "c125eb0ab3152feb7c09fd04ef185d2a7b8d6716c9840517f0e5792a91083d21",
+  "started_at": "2026-11-15T00:21:38.459644Z",
+  "finished_at": "2026-11-15T00:23:48.346803Z",
+  "agent": "claude-code",
+  "model": "claude-opus-5-5",
+  "version": "v1",
+  "score": 0.333333333333,
+  "elapsed_sec": 129.887159,
+  "infrastructure_error": false,
+  "exception_type": null,
+  "raw_result_sha256": "8af419a7a6d12f24f172780f5270839e51a4ae7b508c399c549c6316524df7ae",
+  "condition_sha256": "a1c384cdc2a4c29a17a23f98ce6fb43d1d0e871d8ea28a9c8bec368b9f0a34d8",
+  "answer_present": true,
+  "trajectory_present": true,
+  "usage": {
+    "n_input_tokens": 104864,
+    "n_cache_tokens": 97519,
+    "n_output_tokens": 1457,
+    "cost_usd": 0.0853588
+  },
+  "diagnostics": {
+    "correct": 1,
+    "comparison": 2
+  },
+  "agent_configuration": {
+    "sha256": "076e0d68b0701a339bad583326999a3eeb682602040143e950847dfd76da159a"
+  },
+  "environment_configuration": {
+    "sha256": "51006d7d4c4f3188d45bdb4ec87a87e9f0ee69f2fc34445ef3eb1b6303c0af2b"
+  },
+  "export_redacted": true
+}

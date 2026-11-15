@@ -1,0 +1,272 @@
+{
+  "format": "trajectory-actions",
+  "trajectory_sha256": "9c6cb290025fd2961e3e5fee1b96320652e2ebc7c27a0a14b174ab51d17f99db",
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "user",
+      "timestamp": "2026-11-15T00:08:20.164Z",
+      "tool_names": [],
+      "tool_call_count": 0
+    },
+    {
+      "step_id": 2,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:22.208Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:23.455Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 4,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:25.134Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:27.302Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 6,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:29.099Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 7,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:31.671Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 8,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:33.226Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 9,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:37.244Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 10,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:41.302Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 11,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:43.057Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 12,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:45.459Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 13,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:48.259Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 14,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:50.010Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 15,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:52.953Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 16,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:08:59.063Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 17,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:09:01.470Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 18,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:09:07.316Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 19,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:09:10.789Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 20,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:09:15.263Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 21,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:09:26.005Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 22,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:09:31.952Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 23,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:09:34.388Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 24,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:09:37.920Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 25,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:09:58.094Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 26,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:10:10.725Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 27,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:10:12.220Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 28,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:10:16.938Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 29,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:10:22.994Z",
+      "tool_names": [
+        "Bash"
+      ],
+      "tool_call_count": 1
+    },
+    {
+      "step_id": 30,
+      "source": "agent",
+      "timestamp": "2026-11-15T00:10:29.060Z",
+      "tool_names": [],
+      "tool_call_count": 0
+    }
+  ]
+}
