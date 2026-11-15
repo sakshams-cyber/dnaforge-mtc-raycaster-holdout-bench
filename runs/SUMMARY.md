@@ -33,6 +33,10 @@ Redacted exports; raw jobs remain local. Infrastructure failures are separate fr
 | holdout/discrepancy-hunt-05-clean-control | claude-code | claude-sonnet-5-5 | v2 | a57f7f47dd8e | — | 0 | 2 | 2 |
 | holdout/discrepancy-hunt-05-clean-control | claude-code | claude-sonnet-5-5 | v2 | d9f0c4289bee | 0.000 | 2 | 0 | 2 |
 | holdout/discrepancy-hunt-05-clean-control | oracle | none | v2 | e35ace97e55e | 1.000 | 1 | 0 | 1 |
+| holdout/forecast-01 | claude-code | claude-haiku-5-5 | v1 | 452599c2d43d | 0.333 | 2 | 0 | 2 |
+| holdout/forecast-01 | claude-code | claude-opus-5-5 | v1 | 23ba7478ef3b | 0.333 | 2 | 0 | 2 |
+| holdout/forecast-01 | claude-code | claude-sonnet-5-5 | v1 | 84df87f5694a | 0.250 | 2 | 0 | 2 |
+| holdout/forecast-01 | oracle | none | v1 | 780315987542 | 1.000 | 1 | 0 | 1 |
 | holdout/hold-objection-map | claude-code | claude-sonnet-5-5 | v1 | 52b71801ae0c | 0.533 | 2 | 0 | 2 |
 | holdout/hold-objection-map | oracle | none | v1 | 47c8177713e9 | 1.000 | 1 | 0 | 1 |
 | holdout/hold-scope | claude-code | claude-sonnet-5-5 | v1 | f50f5fdf29a0 | 0.875 | 2 | 0 | 2 |

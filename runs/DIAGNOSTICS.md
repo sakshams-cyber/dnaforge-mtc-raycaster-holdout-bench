@@ -35,6 +35,14 @@ Per-item symptoms, not causal explanations. Read trajectories before assigning h
 | holdout/discrepancy-hunt-05-clean-control / claude-code / claude-sonnet-5-5 / v2 / 5a951084e4c5 | missing | 2 |
 | holdout/discrepancy-hunt-05-clean-control / claude-code / claude-sonnet-5-5 / v2 / d9f0c4289bee | missing | 2 |
 | holdout/discrepancy-hunt-05-clean-control / oracle / none / v2 / e35ace97e55e | correct | 1 |
+| holdout/forecast-01 / claude-code / claude-haiku-5-5 / v1 / 452599c2d43d | comparison | 4 |
+| holdout/forecast-01 / claude-code / claude-haiku-5-5 / v1 / 452599c2d43d | correct | 2 |
+| holdout/forecast-01 / claude-code / claude-opus-5-5 / v1 / 23ba7478ef3b | comparison | 4 |
+| holdout/forecast-01 / claude-code / claude-opus-5-5 / v1 / 23ba7478ef3b | correct | 2 |
+| holdout/forecast-01 / claude-code / claude-sonnet-5-5 / v1 / 84df87f5694a | comparison | 4 |
+| holdout/forecast-01 / claude-code / claude-sonnet-5-5 / v1 / 84df87f5694a | correct | 1 |
+| holdout/forecast-01 / claude-code / claude-sonnet-5-5 / v1 / 84df87f5694a | half_credit | 1 |
+| holdout/forecast-01 / oracle / none / v1 / 780315987542 | correct | 3 |
 | holdout/hold-objection-map / claude-code / claude-sonnet-5-5 / v1 / 52b71801ae0c | correct | 2 |
 | holdout/hold-objection-map / claude-code / claude-sonnet-5-5 / v1 / 52b71801ae0c | grounding | 8 |
 | holdout/hold-objection-map / oracle / none / v1 / 47c8177713e9 | correct | 5 |
